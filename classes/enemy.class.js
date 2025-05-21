@@ -1,12 +1,9 @@
-class Enemy extends MovableObject{
+class Enemy extends MovableObject {
     x;
     y;
+    img;
 
-    constructor () {
+    constructor() {
         super();
-    }
-
-    moveLeft() {
-
     }
 }

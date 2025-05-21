@@ -3,7 +3,15 @@ class MovableObject {
     y;
     img;
 
+    constructor() {
+        
+    }
+
     moveRight() {
         
+    }
+
+    moveLeft() {
+
     }
 }

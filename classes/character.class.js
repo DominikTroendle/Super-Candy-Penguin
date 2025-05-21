@@ -1,13 +1,10 @@
 class Character extends MovableObject {
     x;
     y;
+    img;
 
-    constructor () {
+    constructor() {
         super();
-    }
-
-    moveRight() {
-
     }
 
     jump() {
