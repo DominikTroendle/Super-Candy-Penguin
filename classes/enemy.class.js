@@ -4,6 +4,6 @@ class Enemy extends MovableObject {
     img;
 
     constructor() {
-        super();
+        super().loadImage('img/enemys/Monster02/Idle/skeleton-Idle_0.png');
     }
 }
