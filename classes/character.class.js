@@ -6,6 +6,27 @@ class Character extends MovableObject {
 
     constructor() {
         super().loadImage('img/characters/Character02/Idle/All Characters-Character02-Idle_00.png');
+        this.loadImages([
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_00.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_01.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_02.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_03.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_04.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_05.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_06.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_07.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_08.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_09.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_10.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_11.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_12.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_13.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_14.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_15.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_16.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_17.png',
+            'img/characters/Character02/Idle/All Characters-Character02-Idle_18.png'
+        ]);
     }
 
     jump() {

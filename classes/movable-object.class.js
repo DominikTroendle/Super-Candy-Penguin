@@ -2,9 +2,18 @@ class MovableObject {
     x;
     y;
     img;
+    imageCache = {};
 
     constructor() {
         
+    }
+
+    loadImages(arr) {
+        arr.forEach((path) => {
+            let img = new Image();
+            img.src = path;
+            this.imageCache[path] = path;
+        })
     }
 
     loadImage(path) {
