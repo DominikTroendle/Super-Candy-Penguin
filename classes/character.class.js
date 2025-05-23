@@ -3,10 +3,7 @@ class Character extends MovableObject {
     y = 280;
     width = 547;
     height = 350;
-
-    constructor() {
-        super().loadImage('img/characters/Character02/Idle/All Characters-Character02-Idle_00.png');
-        this.loadImages([
+    IMAGES_IDLE = [
             'img/characters/Character02/Idle/All Characters-Character02-Idle_00.png',
             'img/characters/Character02/Idle/All Characters-Character02-Idle_01.png',
             'img/characters/Character02/Idle/All Characters-Character02-Idle_02.png',
@@ -26,7 +23,22 @@ class Character extends MovableObject {
             'img/characters/Character02/Idle/All Characters-Character02-Idle_16.png',
             'img/characters/Character02/Idle/All Characters-Character02-Idle_17.png',
             'img/characters/Character02/Idle/All Characters-Character02-Idle_18.png'
-        ]);
+    ];
+    currentImage = 0;
+
+    constructor() {
+        super().loadImage('img/characters/Character02/Idle/All Characters-Character02-Idle_00.png');
+        this.loadImages(this.IMAGES_IDLE);
+        this.animate();
+    }
+
+    animate() {
+        setInterval(() => {
+            let i = this.currentImage % this.IMAGES_IDLE.length;
+            let path = this.IMAGES_IDLE[i];
+            this.img = this.imageCache[path];
+            this.currentImage++;
+        }, 1000 / 19);
     }
 
     jump() {
