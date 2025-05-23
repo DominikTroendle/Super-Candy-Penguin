@@ -7,9 +7,19 @@ class World {
         new Enemy(),
         new Enemy()
     ];
-    moon = new Moon();
+
     staticBackground = [
-        new StaticBackgroundObject('img/background/l1-background.png')
+        new BackgroundObject('img/background/l1-background.png', 0, 0),
+        new BackgroundObject('img/background/l4-stars.png', 0, 0),
+        new BackgroundObject('img/background/l2-northern-lights01.png', 0, 0),
+        new BackgroundObject('img/background/l5-northern-lights02.png', 0, 0)
+    ];
+
+    movingBackground = [
+        new MovingBackgroundObject('img/background/l6-moon.png', 0, 0),
+        new MovingBackgroundObject('img/background/l7-mountains01.png', 0, 0),
+        new MovingBackgroundObject('img/background/l8-mountains02.png', 0, 0),
+        new MovingBackgroundObject('img/background/l9-ground.png', 0, 0)
     ];
     
     constructor(canvas) {
@@ -20,14 +30,21 @@ class World {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.staticBackground.forEach(background => this.addToCanvas(background));
-        this.addToCanvas(this.moon);
+        
+        this.addObjectsToCanvas(this.staticBackground);
+        this.addObjectsToCanvas(this.movingBackground);
+        this.addObjectsToCanvas(this.enemies);
         this.addToCanvas(this.character);
-        this.enemies.forEach(enemy => this.addToCanvas(enemy));
 
         let self = this;
         requestAnimationFrame(function() {
             self.draw();
+        });
+    }
+
+    addObjectsToCanvas(objects) {
+        objects.forEach(o => {
+            this.addToCanvas(o);
         });
     }
 

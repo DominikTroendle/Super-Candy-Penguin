@@ -1,8 +1,6 @@
 class Enemy extends MovableObject {
-    x = 640;
-    y = 520;
-    img;
-    width = 100;
+    y = 490;
+    width = 131;
     height = 80;
 
     constructor() {

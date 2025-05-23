@@ -1,4 +1,4 @@
-class MovingBackground {
+class Background {
     x;
     y;
     img;
@@ -12,9 +12,5 @@ class MovingBackground {
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
-    }
-
-    move() {
-        
     }
 }
