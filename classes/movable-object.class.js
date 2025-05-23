@@ -3,6 +3,7 @@ class MovableObject {
     y;
     img;
     imageCache = {};
+    currentImage = 0;
 
     constructor() {
         

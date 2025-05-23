@@ -24,7 +24,6 @@ class Character extends MovableObject {
             'img/characters/Character02/Idle/All Characters-Character02-Idle_17.png',
             'img/characters/Character02/Idle/All Characters-Character02-Idle_18.png'
     ];
-    currentImage = 0;
 
     constructor() {
         super().loadImage('img/characters/Character02/Idle/All Characters-Character02-Idle_00.png');
