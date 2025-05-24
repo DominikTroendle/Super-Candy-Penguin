@@ -1,15 +1,13 @@
-class Moon extends Background {
-    x = -50;
-    y = -35;
-
-    constructor(imagePath) {
+class Moon extends MovingBackgroundObject {
+    
+    constructor(imagePath, x, y) {
         super().loadImage(imagePath);
+        this.x = x;
+        this.y = y;
         this.animate();
     }
 
     animate() {
-        setInterval( () => {
-            this.x += 0.1;
-        }, 1000 / 60);
+        this.moveRight();
     }
 }

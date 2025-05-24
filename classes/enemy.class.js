@@ -22,15 +22,18 @@ class Enemy extends MovableObject {
         'img/enemys/Monster02/Walk/skeleton-Walk_16.png',
         'img/enemys/Monster02/Walk/skeleton-Walk_17.png'
     ];
+    speed = 0.2;
 
     constructor() {
         super().loadImage('img/enemys/Monster02/Walk/skeleton-Walk_0.png');
         this.x = 640 + Math.random() * 500;
+        this.speed = this.speed + Math.random() * 0.7;
         this.loadImages(this.IMAGES_WALKING);
         this.animate();
     }
 
     animate() {
+        this.moveLeft();
         setInterval(() => {
             let i = this.currentImage % this.IMAGES_WALKING.length;
             let path = this.IMAGES_WALKING[i];

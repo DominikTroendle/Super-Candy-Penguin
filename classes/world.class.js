@@ -14,10 +14,9 @@ class World {
         new BackgroundObject('img/background/l2-northern-lights01.png', 0, 0),
         new BackgroundObject('img/background/l5-northern-lights02.png', 0, 0)
     ];
-
-    moon = new Moon('img/background/l6-moon.png');
     
     movingBackground = [
+        new Moon('img/background/l6-moon.png', -50, -35),
         new MovingBackgroundObject('img/background/l7-mountains01.png', 0, 0),
         new MovingBackgroundObject('img/background/l8-mountains02.png', 0, 0),
         new MovingBackgroundObject('img/background/l9-ground.png', 0, 0)
@@ -33,7 +32,6 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
         this.addObjectsToCanvas(this.staticBackground);
-        this.addToCanvas(this.moon);
         this.addObjectsToCanvas(this.movingBackground);
         this.addObjectsToCanvas(this.enemies);
         this.addToCanvas(this.character);

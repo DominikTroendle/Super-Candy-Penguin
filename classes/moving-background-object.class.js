@@ -1,4 +1,5 @@
 class MovingBackgroundObject extends Background {
+    speed = 0.1;
 
     constructor(imagePath, x, y) {
         super().loadImage(imagePath);
@@ -6,7 +7,9 @@ class MovingBackgroundObject extends Background {
         this.y = y;
     }
 
-    move() {
-        
+    moveRight() {
+        setInterval( () => {
+            this.x += this.speed;
+        }, 1000 / 60);
     }
 }
