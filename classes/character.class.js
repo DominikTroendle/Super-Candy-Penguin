@@ -1,9 +1,9 @@
 class Character extends MovableObject {
-    x = -20;
+    x = 0;
     y = 280;
     width = 547;
     height = 350;
-    speed = 2.5;
+    speed = 7;
     IMAGES_IDLE = [
         'img/characters/Character02/Idle/All Characters-Character02-Idle_00.png',
         'img/characters/Character02/Idle/All Characters-Character02-Idle_01.png',
@@ -81,11 +81,12 @@ class Character extends MovableObject {
             if (this.world.keyboard.RIGHT) {
                 this.x += this.speed;
                 this.otherDirection = false;
-            };
+            }
             if (this.world.keyboard.LEFT) {
                 this.x -= this.speed;
                 this.otherDirection = true;
-            };
+            }
+            this.world.camera_x = -this.x;
         }, 1000 / 30);
 
         setInterval(() => {
