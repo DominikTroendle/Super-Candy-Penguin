@@ -22,14 +22,4 @@ class MovableObject {
         this.img = new Image();
         this.img.src = path;
     }
-
-    moveRight() {
-        
-    }
-
-    moveLeft() {
-        setInterval( () => {
-            this.x -= this.speed;
-        }, 1000 / 60);
-    }
 }

@@ -1,6 +1,7 @@
 class World {
     ctx;
     canvas;
+    keyboard;
     character = new Character();
     enemies = [
         new Enemy(),
@@ -22,10 +23,16 @@ class World {
         new MovingBackgroundObject('img/background/l9-ground.png', 0, 0)
     ];
     
-    constructor(canvas) {
+    constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
+        this.keyboard = keyboard;
         this.draw();
+        this.setWorld();
+    }
+
+    setWorld() {
+        this.character.world = this;
     }
 
     draw() {
