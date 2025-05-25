@@ -5,11 +5,7 @@ class World {
     camera_x = 0;
 
     character = new Character();
-    enemies = level1.enemies;
-
-    staticBackground = level1.staticBackground;
-    
-    movingBackground = level1.movingBackground;
+    level = level1;
     
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -26,11 +22,11 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
-        this.addObjectsToCanvas(this.staticBackground);
-        this.addLoopingObjectsToCanvas(this.movingBackground);
+        this.addObjectsToCanvas(this.level.staticBackground);
+        this.addLoopingObjectsToCanvas(this.level.movingBackground);
 
         this.ctx.translate(this.camera_x, 0);
-        this.addObjectsToCanvas(this.enemies);
+        this.addObjectsToCanvas(this.level.enemies);
         this.addToCanvas(this.character);
         this.ctx.translate(-this.camera_x, 0);
         
