@@ -3,7 +3,7 @@ class Character extends MovableObject {
     y = 280;
     width = 547;
     height = 350;
-    speed = 7;
+    speed = 25;
     IMAGES_IDLE = [
         'img/characters/Character02/Idle/All Characters-Character02-Idle_00.png',
         'img/characters/Character02/Idle/All Characters-Character02-Idle_01.png',
@@ -70,10 +70,7 @@ class Character extends MovableObject {
     animateIdle() {
         setInterval(() => {
             if (this.world.keyboard.NO_KEY_PRESSED == false) return;
-            let i = this.currentImage % this.IMAGES_IDLE.length;
-            let path = this.IMAGES_IDLE[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.animateImages(this.IMAGES_IDLE);
         }, 1000 / 19);
     }
 
@@ -92,10 +89,7 @@ class Character extends MovableObject {
 
         setInterval(() => {
             if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                let i = this.currentImage % this.IMAGES_WALKING.length;
-                let path = this.IMAGES_WALKING[i];
-                this.img = this.imageCache[path];
-                this.currentImage++;
+                this.animateImages(this.IMAGES_WALKING);
             }
         }, 1000 / 35);
     }

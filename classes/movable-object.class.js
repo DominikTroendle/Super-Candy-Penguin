@@ -23,4 +23,11 @@ class MovableObject {
         this.img = new Image();
         this.img.src = path;
     }
+
+    animateImages(imagesArr) {
+        let i = this.currentImage % imagesArr.length;
+        let path = imagesArr[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+    }
 }
