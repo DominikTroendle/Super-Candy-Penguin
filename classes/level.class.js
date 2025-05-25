@@ -2,7 +2,7 @@ class Level {
     enemies;
     staticBackground;
     movingBackground;
-    level_end_x = 1280;
+    level_end_x = 3840;
 
     constructor(enemies, staticBackground, movingBackground) {
         this.enemies = enemies;

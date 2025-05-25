@@ -61,14 +61,15 @@ class Character extends MovableObject {
 
     constructor() {
         super().loadImage('img/characters/Character02/Idle/All Characters-Character02-Idle_00.png');
-        // this.loadImages(this.IMAGES_IDLE);
+        this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_WALKING);
-        // this.animateIdle();
+        this.animateIdle();
         this.animateWalking();
     }
 
     animateIdle() {
         setInterval(() => {
+            if (this.world.keyboard.NO_KEY_PRESSED == false) return;
             let i = this.currentImage % this.IMAGES_IDLE.length;
             let path = this.IMAGES_IDLE[i];
             this.img = this.imageCache[path];
