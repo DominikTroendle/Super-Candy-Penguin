@@ -35,7 +35,7 @@ class Enemy extends MovableObject {
     animate() {
         // this.moveLeft();
         setInterval(() => {
-            this.animateImages(this.IMAGES_WALKING);
+            this.playAnimation('walking', this.IMAGES_WALKING);
         }, 1000 / 18);
     }
 }

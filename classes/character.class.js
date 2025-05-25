@@ -1,6 +1,7 @@
 class Character extends MovableObject {
     x = 0;
-    y = 280;
+    // y = 280;
+    y = 200;
     width = 547;
     height = 350;
     speed = 25;
@@ -57,24 +58,58 @@ class Character extends MovableObject {
         'img/characters/Character02/Walk/All Characters-Character02-Walk_28.png',
         'img/characters/Character02/Walk/All Characters-Character02-Walk_29.png',
     ];
+    IMAGES_JUMP = [
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_00.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_01.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_02.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_03.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_04.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_05.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_06.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_07.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_08.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_09.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_10.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_11.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_12.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_13.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_14.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_15.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_16.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_17.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_18.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_19.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_20.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_21.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_22.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_23.png',
+        'img/characters/Character02/Jump/All Characters-Character02-Jump_24.png'
+    ];
     world;
+    currentAnimation;
 
     constructor() {
         super().loadImage('img/characters/Character02/Idle/All Characters-Character02-Idle_00.png');
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_WALKING);
-        this.animateIdle();
-        this.animateWalking();
+        this.loadImages(this.IMAGES_JUMP);
+        this.animate();
+        this.applyGravity();
     }
 
-    animateIdle() {
+    animate() {
         setInterval(() => {
-            if (this.world.keyboard.NO_KEY_PRESSED == false) return;
-            this.animateImages(this.IMAGES_IDLE);
+            if (this.world.keyboard.NO_KEY_PRESSED) {
+                this.playAnimation('idle', this.IMAGES_IDLE);
+            }
         }, 1000 / 19);
-    }
 
-    animateWalking() {
+        setInterval(() => {
+            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                this.playAnimation('walking', this.IMAGES_WALKING);
+            }
+        }, 1000 / 35);
+
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.x += this.speed;
@@ -86,15 +121,5 @@ class Character extends MovableObject {
             }
             this.world.camera_x = -this.x;
         }, 1000 / 30);
-
-        setInterval(() => {
-            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                this.animateImages(this.IMAGES_WALKING);
-            }
-        }, 1000 / 35);
-    }
-
-    jump() {
-
     }
 }

@@ -33,7 +33,7 @@ class Endboss extends MovableObject {
 
     animate() {
         setInterval(() => {
-            this.animateImages(this.IMAGES_BOSS);
+            this.playAnimation('idle', this.IMAGES_BOSS);
         }, 1000 / 18);
     }
 }
