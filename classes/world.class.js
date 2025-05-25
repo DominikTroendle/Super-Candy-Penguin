@@ -44,15 +44,12 @@ class World {
 
     addToCanvas(object) {
         if (object.otherDirection) {
-            this.ctx.save();
-            this.ctx.translate(object.width, 0);
-            this.ctx.scale(-1, 1);
-            object.x = object.x * -1;
+            this.mirrorCtx(object);
         }
-        this.ctx.drawImage(object.img, object.x, object.y, object.width, object.height);
+        object.drawObject(this.ctx);
+        object.drawBorder(this.ctx);
         if (object.otherDirection) {
-            this.ctx.restore();
-            object.x = object.x * -1;
+            this.resetCtx(object);
         }
     }
 
@@ -67,5 +64,17 @@ class World {
                 this.ctx.drawImage(o.img, drawX, o.y, o.width, o.height);
         }
         })
+    }
+
+    mirrorCtx(object) {
+        this.ctx.save();
+        this.ctx.translate(object.width, 0);
+        this.ctx.scale(-1, 1);
+        object.x = object.x * -1;
+    }
+
+    resetCtx(object) {
+        this.ctx.restore();
+        object.x = object.x * -1;
     }
 }
