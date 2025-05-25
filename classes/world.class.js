@@ -43,14 +43,10 @@ class World {
     }
 
     addToCanvas(object) {
-        if (object.otherDirection) {
-            this.mirrorCtx(object);
-        }
+        if (object.otherDirection) this.mirrorCtx(object);
         object.drawObject(this.ctx);
-        object.drawBorder(this.ctx);
-        if (object.otherDirection) {
-            this.resetCtx(object);
-        }
+        if (object instanceof Character || object instanceof Enemy || object instanceof Endboss) object.drawBorder(this.ctx);
+        if (object.otherDirection) this.resetCtx(object);
     }
 
     addLoopingObjectsToCanvas(objects) {
