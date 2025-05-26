@@ -29,7 +29,8 @@ class Character extends MovableObject {
         'img/characters/Character02/Idle/All Characters-Character02-Idle_15.png',
         'img/characters/Character02/Idle/All Characters-Character02-Idle_16.png',
         'img/characters/Character02/Idle/All Characters-Character02-Idle_17.png',
-        'img/characters/Character02/Idle/All Characters-Character02-Idle_18.png'
+        'img/characters/Character02/Idle/All Characters-Character02-Idle_18.png',
+        'img/characters/Character02/Idle/All Characters-Character02-Idle_19.png'
     ];
     IMAGES_WALKING = [
         'img/characters/Character02/Walk/All Characters-Character02-Walk_00.png',

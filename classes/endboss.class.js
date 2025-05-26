@@ -26,7 +26,7 @@ class Endboss extends MovableObject {
     ];
 
     constructor() {
-        super().loadImage(this.IMAGES_BOSS[0]);
+        super().loadImage('img/enemys/Boss/Idle/skeleton-Idle_0.png');
         this.loadImages(this.IMAGES_BOSS);
         this.animate();
     }

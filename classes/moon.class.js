@@ -2,7 +2,7 @@ class Moon extends MovingBackgroundObject {
     speed = 0.25;
 
     constructor(imagePath, x, y) {
-        super().loadImage(imagePath);
+        super(imagePath, x, y);
         this.x = x;
         this.y = y;
         this.startX = x;
