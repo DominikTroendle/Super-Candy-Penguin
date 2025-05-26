@@ -8,6 +8,13 @@ class MovableObject {
     otherDirection = false;
     speedY = 0;
     acceleration = 3;
+    collisionOffset = {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
+    };
+    life = 100;
 
     constructor() {
 
@@ -21,11 +28,7 @@ class MovableObject {
         ctx.beginPath();
         ctx.lineWidth = '2';
         ctx.strokeStyle = 'blue';
-        if (this instanceof Character) {
-            ctx.rect(this.x + 225, this.y + 150, 105, 142);
-        } else {
-            ctx.rect(this.x, this.y, this.width, this.height);
-        }
+        ctx.rect(this.x, this.y, this.width, this.height);
         ctx.stroke();
     }
 
@@ -77,5 +80,21 @@ class MovableObject {
 
     jump() {
         this.speedY = 30;
+    }
+
+    isColliding(object) {
+        return this.x + 220 + 115 > object.x &&
+            this.y + 150 + 142 > object.y &&
+            this.x + 220 < object.x + object.width &&
+            this.y + 150 < object.y + object.height
+    }
+
+    isHurt() {
+        this.life -= 5;
+        if (this.life < 0) this.life = 0;
+    }
+
+    isDead() {
+        return this.life == 0;
     }
 }

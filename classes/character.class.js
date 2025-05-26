@@ -3,6 +3,12 @@ class Character extends MovableObject {
     y = 280;
     width = 547;
     height = 350;
+    collisionOffset = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 20
+    };
     speed = 25;
     IMAGES_IDLE = [
         'img/characters/Character02/Idle/All Characters-Character02-Idle_00.png',
@@ -84,6 +90,53 @@ class Character extends MovableObject {
         'img/characters/Character02/Jump/All Characters-Character02-Jump_23.png',
         'img/characters/Character02/Jump/All Characters-Character02-Jump_24.png'
     ];
+    IMAGES_DEAD = [
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_00.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_01.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_02.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_03.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_04.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_05.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_06.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_07.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_08.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_09.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_10.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_11.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_12.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_13.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_14.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_15.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_16.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_17.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_18.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_19.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_20.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_21.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_22.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_23.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_24.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_25.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_26.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_27.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_28.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_29.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_30.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_31.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_32.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_33.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_34.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_35.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_36.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_37.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_38.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_39.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_40.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_41.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_42.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_43.png',
+        'img/characters/Character02/Dead/All Characters-Character02-Dead_44.png'
+    ];
     world;
     currentAnimation;
 
@@ -92,6 +145,7 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
+        this.loadImages(this.IMAGES_DEAD);
         this.animate();
         this.applyGravity();
     }
@@ -116,6 +170,12 @@ class Character extends MovableObject {
         }, 1000 / 25);
 
         setInterval(() => {
+            if (this.isDead()) {
+                this.playAnimation('dead', this.IMAGES_DEAD);
+            }
+        }, 1000 / 45);
+
+        setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
@@ -130,5 +190,13 @@ class Character extends MovableObject {
             }
             this.world.camera_x = -this.x;
         }, 1000 / 30);
+    }
+
+    drawBorder(ctx) {
+        ctx.beginPath();
+        ctx.lineWidth = '2';
+        ctx.strokeStyle = 'blue';
+        ctx.rect(this.x + 220, this.y + 150, 115, 142);
+        ctx.stroke();
     }
 }
