@@ -21,7 +21,11 @@ class MovableObject {
         ctx.beginPath();
         ctx.lineWidth = '2';
         ctx.strokeStyle = 'blue';
-        ctx.rect(this.x, this.y, this.width, this.height);
+        if (this instanceof Character) {
+            ctx.rect(this.x + 225, this.y + 150, 105, 142);
+        } else {
+            ctx.rect(this.x, this.y, this.width, this.height);
+        }
         ctx.stroke();
     }
 
