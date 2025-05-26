@@ -15,6 +15,7 @@ class MovableObject {
         left: 0
     };
     life = 100;
+    lastHit = 0;
 
     constructor() {
 
@@ -89,9 +90,19 @@ class MovableObject {
             this.y + 150 < object.y + object.height
     }
 
-    isHurt() {
+    hit() {
         this.life -= 5;
-        if (this.life < 0) this.life = 0;
+        if (this.life < 0) {
+            this.life = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+    isHurt() {
+        let timePassed = new Date().getTime() - this.lastHit;
+        timePassed = timePassed / 1000;
+        return timePassed < 1;
     }
 
     isDead() {

@@ -90,6 +90,32 @@ class Character extends MovableObject {
         'img/characters/Character02/Jump/All Characters-Character02-Jump_23.png',
         'img/characters/Character02/Jump/All Characters-Character02-Jump_24.png'
     ];
+    IMAGES_HURT = [
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_00.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_01.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_02.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_03.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_04.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_05.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_06.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_07.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_08.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_09.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_10.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_11.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_12.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_13.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_14.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_15.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_16.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_17.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_18.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_19.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_20.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_21.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_22.png',
+        'img/characters/Character02/Confused/All Characters-Character02-Confused_23.png'
+    ];
     IMAGES_DEAD = [
         'img/characters/Character02/Dead/All Characters-Character02-Dead_00.png',
         'img/characters/Character02/Dead/All Characters-Character02-Dead_01.png',
@@ -145,6 +171,7 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
+        this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
         this.animate();
         this.applyGravity();
@@ -152,23 +179,29 @@ class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
-            if (this.world.keyboard.NO_KEY_PRESSED && !this.isAboveGround()) {
+            if (this.world.keyboard.NO_KEY_PRESSED && !this.isAboveGround() && !this.isHurt() && !this.isDead()) {
                 this.playAnimation('idle', this.IMAGES_IDLE);
             }
         }, 1000 / 19);
 
          setInterval(() => {
-            if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && !this.isAboveGround()) {
+            if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && !this.isAboveGround()&& !this.isHurt() && !this.isDead()) {
                 this.playAnimation('walking', this.IMAGES_WALKING);
             }
         }, 1000 / 30);
 
         setInterval(() => {
-            if (this.isAboveGround()) {
+            if (this.isAboveGround() && !this.isHurt()) {
                 this.playAnimation('jumping', this.IMAGES_JUMPING);
             }
         }, 1000 / 25);
 
+        setInterval(() => {
+            if (this.isHurt() && !this.isDead()) {
+                this.playAnimation('hurt', this.IMAGES_HURT);
+            }
+        }, 1000 / 48)
+        
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation('dead', this.IMAGES_DEAD);
@@ -176,16 +209,15 @@ class Character extends MovableObject {
         }, 1000 / 45);
 
         setInterval(() => {
-            if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x && !this.isDead()) {
                 this.moveRight();
                 this.otherDirection = false;
             }
-            if (this.world.keyboard.LEFT && this.x > 0) {
+            if (this.world.keyboard.LEFT && this.x > 0 && !this.isDead()) {
                 this.moveLeft();
                 this.otherDirection = true;
             }
-            
-            if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+            if (this.world.keyboard.SPACE && !this.isAboveGround() && !this.isDead()) {
                 this.jump();
             }
             this.world.camera_x = -this.x;
