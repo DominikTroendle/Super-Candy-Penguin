@@ -203,9 +203,10 @@ class Character extends MovableObject {
             }
         }, 1000 / 48)
         
-        setInterval(() => {
+        const intervalId = setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation('dead', this.IMAGES_DEAD);
+                clearInterval(intervalId);          
             }
         }, 1000 / 45);
 
