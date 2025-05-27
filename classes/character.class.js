@@ -166,6 +166,8 @@ class Character extends MovableObject {
     ];
     world;
     currentAnimation;
+    lastAnimationFrameTime;
+    animationFinished;
 
     constructor() {
         super().loadImage('img/characters/Character02/Idle/All Characters-Character02-Idle_00.png');
@@ -180,35 +182,18 @@ class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
-            if (this.world.keyboard.NO_KEY_PRESSED && !this.isAboveGround() && !this.isHurt() && !this.isDead()) {
-                this.playAnimation('idle', this.IMAGES_IDLE);
-            }
-        }, 1000 / 19);
-
-         setInterval(() => {
-            if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && !this.isAboveGround()&& !this.isHurt() && !this.isDead()) {
-                this.playAnimation('walking', this.IMAGES_WALKING);
-            }
-        }, 1000 / 30);
-
-        setInterval(() => {
-            if (this.isAboveGround() && !this.isHurt()) {
-                this.playAnimation('jumping', this.IMAGES_JUMPING);
-            }
-        }, 1000 / 25);
-
-        setInterval(() => {
-            if (this.isHurt() && !this.isDead()) {
-                this.playAnimation('hurt', this.IMAGES_HURT);
-            }
-        }, 1000 / 48)
-        
-        const intervalId = setInterval(() => {
             if (this.isDead()) {
-                this.playAnimation('dead', this.IMAGES_DEAD);
-                clearInterval(intervalId);          
+                this.playAnimation('dead', this.IMAGES_DEAD, 45);
+            } else if (this.isHurt()) {
+                this.playAnimation('hurt', this.IMAGES_HURT, 48);
+            } else if (this.isAboveGround()) {
+                this.playAnimation('jumping', this.IMAGES_JUMPING, 25);
+            } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                this.playAnimation('walking', this.IMAGES_WALKING, 30);
+            } else {
+                this.playAnimation('idle', this.IMAGES_IDLE, 20);
             }
-        }, 1000 / 45);
+        }, 1000 / 60);
 
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x && !this.isDead()) {

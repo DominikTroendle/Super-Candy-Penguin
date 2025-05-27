@@ -46,16 +46,28 @@ class MovableObject {
         this.img.src = path;
     }
 
-    animateImages(imagesArr) {
+    animateImages(imagesArr, name) {
         let i = this.currentImage % imagesArr.length;
         let path = imagesArr[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+        if (i >= imagesArr.length - 1 && name === 'dead') this.animationFinished = true;
     }
 
-    playAnimation(name, images) {
-        this.currentAnimation = name;
-        this.animateImages(images);
+    playAnimation(name, images, fps) {
+        if (this.currentAnimation !== name) {
+            this.currentAnimation = name;
+            this.currentImage = 0;
+            this.lastAnimationFrameTime = Date.now();
+            this.animationFinished = false;
+        }
+        if (name === 'dead' && this.animationFinished) return;
+        let now = Date.now();
+        let frameDuration = 1000 / fps;
+        if (!this.currentAnimation || (now - this.lastAnimationFrameTime) >= frameDuration) {
+            this.animateImages(images, name);
+            this.lastAnimationFrameTime = now;
+        }
     }
 
     applyGravity() {
