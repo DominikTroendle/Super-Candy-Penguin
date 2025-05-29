@@ -5,6 +5,7 @@ class World {
     camera_x = 0;
 
     character = new Character();
+    statusbar = new Statusbar();
     level = level1;
     
     constructor(canvas, keyboard) {
@@ -25,7 +26,7 @@ class World {
             this.level.enemies.forEach(enemy => {
                 if (this.character.isColliding(enemy)) {
                     this.character.hit();
-                    console.log(this.character.life);
+                    this.statusbar.setPercentage(this.character.life);
                 };
             });
         }, 200)
@@ -36,6 +37,7 @@ class World {
         
         this.addObjectsToCanvas(this.level.staticBackground);
         this.addLoopingObjectsToCanvas(this.level.movingBackground);
+        this.addToCanvas(this.statusbar);
 
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToCanvas(this.level.enemies);

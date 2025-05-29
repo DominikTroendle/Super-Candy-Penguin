@@ -1,9 +1,4 @@
-class MovableObject {
-    x;
-    y;
-    img;
-    imageCache = {};
-    currentImage = 0;
+class MovableObject extends Foreground {
     speed;
     otherDirection = false;
     speedY = 0;
@@ -18,11 +13,7 @@ class MovableObject {
     lastHit = 0;
 
     constructor() {
-
-    }
-
-    drawObject(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height); 
+        super();
     }
 
     drawBorder(ctx) {
@@ -31,19 +22,6 @@ class MovableObject {
         ctx.strokeStyle = 'blue';
         ctx.rect(this.x, this.y, this.width, this.height);
         ctx.stroke();
-    }
-
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
-        })
-    }
-
-    loadImage(path) {
-        this.img = new Image();
-        this.img.src = path;
     }
 
     animateImages(imagesArr, name) {
@@ -103,7 +81,7 @@ class MovableObject {
     }
 
     hit() {
-        this.life -= 5;
+        this.life -= 20;
         if (this.life < 0) {
             this.life = 0;
         } else {
