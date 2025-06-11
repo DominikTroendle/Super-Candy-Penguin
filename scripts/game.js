@@ -10,21 +10,13 @@ function init() {
 window.addEventListener('keydown', (event) => {
     if (event.key == "ArrowRight" || event.key == "d") keyboard.RIGHT = true;
     if (event.key == "ArrowLeft" || event.key == "a") keyboard.LEFT = true;
+    if (event.key == "f") keyboard.F = true;
     if (event.key == " ") keyboard.SPACE = true;
-    updateNoKeyPressed();
 });
 
 window.addEventListener('keyup', (event) => {
     if (event.key == "ArrowRight" || event.key == "d") keyboard.RIGHT = false;
     if (event.key == "ArrowLeft" || event.key == "a") keyboard.LEFT = false;
+    if (event.key == "f") keyboard.F = false;
     if (event.key == " ") keyboard.SPACE = false;
-    updateNoKeyPressed();
 });
-
-function updateNoKeyPressed() {
-    keyboard.NO_KEY_PRESSED = !(
-        keyboard.RIGHT ||
-        keyboard.LEFT ||
-        keyboard.SPACE
-    );
-}

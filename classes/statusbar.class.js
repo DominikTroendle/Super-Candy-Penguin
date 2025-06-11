@@ -15,7 +15,7 @@ class Statusbar extends Foreground {
 
     constructor() {
         super();
-        this.loadImage('img/statusbar/0.png');
+        this.loadImage('img/statusbar/100.png');
         this.loadImages(this.IMAGES);
     }
 

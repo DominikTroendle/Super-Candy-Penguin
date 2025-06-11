@@ -58,7 +58,11 @@ class MovableObject extends Foreground {
     }
 
     isAboveGround() {
-        return this.y < 280;
+        if (this instanceof ThrowableObject) {
+            return true;
+        } else {
+            return this.y < 280;
+        }
     }
 
     moveRight() {

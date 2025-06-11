@@ -6,6 +6,7 @@ class World {
 
     character = new Character();
     statusbar = new Statusbar();
+    throwableObjects = [];
     level = level1;
     
     constructor(canvas, keyboard) {
@@ -14,22 +15,34 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.checkCollisions();
+        this.run();
     }
 
     setWorld() {
         this.character.world = this;
     }
 
-    checkCollisions() {
+    run() {
         setInterval(() => {
-            this.level.enemies.forEach(enemy => {
-                if (this.character.isColliding(enemy)) {
-                    this.character.hit();
-                    this.statusbar.setPercentage(this.character.life);
-                };
-            });
+            this.checkCollisions();
+            this.checkThrowableObject();
         }, 200)
+    }
+
+    checkCollisions() {
+        this.level.enemies.forEach(enemy => {
+            if (this.character.isColliding(enemy)) {
+                this.character.hit();
+                this.statusbar.setPercentage(this.character.life);
+            };
+        });
+    }
+
+    checkThrowableObject() {
+        if (this.keyboard.F) {
+            let candy = new ThrowableObject(this.character.x + 290, this.character.y + 200);
+            this.throwableObjects.push(candy);
+        };
     }
 
     draw() {
@@ -42,6 +55,7 @@ class World {
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToCanvas(this.level.enemies);
         this.addToCanvas(this.character);
+        this.addObjectsToCanvas(this.throwableObjects);
         this.ctx.translate(-this.camera_x, 0);
         
         let self = this;

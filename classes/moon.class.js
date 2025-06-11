@@ -1,5 +1,7 @@
 class Moon extends MovingBackgroundObject {
     speed = 0.25;
+    amplitude = 140;
+    endX = 1280;
 
     constructor(imagePath, x, y) {
         super(imagePath, x, y);
@@ -7,9 +9,6 @@ class Moon extends MovingBackgroundObject {
         this.y = y;
         this.startX = x;
         this.startY = y;
-        this.endX = 1280;
-        this.amplitude = 140;
-
         this.animate();
     }
 
