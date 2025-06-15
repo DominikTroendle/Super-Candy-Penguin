@@ -20,6 +20,11 @@ class Foreground {
         this.img.src = path;
     }
 
+    loadRandomImg(arr) {
+        this.img = new Image();
+        this.img.src = arr[Math.floor((Math.random() * arr.length))];
+    }
+
     loadImages(arr) {
         arr.forEach((path) => {
             let img = new Image();

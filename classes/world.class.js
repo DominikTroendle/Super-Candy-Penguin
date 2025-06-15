@@ -36,6 +36,12 @@ class World {
                 this.statusbar.setPercentage(this.character.life);
             };
         });
+        this.level.candys.forEach(candy => {
+            if (this.character.isPickedUp(candy)) {
+                console.log('isPickedUp');
+                this.level.candys.splice(this.candy);
+            }
+        });
     }
 
     checkThrowableObject() {
@@ -53,6 +59,7 @@ class World {
         this.addToCanvas(this.statusbar);
 
         this.ctx.translate(this.camera_x, 0);
+        this.addObjectsToCanvas(this.level.candys);
         this.addObjectsToCanvas(this.level.enemies);
         this.addToCanvas(this.character);
         this.addObjectsToCanvas(this.throwableObjects);

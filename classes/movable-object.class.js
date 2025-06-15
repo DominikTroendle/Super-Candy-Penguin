@@ -102,4 +102,8 @@ class MovableObject extends Foreground {
     isDead() {
         return this.life == 0;
     }
+
+    isPickedUp(object) {
+        return this.x + 220 + 115 > object.x;
+    }
 }
