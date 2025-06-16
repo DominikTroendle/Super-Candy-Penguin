@@ -6,6 +6,8 @@ class World {
 
     character = new Character();
     statusbar = new Statusbar();
+    coinCounter = new CoinCounter();
+    candyCounter = new CandyCounter();
     throwableObjects = [];
     level = level1;
     
@@ -38,7 +40,9 @@ class World {
         });
         this.level.candys = this.level.candys.filter(candy => {
             if (this.character.isColliding(candy)) {
-                console.log('isPickedUp');
+                this.candyCounter.increaseCount(this.candyCounter);
+                console.log(this.candyCounter.currentAmount);
+                
                 return false;
             }
             return true;
@@ -58,6 +62,8 @@ class World {
         this.addObjectsToCanvas(this.level.staticBackground);
         this.addLoopingObjectsToCanvas(this.level.movingBackground);
         this.addToCanvas(this.statusbar);
+        this.addToCanvas(this.coinCounter);
+        this.addToCanvas(this.candyCounter);
 
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToCanvas(this.level.candys);
@@ -82,6 +88,7 @@ class World {
         if (object.otherDirection) this.mirrorCtx(object);
         object.drawObject(this.ctx);
         if (object instanceof Character || object instanceof Enemy || object instanceof Endboss) object.drawBorder(this.ctx);
+        if (object instanceof Counter) object.drawCounter(this.ctx, object);
         if (object.otherDirection) this.resetCtx(object);
     }
 

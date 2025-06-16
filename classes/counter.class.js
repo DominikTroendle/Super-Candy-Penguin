@@ -1,0 +1,16 @@
+class Counter extends Foreground {
+    
+    constructor () {
+        super();
+    }
+
+    drawCounter(ctx, object) {
+        ctx.font = '48px Arial';
+        ctx.fillStyle = 'white';
+        ctx.fillText(object.currentAmount, this.x + 65, this.y + 43);
+    }
+
+    increaseCount(object) {
+        object.currentAmount++;
+    }
+}
