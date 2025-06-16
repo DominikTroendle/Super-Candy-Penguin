@@ -36,11 +36,12 @@ class World {
                 this.statusbar.setPercentage(this.character.life);
             };
         });
-        this.level.candys.forEach(candy => {
-            if (this.character.isPickedUp(candy)) {
+        this.level.candys = this.level.candys.filter(candy => {
+            if (this.character.isColliding(candy)) {
                 console.log('isPickedUp');
-                this.level.candys.splice(this.candy);
+                return false;
             }
+            return true;
         });
     }
 
