@@ -13,4 +13,8 @@ class Counter extends Foreground {
     increaseCount(object) {
         object.currentAmount++;
     }
+
+    decreaseCount(object) {
+        object.currentAmount--;
+    }
 }

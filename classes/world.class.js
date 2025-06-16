@@ -41,8 +41,6 @@ class World {
         this.level.candys = this.level.candys.filter(candy => {
             if (this.character.isColliding(candy)) {
                 this.candyCounter.increaseCount(this.candyCounter);
-                console.log(this.candyCounter.currentAmount);
-                
                 return false;
             }
             return true;
@@ -50,9 +48,10 @@ class World {
     }
 
     checkThrowableObject() {
-        if (this.keyboard.F) {
+        if (this.keyboard.F && this.candyCounter.currentAmount != 0) {
             let candy = new ThrowableObject(this.character.x + 290, this.character.y + 200);
             this.throwableObjects.push(candy);
+            this.candyCounter.decreaseCount(this.candyCounter);
         };
     }
 
