@@ -5,7 +5,7 @@ class Counter extends Foreground {
     }
 
     drawCounter(ctx, object) {
-        ctx.font = '48px Arial';
+        ctx.font = '48px Modak';
         ctx.fillStyle = 'white';
         ctx.fillText(object.currentAmount, this.x + 65, this.y + 43);
     }
