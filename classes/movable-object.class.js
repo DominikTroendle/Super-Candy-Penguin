@@ -81,7 +81,7 @@ class MovableObject extends Foreground {
         return this.x + 220 + 115 > object.x &&
             this.y + 150 + 142 > object.y &&
             this.x + 220 < object.x + object.width &&
-            this.y + 150 < object.y + object.height
+            this.y + 150 < object.y + object.height;
     }
 
     hit() {
