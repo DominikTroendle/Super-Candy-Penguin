@@ -12,11 +12,4 @@ class Candy extends GroundObject {
         super().loadRandomImg(this.IMAGES);
         this.x = x;
     }
-
-    isHittingEnemy(enemy) {
-        return this.x > enemy.x &&
-            this.y > enemy.y &&
-            this.x + this.width < enemy.x + enemy.width &&
-            this.y + this.height < enemy.y + enemy.height;
-    }
 }
