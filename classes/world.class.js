@@ -49,7 +49,7 @@ class World {
 
     checkThrowableObject() {
         if (this.keyboard.F && this.candyCounter.currentAmount != 0) {
-            let candy = new ThrowableObject(this.character.x + 290, this.character.y + 200);
+            let candy = new ThrowableObject(this.character, this.character.x + 290, this.character.y + 200);
             this.throwableObjects.push(candy);
             this.candyCounter.decreaseCount(this.candyCounter);
         };
@@ -66,14 +66,14 @@ class World {
     checkCandyCollision(candy) {
         for (let i = 0; i < this.level.enemies.length; i++) {
             if (candy.isHittingEnemy(this.level.enemies[i])) {
-                this.removeEnemy(this.level.enemies[i]);
+                this.removeEnemy(i);
                 return true;
             };
         };
     }
 
-    removeEnemy(enemy) {
-        this.level.enemies.splice(enemy, 1);
+    removeEnemy(i) {
+        this.level.enemies.splice(i, 1);
     }
 
     draw() {
