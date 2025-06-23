@@ -10,17 +10,17 @@ height = 60;
     }
     
     throw(character, x, y) {
-        this.x = x;
-        this.y = y;
         this.speedY = 33;
         this.applyGravity();
-        setInterval(() => {
-            if (character.otherDirection) {
+        if (character.otherDirection) {
+            setInterval(() => {
                 this.x -= 1.7;
-            } else {
+            }, 1);
+        } else {
+            setInterval(() => {
                 this.x += 1.7;
-            }
-        }, 1);
+            }, 1);
+        }
     }
 
     isHittingEnemy(enemy) {
