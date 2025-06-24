@@ -26,21 +26,10 @@ const level1 = new Level(
         new Candy(3700)
     ],
     [
-        new Coin(500, 460),
-        new Coin(600, 430),
-        new Coin(780, 380),
-        new Coin(960, 430),
-        new Coin(500, 460),
-        new Coin(500, 460),
-        new Coin(500, 460),
-        new Coin(500, 460),
-        new Coin(500, 460),
-        new Coin(500, 460),
-        new Coin(500, 460),
-        new Coin(500, 460),
-        new Coin(500, 460),
-        new Coin(500, 460),
-        new Coin(500, 460)
+        new Coin(400, 460),
+        new Coin(600, 460),
+        new Coin(900, 380),
+        new Coin(1200, 460)
     ],
     [
         new BackgroundObject('img/background/l1-background.png', 0, 0),

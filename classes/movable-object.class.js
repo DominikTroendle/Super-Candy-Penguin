@@ -2,7 +2,7 @@ class MovableObject extends Foreground {
     speed;
     otherDirection = false;
     speedY = 0;
-    acceleration = 3;
+    acceleration = 4;
     collisionOffset = {
         top: 0,
         right: 0,
@@ -50,7 +50,7 @@ class MovableObject extends Foreground {
     }
 
     jump() {
-        this.speedY = 30;
+        this.speedY = 33;
     }
 
     isColliding(object) {
