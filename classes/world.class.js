@@ -28,7 +28,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowableObject();
-        }, 200)
+        }, 100)
     }
 
     checkCollisions() {
@@ -45,6 +45,13 @@ class World {
             }
             return true;
         });
+        this.level.coins = this.level.coins.filter(coin => {
+            if (this.character.isColliding(coin)) {
+                this.coinCounter.increaseCount(this.coinCounter);
+                return false;
+            }
+            return true;
+        })
     }
 
     checkThrowableObject() {

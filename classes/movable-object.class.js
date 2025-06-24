@@ -54,10 +54,10 @@ class MovableObject extends Foreground {
     }
 
     isColliding(object) {
-        return this.x + 220 + 115 > object.x &&
-            this.y + 150 + 142 > object.y &&
-            this.x + 220 < object.x + object.width &&
-            this.y + 150 < object.y + object.height;
+        return this.x + this.collisionOffset.left + this.collisionOffset.width > object.x &&
+            this.y + this.collisionOffset.top + this.collisionOffset.height > object.y &&
+            this.x + this.collisionOffset.left < object.x + object.width &&
+            this.y + this.collisionOffset.top < object.y + object.height;
     }
 
     hit() {

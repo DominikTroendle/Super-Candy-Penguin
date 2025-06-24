@@ -3,11 +3,18 @@ class Character extends MovableObject {
     y = 280;
     width = 547;
     height = 350;
+    characterOffset = {
+        top: 150,
+        left: 220,
+        width: 115,
+        height: 142
+    };
     collisionOffset = {
-        top: 20,
-        right: 20,
-        bottom: 20,
-        left: 20
+        top: 170,
+        left: 240,
+        bottom: 10,
+        width: 75,
+        height: 112
     };
     speed = 25;
     IMAGES_IDLE = [
@@ -215,7 +222,13 @@ class Character extends MovableObject {
         ctx.beginPath();
         ctx.lineWidth = '2';
         ctx.strokeStyle = 'blue';
-        ctx.rect(this.x + 220, this.y + 150, 115, 142);
+        ctx.rect(this.x + this.characterOffset.left, this.y + this.characterOffset.top, this.characterOffset.width, this.characterOffset.height);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.lineWidth = '2';
+        ctx.strokeStyle = 'red';
+        ctx.rect(this.x + this.collisionOffset.left, this.y + this.collisionOffset.top, this.collisionOffset.width, this.collisionOffset.height);
         ctx.stroke();
     }
 }
