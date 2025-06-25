@@ -1,4 +1,6 @@
-class CoinCounter extends Counter {
+import { Counter } from "./counter.class.js";
+
+export class CoinCounter extends Counter {
     x = 41;
     y = 150;
     width = 46;

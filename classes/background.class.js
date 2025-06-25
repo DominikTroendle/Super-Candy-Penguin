@@ -1,4 +1,4 @@
-class Background {
+export class Background {
     x;
     y;
     img;

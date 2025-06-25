@@ -1,4 +1,6 @@
-class Coin extends GroundObject {
+import { DrawableObject } from "./drawable-object.class.js";
+
+export class Coin extends DrawableObject {
     width = 50;
     height = 50;
     IMAGES_COIN = [

@@ -1,4 +1,6 @@
-class Statusbar extends Foreground {
+import { DrawableObject } from "../classes/drawable-object.class.js";
+
+export class Statusbar extends DrawableObject {
     x = 40;
     y = 20;
     width = 300;

@@ -1,4 +1,6 @@
-class Candy extends GroundObject {
+import { DrawableObject } from './drawable-object.class.js';
+
+export class Candy extends DrawableObject {
     y = 510;
     width = 100;
     height = 63;

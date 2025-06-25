@@ -1,4 +1,6 @@
-class ThrowableObject extends MovableObject {
+import { MovableObject } from "./movable-object.class.js";
+
+export class ThrowableObject extends MovableObject {
 width = 60;
 height = 60;
 

@@ -1,4 +1,6 @@
-class BackgroundObject extends Background {
+import { Background } from "./background.class.js";
+
+export class BackgroundObject extends Background {
 
     constructor(imagePath, x, y) {
         super().loadImage(imagePath);

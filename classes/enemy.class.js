@@ -1,4 +1,6 @@
-class Enemy extends MovableObject {
+import { MovableObject } from "./movable-object.class.js";
+
+export class Enemy extends MovableObject {
     y = 490;
     width = 131;
     height = 80;

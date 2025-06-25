@@ -1,13 +1,39 @@
-import { DrawableObject } from "./drawable-object.class.js";
-
-export class Foreground extends DrawableObject {
+export class DrawableObject {
+    x;
+    y;
+    width;
+    height;
+    img;
+    imageCache = {};
+    currentImage = 0;
 
     constructor() {
 
     }
 
+    drawObject(ctx) {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height); 
+    }
 
-    /* playAnimation(name, images, fps) {
+    loadImage(path) {
+        this.img = new Image();
+        this.img.src = path;
+    }
+
+    loadRandomImg(arr) {
+        this.img = new Image();
+        this.img.src = arr[Math.floor((Math.random() * arr.length))];
+    }
+
+    loadImages(arr) {
+        arr.forEach((path) => {
+            let img = new Image();
+            img.src = path;
+            this.imageCache[path] = img;
+        })
+    }
+
+    playAnimation(name, images, fps) {
         if (this.currentAnimation !== name) {
             this.currentAnimation = name;
             this.currentImage = 0;
@@ -29,5 +55,9 @@ export class Foreground extends DrawableObject {
         this.img = this.imageCache[path];
         this.currentImage++;
         if (i >= imagesArr.length - 1 && name === 'dead') this.animationFinished = true;
-    } */
+    }
+
+    isAboveGround() {
+       return this.y < 280;
+    }
 }

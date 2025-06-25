@@ -1,4 +1,14 @@
-class World {
+import { Character } from '../classes/character.class.js';
+import { Statusbar } from '../classes/statusbar.class.js';
+import { CoinCounter } from '../classes/coin-counter.class.js';
+import { CandyCounter } from '../classes/candy-counter.class.js';
+import { ThrowableObject } from '../classes/throwable-object.class.js';
+import { level1 } from '../levels/level1.js';
+import { Enemy } from "../classes/enemy.class.js";
+import { Endboss } from '../classes/endboss.class.js';
+import { Counter } from './counter.class.js';
+
+export class World {
     ctx;
     canvas;
     keyboard;
@@ -26,32 +36,9 @@ class World {
 
     run() {
         setInterval(() => {
-            this.checkCollisions();
+            this.character.checkCollisions();
             this.checkThrowableObject();
         }, 100);
-    }
-
-    checkCollisions() {
-        this.level.enemies.forEach(enemy => {
-            if (this.character.isColliding(enemy) && this.character.canBeHit()) {
-                this.character.hit();
-                this.statusbar.setPercentage(this.character.life);
-            };
-        });
-        this.level.candys = this.level.candys.filter(candy => {
-            if (this.character.isColliding(candy)) {
-                this.candyCounter.increaseCount(this.candyCounter);
-                return false;
-            }
-            return true;
-        });
-        this.level.coins = this.level.coins.filter(coin => {
-            if (this.character.isColliding(coin)) {
-                this.coinCounter.increaseCount(this.coinCounter);
-                return false;
-            }
-            return true;
-        })
     }
 
     checkThrowableObject() {
@@ -116,6 +103,7 @@ class World {
         if (object.otherDirection) this.mirrorCtx(object);
         object.drawObject(this.ctx);
         if (object instanceof Character || object instanceof Enemy || object instanceof Endboss) object.drawBorder(this.ctx);
+        // after deleting border drawing, also delete import of enemy and endboss
         if (object instanceof Counter) object.drawCounter(this.ctx, object);
         if (object.otherDirection) this.resetCtx(object);
     }

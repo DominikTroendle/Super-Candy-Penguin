@@ -1,4 +1,6 @@
-class Moon extends MovingBackgroundObject {
+import { MovingBackgroundObject } from '../classes/moving-background-object.class.js';
+
+export class Moon extends MovingBackgroundObject {
     speed = 0.25;
     amplitude = 140;
     endX = 1280;

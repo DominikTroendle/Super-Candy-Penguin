@@ -1,4 +1,6 @@
-class MovingBackgroundObject extends Background {
+import { Background } from "./background.class.js";
+
+export class MovingBackgroundObject extends Background {
     
     constructor(imagePath, x, y, scrollFactor) {
         super().loadImage(imagePath);

@@ -1,4 +1,6 @@
-class Counter extends Foreground {
+import { DrawableObject } from "./drawable-object.class.js";
+
+export class Counter extends DrawableObject {
     
     constructor () {
         super();

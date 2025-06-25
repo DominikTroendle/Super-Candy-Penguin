@@ -1,4 +1,13 @@
-const level1 = new Level(
+import { Level } from "../classes/level.class.js";
+import { Enemy } from "../classes/enemy.class.js";
+import { Endboss } from '../classes/endboss.class.js';
+import { Candy } from "../classes/candy.class.js";
+import { Coin } from "../classes/coin.class.js";
+import { BackgroundObject } from '../classes/background-object.class.js';
+import { Moon } from '../classes/moon.class.js';
+import { MovingBackgroundObject } from "../classes/moving-background-object.class.js";
+
+export const level1 = new Level(
     [
         new Enemy(),
         new Enemy(),

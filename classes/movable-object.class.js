@@ -1,4 +1,6 @@
-class MovableObject extends Foreground {
+import { DrawableObject } from "./drawable-object.class.js";
+
+export class MovableObject extends DrawableObject {
     speed;
     otherDirection = false;
     speedY = 0;
@@ -31,14 +33,6 @@ class MovableObject extends Foreground {
                 this.speedY -= this.acceleration;
             }
         }, 1000 / 25)
-    }
-
-    isAboveGround() {
-        if (this instanceof ThrowableObject) {
-            return true;
-        } else {
-            return this.y < 280;
-        }
     }
 
     moveRight() {
