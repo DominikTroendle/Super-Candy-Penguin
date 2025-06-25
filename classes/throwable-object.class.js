@@ -6,10 +6,10 @@ height = 60;
         super().loadImage('img/candy/candy.png');
         this.x = x;
         this.y = y;
-        this.throw(character, x, y);
+        this.throw(character);
     }
     
-    throw(character, x, y) {
+    throw(character) {
         this.speedY = 33;
         this.applyGravity();
         if (character.otherDirection) {

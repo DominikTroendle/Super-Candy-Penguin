@@ -69,6 +69,14 @@ class MovableObject extends Foreground {
         }
     }
 
+    timeSinceLastHit() {
+        return new Date().getTime() - this.lastHit;
+    }
+
+    canBeHit() {
+        return this.timeSinceLastHit() > 500;
+    }
+
     isHurt() {
         let timePassed = new Date().getTime() - this.lastHit;
         timePassed = timePassed / 1000;
