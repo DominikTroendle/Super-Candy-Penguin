@@ -1,3 +1,4 @@
+import { Character } from "./character.class.js";
 import { DrawableObject } from "./drawable-object.class.js";
 
 export class MovableObject extends DrawableObject {
@@ -5,14 +6,21 @@ export class MovableObject extends DrawableObject {
     otherDirection = false;
     speedY = 0;
     acceleration = 4;
-    collisionOffset = {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
-    };
     life = 100;
     lastHit = 0;
+    characterOffset = {
+        top: 150,
+        left: 220,
+        width: 115,
+        height: 142
+    };
+    collisionOffset = {
+        top: 170,
+        left: 240,
+        bottom: 10,
+        width: 75,
+        height: 112
+    };
 
     constructor() {
         super();
@@ -28,11 +36,20 @@ export class MovableObject extends DrawableObject {
 
     applyGravity() {
         setInterval(() => {
-            if (this.isAboveGround() || this.speedY > 0) {
-                this.y -= this.speedY;
-                this.speedY -= this.acceleration;
-            }
+            this.y -= this.speedY;
+            this.speedY -= this.acceleration;
+            if (this instanceof Character && !this.isAboveGround()) {
+                this.y = 280;
+            };
         }, 1000 / 25)
+    }
+
+    isAboveGround() {
+       return this.y < 280;
+    }
+
+    isOnGround() {
+        return this.y >= 280;
     }
 
     moveRight() {
@@ -52,6 +69,13 @@ export class MovableObject extends DrawableObject {
             this.y + this.collisionOffset.top + this.collisionOffset.height > object.y &&
             this.x + this.collisionOffset.left < object.x + object.width &&
             this.y + this.collisionOffset.top < object.y + object.height;
+    }
+
+    isTouching(object) {
+        return this.x + this.characterOffset.left + this.characterOffset.width > object.x &&
+            this.y + this.characterOffset.top + this.characterOffset.height > object.y &&
+            this.x + this.characterOffset.left < object.x + object.width &&
+            this.y + this.characterOffset.top < object.y + object.height;
     }
 
     hit() {

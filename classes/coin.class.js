@@ -1,6 +1,6 @@
-import { DrawableObject } from "./drawable-object.class.js";
+import { MovableObject } from "./movable-object.class.js";
 
-export class Coin extends DrawableObject {
+export class Coin extends MovableObject {
     width = 50;
     height = 50;
     IMAGES_COIN = [

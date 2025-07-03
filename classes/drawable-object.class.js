@@ -56,8 +56,4 @@ export class DrawableObject {
         this.currentImage++;
         if (i >= imagesArr.length - 1 && name === 'dead') this.animationFinished = true;
     }
-
-    isAboveGround() {
-       return this.y < 280;
-    }
 }

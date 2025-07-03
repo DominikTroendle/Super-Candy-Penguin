@@ -1,8 +1,8 @@
 import { MovableObject } from "./movable-object.class.js";
 
 export class ThrowableObject extends MovableObject {
-width = 60;
-height = 60;
+    width = 60;
+    height = 60;
 
     constructor(character, x, y) {
         super().loadImage('img/candy/candy.png');

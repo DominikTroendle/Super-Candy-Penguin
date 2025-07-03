@@ -58,17 +58,23 @@ export class World {
     }
 
     checkCandyCollision(candy) {
-        for (let i = 0; i < this.level.enemies.length; i++) {
+        /* for (let i = 0; i < this.level.enemies.length; i++) {
             if (candy.isHittingEnemy(this.level.enemies[i])) {
                 this.removeEnemy(i);
                 return true;
             };
-        };
+        }; */
+        this.level.enemies = this.level.enemies.filter(enemy => {
+            if (candy.isHittingEnemy(enemy)) {
+                return false;
+            };
+            return true;
+        })
     }
 
-    removeEnemy(i) {
+    /* removeEnemy(i) {
         this.level.enemies.splice(i, 1);
-    }
+    } */
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

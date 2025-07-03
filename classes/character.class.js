@@ -6,23 +6,11 @@ export class Character extends MovableObject {
     y = 280;
     width = 547;
     height = 350;
-    characterOffset = {
-        top: 150,
-        left: 220,
-        width: 115,
-        height: 142
-    };
-    collisionOffset = {
-        top: 170,
-        left: 240,
-        bottom: 10,
-        width: 75,
-        height: 112
-    };
     speed = 25;
     IMAGES_IDLE = CHARACTER_IMAGES.idle;
     IMAGES_WALKING = CHARACTER_IMAGES.walking;
     IMAGES_JUMPING = CHARACTER_IMAGES.jumping;
+    IMAGES_SLAP = CHARACTER_IMAGES.slap;
     IMAGES_HURT = CHARACTER_IMAGES.hurt;
     IMAGES_DEAD = CHARACTER_IMAGES.dead;
     world;
@@ -35,6 +23,7 @@ export class Character extends MovableObject {
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
+        this.loadImages(this.IMAGES_SLAP);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
         this.animate();
@@ -51,6 +40,8 @@ export class Character extends MovableObject {
                 this.playAnimation('jumping', this.IMAGES_JUMPING, 25);
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                 this.playAnimation('walking', this.IMAGES_WALKING, 30);
+            } else if (this.world.keyboard.S) {
+                this.playAnimation('slap', this.IMAGES_SLAP, 105);
             } else {
                 this.playAnimation('idle', this.IMAGES_IDLE, 20);
             }
@@ -79,6 +70,12 @@ export class Character extends MovableObject {
                 this.world.statusbar.setPercentage(this.life);
             };
         });
+        this.world.level.enemies = this.world.level.enemies.filter(enemy => {
+            if (this.isTouching(enemy) && this.world.keyboard.S) {
+                return false;
+            }
+            return true;
+        })
         this.world.level.candys = this.world.level.candys.filter(candy => {
             if (this.isColliding(candy)) {
                 this.world.candyCounter.increaseCount(this.world.candyCounter);
@@ -92,7 +89,7 @@ export class Character extends MovableObject {
                 return false;
             }
             return true;
-        })
+        });
     }
 
     drawBorder(ctx) {
