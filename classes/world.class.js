@@ -122,7 +122,7 @@ export class World {
             let endX = -relCamera_x + this.canvas.width;
             for (let x = startX; x < endX + o.width; x += o.width) {
                 let drawX = x + relCamera_x;
-                this.ctx.drawImage(o.img, drawX, o.y, o.width, o.height);
+                this.ctx.drawImage(o.img, drawX, o.y, o.width + 0.5, o.height);
         }
         })
     }
