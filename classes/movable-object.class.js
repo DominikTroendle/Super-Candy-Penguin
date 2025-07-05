@@ -8,6 +8,7 @@ export class MovableObject extends DrawableObject {
     acceleration = 4;
     life = 100;
     lastHit = 0;
+    groundY = 570;
     characterOffset = {
         top: 150,
         left: 220,
@@ -71,11 +72,19 @@ export class MovableObject extends DrawableObject {
             this.y + this.collisionOffset.top < object.y + object.height;
     }
 
-    isTouching(object) {
+    /* isTouching(object) {
         return this.x + this.characterOffset.left + this.characterOffset.width > object.x &&
             this.y + this.characterOffset.top + this.characterOffset.height > object.y &&
             this.x + this.characterOffset.left < object.x + object.width &&
             this.y + this.characterOffset.top < object.y + object.height;
+    } */
+   // slap function to be implemented in the future
+
+    isJumpedOnTop(object) {
+        return this.y + this.collisionOffset.top + this.collisionOffset.height >= this.groundY - object.height &&
+            this.x + this.collisionOffset.left + this.collisionOffset.width > object.x &&
+            this.x + this.collisionOffset.left < object.x + object.width &&
+            this.y < 280 + object.height;
     }
 
     hit() {
