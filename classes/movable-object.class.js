@@ -41,7 +41,8 @@ export class MovableObject extends DrawableObject {
             this.speedY -= this.acceleration;
             if (this instanceof Character && !this.isAboveGround()) {
                 this.y = 280;
-            };
+                this.speedY = 0;
+            };       
         }, 1000 / 25)
     }
 
@@ -84,7 +85,8 @@ export class MovableObject extends DrawableObject {
         return this.y + this.collisionOffset.top + this.collisionOffset.height >= this.groundY - object.height &&
             this.x + this.collisionOffset.left + this.collisionOffset.width > object.x &&
             this.x + this.collisionOffset.left < object.x + object.width &&
-            this.y < 280 + object.height;
+            this.y < 280 + object.height &&
+            this.speedY < 0;
     }
 
     hit() {

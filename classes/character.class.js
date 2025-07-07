@@ -79,12 +79,12 @@ export class Character extends MovableObject {
             return true;
         }) */
        // slap function to be implemented in the future
-       this.world.level.enemies = this.world.level.enemies.filter(enemy => {
+        this.world.level.enemies = this.world.level.enemies.filter(enemy => {
             if (this.isJumpedOnTop(enemy)) {
                 return false;
             }
             return true;
-        })
+        });
         this.world.level.candys = this.world.level.candys.filter(candy => {
             if (this.isColliding(candy)) {
                 this.world.candyCounter.increaseCount(this.world.candyCounter);
