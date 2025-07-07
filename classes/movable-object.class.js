@@ -73,6 +73,13 @@ export class MovableObject extends DrawableObject {
             this.y + this.collisionOffset.top < object.y + object.height;
     }
 
+    isAttacking(character) {
+        return this.x < character.x + this.collisionOffset.left + this.collisionOffset.width &&
+            this.y < character.y + this.collisionOffset.top + this.collisionOffset.height &&
+            this.x + this.width > character.x + this.collisionOffset.left &&
+            this.y + this.height > character.y + this.collisionOffset.top;
+    }
+
     /* isTouching(object) {
         return this.x + this.characterOffset.left + this.characterOffset.width > object.x &&
             this.y + this.characterOffset.top + this.characterOffset.height > object.y &&
@@ -103,7 +110,7 @@ export class MovableObject extends DrawableObject {
     }
 
     canBeHit() {
-        return this.timeSinceLastHit() > 500;
+        return this.timeSinceLastHit() > 550;
     }
 
     isHurt() {
