@@ -51,9 +51,9 @@ export class Enemy extends MovableObject {
     speed = 0.2;
     character;
 
-    constructor(character) {
+    constructor(startX) {
         super().loadImage('img/enemys/Monster1/Walk/skeleton-Walk_0.png');
-        this.x = 640 + Math.random() * 500;
+        this.x = startX + Math.random() * 500;
         this.speed = this.speed + Math.random() * 0.7;
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_ATTACKING);
@@ -65,9 +65,9 @@ export class Enemy extends MovableObject {
     }
 
     animate() {
-        /* setInterval(() => {
+        setInterval(() => {
             this.moveLeft();
-        }, 1000 / 30); */
+        }, 1000 / 30);
 
         setInterval(() => {
             if (this.isAttacking(this.character) && !this.character.isDead()) {
