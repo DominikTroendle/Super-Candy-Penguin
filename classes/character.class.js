@@ -66,12 +66,12 @@ export class Character extends MovableObject {
     }
 
     checkCollisions() {
-        this.world.level.enemies.forEach(enemy => {
+        /* this.world.level.enemies.forEach(enemy => {
             if (this.isColliding(enemy) && this.canBeHit() && !this.isJumpedOnTop(enemy)) {
                 this.hit();
                 this.world.statusbar.setPercentage(this.life);
             };
-        });
+        }); */
         /* this.world.level.enemies = this.world.level.enemies.filter(enemy => {
             if (this.isTouching(enemy) && this.world.keyboard.S) {
                 return false;

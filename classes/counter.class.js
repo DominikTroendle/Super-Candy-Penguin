@@ -9,7 +9,7 @@ export class Counter extends DrawableObject {
     drawCounter(ctx, object) {
         ctx.font = '48px Modak';
         ctx.fillStyle = 'white';
-        ctx.fillText(object.currentAmount, this.x + 65, this.y + 43);
+        ctx.fillText(object.currentAmount, this.x + 65, this.y + 40);
     }
 
     increaseCount(object) {
