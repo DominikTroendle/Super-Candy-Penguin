@@ -5,8 +5,7 @@ export class Level {
     hearts;
     staticBackground;
     movingBackground;
-    // level_end_x = 3840;
-    level_end_x = 4790;
+    level_end_x = 4775;
 
     constructor(enemies, candys, coins, hearts,  staticBackground, movingBackground) {
         this.enemies = enemies;

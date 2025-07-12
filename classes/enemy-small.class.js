@@ -67,7 +67,7 @@ export class EnemySmall extends Enemy {
 
     animate() {
         setInterval(() => {
-            this.moveLeft();
+            this.enemyMoveLeft();
         }, 1000 / 30);
 
         setInterval(() => {

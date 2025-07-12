@@ -2,7 +2,7 @@ import { CHARACTER_IMAGES } from "../scripts/character-images.js";
 import { MovableObject } from "./movable-object.class.js";
 
 export class Character extends MovableObject {
-    x = 3840;
+    x = 0;
     y = 280;
     width = 547;
     height = 350;
@@ -17,7 +17,6 @@ export class Character extends MovableObject {
     currentAnimation;
     lastAnimationFrameTime;
     animationFinished;
-    isBossfight = false;
 
     constructor() {
         super().loadImage('img/characters/Character02/Idle/All Characters-Character02-Idle_00.png');
@@ -51,11 +50,11 @@ export class Character extends MovableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x && !this.isDead()) {
+            if (this.world.keyboard.RIGHT && /* this.x < this.world.level.level_end_x && */ !this.isDead()) {
                 this.moveRight();
                 this.otherDirection = false;
             }
-            if (this.world.keyboard.LEFT && this.x > 0 && !this.isDead()) {
+            if (this.world.keyboard.LEFT && !this.isDead() && this.x > 0) {
                 this.moveLeft();
                 this.otherDirection = true;
             }
@@ -101,13 +100,19 @@ export class Character extends MovableObject {
             return true;
         });
         this.world.level.hearts = this.world.level.hearts.filter(heart => {
-            if(this.isColliding(heart) && this.life < 100) {
+            if (this.isColliding(heart) && this.life < 100) {
                 this.life += 20;
                 this.world.statusbar.setPercentage(this.life);
                 return false;
             }
             return true;
         })
+    }
+
+    checkBossFight() {
+        if (this.x > 3840) {
+            this.isBossfight = true;
+        }
     }
 
     drawBorder(ctx) {

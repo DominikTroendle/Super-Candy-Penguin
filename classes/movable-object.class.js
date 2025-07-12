@@ -22,6 +22,7 @@ export class MovableObject extends DrawableObject {
         width: 75,
         height: 112
     };
+    isBossfight = false;
 
     constructor() {
         super();
@@ -55,10 +56,21 @@ export class MovableObject extends DrawableObject {
     }
 
     moveRight() {
-        this.x += this.speed;
+        if (this.x < this.world.level.level_end_x) {
+            this.x += this.speed;
+        }
     }
 
     moveLeft() {
+        if (!this.isBossfight) {
+            this.x -= this.speed;
+        }
+        if (this.isBossfight && this.x >= 3650) {
+            this.x -= this.speed;
+        }
+    }
+
+    enemyMoveLeft() {
         this.x -= this.speed;
     }
 
