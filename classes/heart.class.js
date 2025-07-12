@@ -1,8 +1,7 @@
 import { MovableObject } from "./movable-object.class.js";
 
 export class Heart extends MovableObject {
-    x;
-    y;
+    y = 300;
     width = 60;
     height = 60;
     IMAGES_HEART = [
@@ -18,11 +17,10 @@ export class Heart extends MovableObject {
         'img/collectibles/heart/Heart_10.png',
     ];
 
-    constructor(x, y) {
+    constructor(x) {
         super().loadImage('img/collectibles/heart/Heart_1.png');
         this.loadImages(this.IMAGES_HEART);
         this.x = x;
-        this.y = y;
         this.animate();
     }
 

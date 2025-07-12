@@ -87,7 +87,7 @@ export const level1 = new Level(
         new Coin(3600, 460)
     ],
     [
-        new Heart(500, 460)
+        new Heart(500)
     ],
     [
         new BackgroundObject('img/background/l1-background.png', 0, 0),
