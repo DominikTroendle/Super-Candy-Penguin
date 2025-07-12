@@ -2,7 +2,7 @@ import { CHARACTER_IMAGES } from "../scripts/character-images.js";
 import { MovableObject } from "./movable-object.class.js";
 
 export class Character extends MovableObject {
-    x = 0;
+    x = 3840;
     y = 280;
     width = 547;
     height = 350;
@@ -17,6 +17,7 @@ export class Character extends MovableObject {
     currentAnimation;
     lastAnimationFrameTime;
     animationFinished;
+    isBossfight = false;
 
     constructor() {
         super().loadImage('img/characters/Character02/Idle/All Characters-Character02-Idle_00.png');
@@ -61,15 +62,15 @@ export class Character extends MovableObject {
             if (this.world.keyboard.SPACE && !this.isAboveGround() && !this.isDead()) {
                 this.jump();
             }
-            this.world.camera_x = -this.x;
+            if (this.x < 3850 && !this.isBossfight) this.world.camera_x = -this.x;
         }, 1000 / 30);
     }
 
     checkCollisions() {
         this.world.level.enemies.forEach(enemy => {
             if (this.isColliding(enemy) && this.canBeHit() && !this.isJumpedOnTop(enemy)) {
-                this.hit();
-                this.world.statusbar.setPercentage(this.life);
+                // this.hit();
+                // this.world.statusbar.setPercentage(this.life);
             };
         });
         /* this.world.level.enemies = this.world.level.enemies.filter(enemy => {

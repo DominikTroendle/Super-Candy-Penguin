@@ -11,8 +11,7 @@ import { EnemySmall } from "../classes/enemy-small.class.js";
 
 export const level1 = new Level(
     [
-        new EnemySmall(200),
-        new EnemySmall(600),
+        new EnemySmall(700),
         new EnemySmall(900),
         new EnemySmall(1200),
         new EnemySmall(1700),
@@ -87,7 +86,11 @@ export const level1 = new Level(
         new Coin(3600, 460)
     ],
     [
-        new Heart(500)
+        new Heart(500),
+        new Heart(1500),
+        new Heart(2000),
+        new Heart(3000),
+        new Heart(3600)
     ],
     [
         new BackgroundObject('img/background/l1-background.png', 0, 0),
