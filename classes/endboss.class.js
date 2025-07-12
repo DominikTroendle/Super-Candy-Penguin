@@ -1,7 +1,5 @@
-// import { MovableObject } from "./movable-object.class.js";
 import { Enemy } from "./enemy.class.js";
 
-// export class Endboss extends MovableObject {
 export class Endboss extends Enemy {
     x = 3840 + 1280 - 320;
     y = 270;

@@ -1,35 +1,47 @@
 import { Level } from "../classes/level.class.js";
-import { Enemy } from "../classes/enemy.class.js";
+import { EnemyBig } from "../classes/enemy-big.class.js";
 import { Endboss } from '../classes/endboss.class.js';
 import { Candy } from "../classes/candy.class.js";
 import { Coin } from "../classes/coin.class.js";
+import { Heart } from "../classes/heart.class.js";
 import { BackgroundObject } from '../classes/background-object.class.js';
 import { Moon } from '../classes/moon.class.js';
 import { MovingBackgroundObject } from "../classes/moving-background-object.class.js";
+import { EnemySmall } from "../classes/enemy-small.class.js";
 
 export const level1 = new Level(
     [
-        new Enemy(640),
-        new Enemy(840),
-        new Enemy(1040),
-        new Enemy(1240),
-        new Enemy(1440),
-        new Enemy(1640),
-        new Enemy(1840),
-        new Enemy(2040),
-        new Enemy(2240),
-        new Enemy(2440),
-        new Enemy(2640),
-        new Enemy(2840),
-        new Enemy(3040),
-        new Enemy(3240),
-        new Enemy(3440),
-        new Enemy(3640),
-        new Enemy(3840),
-        new Enemy(4040),
-        new Enemy(4240),
-        new Enemy(4440),
-        new Enemy(4640),
+        new EnemySmall(200),
+        new EnemySmall(600),
+        new EnemySmall(900),
+        new EnemySmall(1200),
+        new EnemySmall(1700),
+        new EnemySmall(2000),
+        new EnemySmall(2300),
+        new EnemySmall(2700),
+        new EnemySmall(3400),
+        new EnemySmall(4000),
+        new EnemyBig(640),
+        // new EnemyBig(840),
+        new EnemyBig(1040),
+        new EnemyBig(1240),
+        // new EnemyBig(1440),
+        new EnemyBig(1640),
+        new EnemyBig(1840),
+        new EnemyBig(2040),
+        new EnemyBig(2240),
+        // new EnemyBig(2440),
+        new EnemyBig(2640),
+        new EnemyBig(2840),
+        new EnemyBig(3040),
+        new EnemyBig(3240),
+        // new EnemyBig(3440),
+        new EnemyBig(3640),
+        // new EnemyBig(3840),
+        new EnemyBig(4040),
+        new EnemyBig(4240),
+        new EnemyBig(4440),
+        // new EnemyBig(4640),
         new Endboss()
     ],
     [
@@ -73,6 +85,9 @@ export const level1 = new Level(
         new Coin(3400, 350),
         new Coin(3500, 400),
         new Coin(3600, 460)
+    ],
+    [
+        new Heart(500, 460)
     ],
     [
         new BackgroundObject('img/background/l1-background.png', 0, 0),
