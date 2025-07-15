@@ -6,21 +6,21 @@ export class BossHealthbar extends DrawableObject {
     width = 700;
     height = 79;
     IMAGES = [
-        'img/boss-healtbar/boss-healtbar0.png',
-        'img/boss-healtbar/boss-healtbar10.png',
-        'img/boss-healtbar/boss-healtbar20.png',
-        'img/boss-healtbar/boss-healtbar30.png',
-        'img/boss-healtbar/boss-healtbar40.png',
-        'img/boss-healtbar/boss-healtbar50.png',
-        'img/boss-healtbar/boss-healtbar60.png',
-        'img/boss-healtbar/boss-healtbar70.png',
-        'img/boss-healtbar/boss-healtbar80.png',
-        'img/boss-healtbar/boss-healtbar90.png',
-        'img/boss-healtbar/boss-healtbar100.png',
+        'img/boss-healthbar/boss-healthbar0.png',
+        'img/boss-healthbar/boss-healthbar10.png',
+        'img/boss-healthbar/boss-healthbar20.png',
+        'img/boss-healthbar/boss-healthbar30.png',
+        'img/boss-healthbar/boss-healthbar40.png',
+        'img/boss-healthbar/boss-healthbar50.png',
+        'img/boss-healthbar/boss-healthbar60.png',
+        'img/boss-healthbar/boss-healthbar70.png',
+        'img/boss-healthbar/boss-healthbar80.png',
+        'img/boss-healthbar/boss-healthbar90.png',
+        'img/boss-healthbar/boss-healthbar100.png',
     ];
     
     constructor() {
-        super().loadImage('img/boss-healtbar/boss-healtbar100.png');
+        super().loadImage('img/boss-healthbar/boss-healthbar100.png');
         this.loadImages(this.IMAGES);
     }
 
