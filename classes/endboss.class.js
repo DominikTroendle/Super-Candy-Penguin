@@ -38,4 +38,23 @@ export class Endboss extends Enemy {
             this.playAnimation('idle', this.IMAGES_BOSS, 18);
         }, 1000 / 60);
     }
+
+    isDamaged() {
+        console.log('isDamaged');
+        
+    }
+
+    drawBorder(ctx) {
+        ctx.beginPath();
+        ctx.lineWidth = '2';
+        ctx.strokeStyle = 'blue';
+        ctx.rect(this.x, this.y, this.width, this.height);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.lineWidth = '2';
+        ctx.strokeStyle = 'red';
+        ctx.rect(this.x + this.bossCollisionOffset.left, this.y + this.bossCollisionOffset.top, this.width - this.bossCollisionOffset.left * 2, this.height - this.bossCollisionOffset.top);
+        ctx.stroke();
+    }
 }

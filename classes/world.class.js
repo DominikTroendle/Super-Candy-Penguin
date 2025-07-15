@@ -71,6 +71,12 @@ export class World {
                 return true;
             };
         };
+        if (this.character.isBossfight) {
+            if (candy.isHittingBoss(this.endboss)) {
+                this.endboss.isDamaged();
+                return true;
+            };
+        }
     }
 
     removeEnemy(i) {
