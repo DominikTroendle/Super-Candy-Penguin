@@ -2,7 +2,7 @@ import { CHARACTER_IMAGES } from "../scripts/character-images.js";
 import { MovableObject } from "./movable-object.class.js";
 
 export class Character extends MovableObject {
-    x = 0;
+    x = 3800;
     y = 280;
     width = 547;
     height = 350;

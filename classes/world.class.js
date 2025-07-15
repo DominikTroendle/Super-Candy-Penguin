@@ -7,6 +7,7 @@ import { level1 } from '../levels/level1.js';
 import { Enemy } from "../classes/enemy.class.js";
 import { Endboss } from '../classes/endboss.class.js';
 import { Counter } from './counter.class.js';
+import { BossHealthbar } from './boss-healtbar.class.js';
 
 export class World {
     ctx;
@@ -19,6 +20,8 @@ export class World {
     coinCounter = new CoinCounter();
     candyCounter = new CandyCounter();
     throwableObjects = [];
+    endboss = new Endboss();
+    boss_healthbar = new BossHealthbar();
     level = level1;
     
     constructor(canvas, keyboard) {
@@ -82,12 +85,15 @@ export class World {
         this.addToCanvas(this.statusbar);
         this.addToCanvas(this.coinCounter);
         this.addToCanvas(this.candyCounter);
+        this.addToCanvas(this.endboss);
+        if (this.character.isBossfight) this.addToCanvas(this.boss_healthbar);
 
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToCanvas(this.level.candys);
         this.addObjectsToCanvas(this.level.coins);
         this.addObjectsToCanvas(this.level.hearts);
         this.addObjectsToCanvas(this.level.enemies);
+        this.addToCanvas(this.endboss);
         this.addToCanvas(this.character);
         this.addObjectsToCanvas(this.throwableObjects);
         this.ctx.translate(-this.camera_x, 0);

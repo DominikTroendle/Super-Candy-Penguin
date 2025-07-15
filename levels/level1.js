@@ -1,5 +1,6 @@
 import { Level } from "../classes/level.class.js";
 import { EnemyBig } from "../classes/enemy-big.class.js";
+import { EnemySmall } from "../classes/enemy-small.class.js";
 import { Endboss } from '../classes/endboss.class.js';
 import { Candy } from "../classes/candy.class.js";
 import { Coin } from "../classes/coin.class.js";
@@ -7,7 +8,6 @@ import { Heart } from "../classes/heart.class.js";
 import { BackgroundObject } from '../classes/background-object.class.js';
 import { Moon } from '../classes/moon.class.js';
 import { MovingBackgroundObject } from "../classes/moving-background-object.class.js";
-import { EnemySmall } from "../classes/enemy-small.class.js";
 
 export const level1 = new Level(
     [
@@ -39,9 +39,8 @@ export const level1 = new Level(
         // new EnemyBig(3840),
         new EnemyBig(4040),
         new EnemyBig(4240),
-        new EnemyBig(4440),
-        // new EnemyBig(4640),
-        new Endboss()
+        new EnemyBig(4440)
+        // new EnemyBig(4640)
     ],
     [
         new Candy(400),

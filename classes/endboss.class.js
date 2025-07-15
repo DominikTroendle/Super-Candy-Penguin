@@ -35,7 +35,7 @@ export class Endboss extends Enemy {
 
     animate() {
         setInterval(() => {
-            this.playAnimation('idle', this.IMAGES_BOSS);
-        }, 1000 / 18);
+            this.playAnimation('idle', this.IMAGES_BOSS, 18);
+        }, 1000 / 60);
     }
 }
