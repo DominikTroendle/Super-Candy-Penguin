@@ -33,9 +33,9 @@ export class ThrowableObject extends MovableObject {
     }
 
     isHittingBoss(boss) {
-        return this.x + this.width > enemy.x &&
-            this.y + this.height > enemy.y &&
-            this.x < enemy.x + enemy.width &&
-            this.y < enemy.y + enemy.height;
+        return this.x + this.width > boss.x + this.bossCollisionOffset.left &&
+            this.y + this.height > boss.y + this.bossCollisionOffset.top &&
+            this.x < boss.x + this.bossCollisionOffset.width &&
+            this.y < boss.y + this.bossCollisionOffset.height;
     }
 }

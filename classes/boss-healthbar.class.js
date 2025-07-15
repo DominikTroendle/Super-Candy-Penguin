@@ -39,7 +39,6 @@ export class BossHealthbar extends DrawableObject {
     }
 
     setPercentage(percentage) {
-        this.percentage = percentage;
         let index = percentage / 10;
         let path = this.IMAGES[index];
         this.img = this.imageCache[path];

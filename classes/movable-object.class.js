@@ -25,8 +25,8 @@ export class MovableObject extends DrawableObject {
     bossCollisionOffset = {
         top: 20,
         left: 55,
-        width: 300,
-        height: 300
+        width: 190,
+        height: 280
     };
     isBossfight = false;
 

@@ -5,8 +5,9 @@ export class Endboss extends Enemy {
     y = 270;
     width = 300;
     height = 300;
+    health = 100;
     
-    IMAGES_BOSS = [
+    IMAGES_IDLE = [
         'img/enemys/Boss/Idle/skeleton-Idle_0.png',
         'img/enemys/Boss/Idle/skeleton-Idle_1.png',
         'img/enemys/Boss/Idle/skeleton-Idle_2.png',
@@ -26,22 +27,40 @@ export class Endboss extends Enemy {
         'img/enemys/Boss/Idle/skeleton-Idle_16.png',
         'img/enemys/Boss/Idle/skeleton-Idle_17.png',
     ];
+    IMAGES_DEATH = [
+        'img/enemys/Death Sprite/skeleton-animation_0.png',
+        'img/enemys/Death Sprite/skeleton-animation_1.png',
+        'img/enemys/Death Sprite/skeleton-animation_2.png',
+        'img/enemys/Death Sprite/skeleton-animation_3.png',
+        'img/enemys/Death Sprite/skeleton-animation_4.png',
+        'img/enemys/Death Sprite/skeleton-animation_5.png',
+        'img/enemys/Death Sprite/skeleton-animation_6.png',
+        'img/enemys/Death Sprite/skeleton-animation_7.png',
+        'img/enemys/Death Sprite/skeleton-animation_8.png',
+        'img/enemys/Death Sprite/skeleton-animation_9.png'
+    ];
 
     constructor() {
         super().loadImage('img/enemys/Boss/Idle/skeleton-Idle_0.png');
-        this.loadImages(this.IMAGES_BOSS);
+        this.loadImages(this.IMAGES_IDLE);
+        this.loadImages(this.IMAGES_DEATH);
         this.animate();
     }
 
     animate() {
         setInterval(() => {
-            this.playAnimation('idle', this.IMAGES_BOSS, 18);
+            if (this.health <= 0) {
+                this.playAnimation('dead', this.IMAGES_DEATH, 10)
+            } else {
+                this.playAnimation('idle', this.IMAGES_IDLE, 18);
+            }
         }, 1000 / 60);
     }
 
     isDamaged() {
-        console.log('isDamaged');
-        
+        this.health -= 10;
+        if (this.health <= 0) this.health = 0;
+        this.world.boss_healthbar.setPercentage(this.health);
     }
 
     drawBorder(ctx) {
@@ -54,7 +73,7 @@ export class Endboss extends Enemy {
         ctx.beginPath();
         ctx.lineWidth = '2';
         ctx.strokeStyle = 'red';
-        ctx.rect(this.x + this.bossCollisionOffset.left, this.y + this.bossCollisionOffset.top, this.width - this.bossCollisionOffset.left * 2, this.height - this.bossCollisionOffset.top);
+        ctx.rect(this.x + this.bossCollisionOffset.left, this.y + this.bossCollisionOffset.top, this.bossCollisionOffset.width, this.bossCollisionOffset.height);
         ctx.stroke();
     }
 }
