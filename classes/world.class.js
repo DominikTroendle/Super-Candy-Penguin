@@ -7,7 +7,7 @@ import { level1 } from '../levels/level1.js';
 import { Enemy } from "../classes/enemy.class.js";
 import { Endboss } from '../classes/endboss.class.js';
 import { Counter } from './counter.class.js';
-import { BossHealthbar } from './boss-healtbar.class.js';
+import { BossHealthbar } from './boss-healthbar.class.js';
 
 export class World {
     ctx;
@@ -85,7 +85,6 @@ export class World {
         this.addToCanvas(this.statusbar);
         this.addToCanvas(this.coinCounter);
         this.addToCanvas(this.candyCounter);
-        this.addToCanvas(this.endboss);
         if (this.character.isBossfight) this.addToCanvas(this.boss_healthbar);
 
         this.ctx.translate(this.camera_x, 0);
@@ -116,6 +115,7 @@ export class World {
         if (object instanceof Character || object instanceof Enemy || object instanceof Endboss) object.drawBorder(this.ctx);
         // after deleting border drawing, also delete import of enemy and endboss
         if (object instanceof Counter) object.drawCounter(this.ctx, object);
+        if (object instanceof BossHealthbar) object.drawBossName(this.ctx);
         if (object.otherDirection) this.resetCtx(object);
     }
 

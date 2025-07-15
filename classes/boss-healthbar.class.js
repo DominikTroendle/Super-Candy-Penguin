@@ -1,7 +1,7 @@
 import { DrawableObject } from "./drawable-object.class.js";
 
 export class BossHealthbar extends DrawableObject {
-    x = 300;
+    x = 550;
     y = 20;
     width = 700;
     height = 79;
@@ -22,6 +22,20 @@ export class BossHealthbar extends DrawableObject {
     constructor() {
         super().loadImage('img/boss-healtbar/boss-healtbar100.png');
         this.loadImages(this.IMAGES);
+    }
+
+    drawBossName(ctx) {
+        ctx.font = '48px Modak';
+        ctx.fillStyle = 'white';
+        ctx.shadowColor = 'black';
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+        ctx.fillText('Zyklops', 810, 125);
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 0;
     }
 
     setPercentage(percentage) {
