@@ -3,12 +3,32 @@ import { MovableObject } from "./movable-object.class.js";
 export class ThrowableObject extends MovableObject {
     width = 60;
     height = 60;
+    IMAGES_SPINNING = [
+        'img/candy/animated/candy0.png',
+        'img/candy/animated/candy1.png',
+        'img/candy/animated/candy2.png',
+        'img/candy/animated/candy3.png',
+        'img/candy/animated/candy4.png',
+        'img/candy/animated/candy5.png',
+        'img/candy/animated/candy6.png',
+        'img/candy/animated/candy7.png',
+        'img/candy/animated/candy8.png',
+        'img/candy/animated/candy9.png'
+    ];
 
     constructor(character, x, y) {
-        super().loadImage('img/candy/candy.png');
+        super().loadImage('img/candy/animated/candy0.png');
+        this.loadImages(this.IMAGES_SPINNING);
         this.x = x;
         this.y = y;
+        this.animate();
         this.throw(character);
+    }
+
+    animate() {
+        setInterval(() => {
+            this.playAnimation('spinning', this.IMAGES_SPINNING, 10);
+        })
     }
     
     throw(character) {
