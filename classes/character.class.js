@@ -17,6 +17,7 @@ export class Character extends MovableObject {
     currentAnimation;
     lastAnimationFrameTime;
     animationFinished;
+    otherDirection = false;
 
     constructor() {
         super().loadImage('img/characters/Character02/Idle/All Characters-Character02-Idle_00.png');

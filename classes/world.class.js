@@ -28,14 +28,16 @@ export class World {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
-        this.draw();
         this.setWorld();
+        this.draw();
+        // this.setWorld();
         this.run();
     }
 
     setWorld() {
         this.character.world = this;
         this.endboss.world = this;
+        this.endboss.character = this.character;
         this.level.enemies.forEach(enemy => {
             enemy.setCharacter(this.character);
         })
@@ -117,13 +119,15 @@ export class World {
     }
 
     addToCanvas(object) {
-        if (object.otherDirection) this.mirrorCtx(object);
+        let flip = object.otherDirection;
+        if (object instanceof Endboss && object.currentAnimation === 'attacking') flip = (object.character.x - object.x) > -5;
+        if (flip) this.mirrorCtx(object);
         object.drawObject(this.ctx);
         if (object instanceof Character || object instanceof Enemy || object instanceof Endboss) object.drawBorder(this.ctx);
         // after deleting border drawing, also delete import of enemy and endboss
         if (object instanceof Counter) object.drawCounter(this.ctx, object);
         if (object instanceof BossHealthbar) object.drawBossName(this.ctx);
-        if (object.otherDirection) this.resetCtx(object);
+        if (flip) this.resetCtx(object);
     }
 
     addLoopingObjectsToCanvas(objects) {

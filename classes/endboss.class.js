@@ -1,3 +1,4 @@
+import { ENDBOSS_IMAGES } from "../scripts/endboss-images.js";
 import { Enemy } from "./enemy.class.js";
 
 export class Endboss extends Enemy {
@@ -10,64 +11,16 @@ export class Endboss extends Enemy {
     speed = 1;
     targetLocation;
     lastLocation = 4800;
-    
-    IMAGES_IDLE = [
-        'img/enemys/Boss/Idle/skeleton-Idle_0.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_1.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_2.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_3.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_4.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_5.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_6.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_7.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_8.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_9.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_10.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_11.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_12.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_13.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_14.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_15.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_16.png',
-        'img/enemys/Boss/Idle/skeleton-Idle_17.png',
-    ];
-    IMAGES_WALKING = [
-        'img/enemys/Boss/Walk/skeleton-Walk_0.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_1.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_2.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_3.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_4.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_5.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_6.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_7.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_8.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_9.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_10.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_11.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_12.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_13.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_14.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_15.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_16.png',
-        'img/enemys/Boss/Walk/skeleton-Walk_17.png'
-    ];
-    IMAGES_DEATH = [
-        'img/enemys/Death Sprite/skeleton-animation_0.png',
-        'img/enemys/Death Sprite/skeleton-animation_1.png',
-        'img/enemys/Death Sprite/skeleton-animation_2.png',
-        'img/enemys/Death Sprite/skeleton-animation_3.png',
-        'img/enemys/Death Sprite/skeleton-animation_4.png',
-        'img/enemys/Death Sprite/skeleton-animation_5.png',
-        'img/enemys/Death Sprite/skeleton-animation_6.png',
-        'img/enemys/Death Sprite/skeleton-animation_7.png',
-        'img/enemys/Death Sprite/skeleton-animation_8.png',
-        'img/enemys/Death Sprite/skeleton-animation_9.png'
-    ];
+    IMAGES_IDLE = ENDBOSS_IMAGES.idle;
+    IMAGES_WALKING = ENDBOSS_IMAGES.walking;
+    IMAGES_ATTACKING = ENDBOSS_IMAGES.attacking;
+    IMAGES_DEATH = ENDBOSS_IMAGES.death;
 
     constructor() {
         super().loadImage('img/enemys/Boss/Idle/skeleton-Idle_0.png');
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_WALKING);
+        this.loadImages(this.IMAGES_ATTACKING);
         this.loadImages(this.IMAGES_DEATH);
         this.generateTargetLocation();
         this.animate();
@@ -77,6 +30,8 @@ export class Endboss extends Enemy {
         setInterval(() => {
             if (this.health <= 0) {
                 this.playAnimation('dead', this.IMAGES_DEATH, 10);
+            } else if (this.bossIsAttacking(this.character) && !this.character.isDead()) {
+                this.playAnimation('attacking', this.IMAGES_ATTACKING, 55);
             } else if (this.world.character.isBossfight) {
                 this.playAnimation('walking', this.IMAGES_WALKING, 18);
                 this.moveRandom();
@@ -103,7 +58,7 @@ export class Endboss extends Enemy {
         this.targetLocation = Math.floor(Math.random() * (4800 - 4200 + 1)) + 4200;
     }
 
-    attack() {
+    throwingAttack() {
 
     }
 

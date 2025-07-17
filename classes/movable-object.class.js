@@ -3,7 +3,6 @@ import { DrawableObject } from "./drawable-object.class.js";
 
 export class MovableObject extends DrawableObject {
     speed;
-    otherDirection = false;
     speedY = 0;
     acceleration = 4;
     life = 100;
@@ -96,6 +95,13 @@ export class MovableObject extends DrawableObject {
             this.y < character.y + this.collisionOffset.top + this.collisionOffset.height &&
             this.x + this.width > character.x + this.collisionOffset.left &&
             this.y + this.height > character.y + this.collisionOffset.top;
+    }
+
+    bossIsAttacking(character) {
+        return this.x + this.bossCollisionOffset.left < character.x + this.collisionOffset.left + this.collisionOffset.width &&
+            this.y + this.bossCollisionOffset.top < character.y + this.collisionOffset.top + this.collisionOffset.height &&
+            this.x + this.bossCollisionOffset.left + this.bossCollisionOffset.width > character.x + this.collisionOffset.left &&
+            this.y + this.bossCollisionOffset.top + this.bossCollisionOffset.width > character.y + this.collisionOffset.top;
     }
 
     /* isTouching(object) {
