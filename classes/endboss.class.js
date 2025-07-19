@@ -1,5 +1,6 @@
 import { ENDBOSS_IMAGES } from "../scripts/endboss-images.js";
 import { Enemy } from "./enemy.class.js";
+import { Snowball } from "./snowball.class.js";
 
 export class Endboss extends Enemy {
     x = 3840 + 1280 - 320;
@@ -7,6 +8,7 @@ export class Endboss extends Enemy {
     width = 300;
     height = 300;
     health = 100;
+    snowballs = [];
     otherDirection = false;
     speed = 1;
     targetLocation;
@@ -49,7 +51,10 @@ export class Endboss extends Enemy {
     }
 
     moveRandom() {
-        if (this.x === this.targetLocation) this.generateTargetLocation();
+        if (this.x === this.targetLocation) {
+            this.generateTargetLocation();
+            this.throwingAttack();
+        }
         if (this.targetLocation === this.lastLocation || this.x === this.targetLocation) return;
         this.otherDirection = this.x < this.targetLocation;
         this.x += (this.otherDirection ? 1 : -1) * this.speed;
@@ -64,7 +69,8 @@ export class Endboss extends Enemy {
     }
 
     throwingAttack() {
-
+        let snowball = new Snowball(this.x, this.y);
+        this.snowballs.push(snowball);
     }
 
     drawBorder(ctx) {
