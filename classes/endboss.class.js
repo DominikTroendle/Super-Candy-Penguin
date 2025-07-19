@@ -31,6 +31,7 @@ export class Endboss extends Enemy {
             if (this.health <= 0) {
                 this.playAnimation('dead', this.IMAGES_DEATH, 10);
             } else if (this.bossIsAttacking(this.character) && !this.character.isDead()) {
+                this.faceCharacter();
                 this.playAnimation('attacking', this.IMAGES_ATTACKING, 55);
             } else if (this.world.character.isBossfight) {
                 this.playAnimation('walking', this.IMAGES_WALKING, 18);
@@ -56,6 +57,10 @@ export class Endboss extends Enemy {
 
     generateTargetLocation() {
         this.targetLocation = Math.floor(Math.random() * (4800 - 4200 + 1)) + 4200;
+    }
+
+    faceCharacter() {
+        this.otherDirection = this.character.x + this.characterOffset.left > this.x + this.bossCollisionOffset.left;
     }
 
     throwingAttack() {

@@ -120,7 +120,7 @@ export class World {
 
     addToCanvas(object) {
         let flip = object.otherDirection;
-        if (object instanceof Endboss && object.currentAnimation === 'attacking') flip = (object.character.x - object.x) > -5;
+        // if (object instanceof Endboss && object.currentAnimation === 'attacking') flip = object.character.x + object.characterOffset.left > object.x;
         if (flip) this.mirrorCtx(object);
         object.drawObject(this.ctx);
         if (object instanceof Character || object instanceof Enemy || object instanceof Endboss) object.drawBorder(this.ctx);
