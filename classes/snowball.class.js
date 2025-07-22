@@ -14,7 +14,7 @@ export class Snowball extends MovableObject {
     }
 
     fly() {
-        this.speedY = 33;
+        this.speedY = 40;
         this.applyGravity();
         setInterval(() => {
             this.x -= 1.7;
