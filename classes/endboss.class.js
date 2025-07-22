@@ -35,7 +35,7 @@ export class Endboss extends Enemy {
             } else if (this.bossIsAttacking(this.character) && !this.character.isDead()) {
                 this.faceCharacter();
                 this.playAnimation('attacking', this.IMAGES_ATTACKING, 55);
-            } else if (this.world.character.isBossfight) {
+            } else if (this.world.character.isBossfight && !this.character.isDead()) {
                 this.playAnimation('walking', this.IMAGES_WALKING, 18);
                 this.moveRandom();
             } else {
@@ -71,6 +71,27 @@ export class Endboss extends Enemy {
     throwingAttack() {
         let snowball = new Snowball(this.x, this.y);
         this.snowballs.push(snowball);
+    }
+
+    checkSnowballs() {
+        this.snowballs = this.snowballs.filter(snowball => {
+            if (snowball.y > 720) {
+                return false;
+            } else if (this.checkSnowballCollision(snowball)) {
+                return false;
+            };
+            return true;
+        });
+    }
+
+    checkSnowballCollision() {
+        for (let i = 0; i < this.snowballs.length; i++) {
+            if (this.world.character.isColliding(this.snowballs[i])) {
+                this.world.character.hit();
+                this.world.statusbar.setPercentage(this.world.character.life);
+                return true;
+            };
+        };
     }
 
     drawBorder(ctx) {

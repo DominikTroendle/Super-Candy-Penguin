@@ -24,8 +24,6 @@ export class Character extends MovableObject {
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
-        // this.loadImages(this.IMAGES_SLAP);
-        // slap function to be implemented in the future
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
         this.animate();
@@ -42,16 +40,13 @@ export class Character extends MovableObject {
                 this.playAnimation('jumping', this.IMAGES_JUMPING, 25);
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                 this.playAnimation('walking', this.IMAGES_WALKING, 30);
-           /*  } else if (this.world.keyboard.S) {
-                this.playAnimation('slap', this.IMAGES_SLAP, 105); */
-                // slap function to be implemented in the future
             } else {
                 this.playAnimation('idle', this.IMAGES_IDLE, 20);
             }
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.world.keyboard.RIGHT && /* this.x < this.world.level.level_end_x && */ !this.isDead()) {
+            if (this.world.keyboard.RIGHT && !this.isDead()) {
                 this.moveRight();
                 this.otherDirection = false;
             }
@@ -67,19 +62,16 @@ export class Character extends MovableObject {
     }
 
     checkCollisions() {
+        if (this.isBossfight && this.canBeHit() && this.world.endboss.bossIsAttacking(this)) {
+            this.hit();
+            this.world.statusbar.setPercentage(this.life);
+        }
         this.world.level.enemies.forEach(enemy => {
             if (this.isColliding(enemy) && this.canBeHit() && !this.isJumpedOnTop(enemy)) {
                 // this.hit();
                 // this.world.statusbar.setPercentage(this.life);
             };
         });
-        /* this.world.level.enemies = this.world.level.enemies.filter(enemy => {
-            if (this.isTouching(enemy) && this.world.keyboard.S) {
-                return false;
-            }
-            return true;
-        }) */
-       // slap function to be implemented in the future
         this.world.level.enemies = this.world.level.enemies.filter(enemy => {
             if (this.isJumpedOnTop(enemy)) {
                 return false;

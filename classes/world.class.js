@@ -47,6 +47,7 @@ export class World {
             this.character.checkCollisions();
             this.checkThrowableObject();
             this.character.checkBossFight();
+            if (this.character.isBossfight) this.endboss.checkSnowballs();
         }, 100);
     }
 

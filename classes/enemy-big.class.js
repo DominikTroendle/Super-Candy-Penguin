@@ -48,18 +48,6 @@ export class EnemyBig extends Enemy {
         'img/enemys/Monster1/Attack/skeleton-Attack_20.png',
         'img/enemys/Monster1/Attack/skeleton-Attack_21.png'
     ];
-    /* IMAGES_DEATH = [
-        'img/enemys/Death Sprite/skeleton-animation_0.png',
-        'img/enemys/Death Sprite/skeleton-animation_1.png',
-        'img/enemys/Death Sprite/skeleton-animation_2.png',
-        'img/enemys/Death Sprite/skeleton-animation_3.png',
-        'img/enemys/Death Sprite/skeleton-animation_4.png',
-        'img/enemys/Death Sprite/skeleton-animation_5.png',
-        'img/enemys/Death Sprite/skeleton-animation_6.png',
-        'img/enemys/Death Sprite/skeleton-animation_7.png',
-        'img/enemys/Death Sprite/skeleton-animation_8.png',
-        'img/enemys/Death Sprite/skeleton-animation_9.png'
-    ]; */
     speed = 0.2;
 
     constructor(startX) {

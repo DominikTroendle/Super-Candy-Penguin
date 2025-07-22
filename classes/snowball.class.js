@@ -1,8 +1,8 @@
 import { MovableObject } from "./movable-object.class.js";
 
 export class Snowball extends MovableObject {
-    width = 150;
-    height = 150;
+    width = 100;
+    height = 100;
     x;
     y;
 
