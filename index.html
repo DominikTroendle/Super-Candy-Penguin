@@ -14,10 +14,19 @@
 </head>
 <body>
     <div id="overlays">
-        <div id="start-screen" class="d-none"></div>
-        <div id="controls" class="d-none"></div>
-        <div id="settings" class="d-none"></div>
-        <div id="end-screen" class="d-none"></div>
+        <div id="start-screen" class="overlay-screen">
+            <div id="container-audio-controls">
+                <button class="menu-button-sm"></button>
+                <button class="menu-button-sm"></button>
+            </div>
+            <div id="container-buttons">
+                <button class="menu-button" id="button-play">Play</button>
+                <button class="menu-button" id="button-settings">Settings</button>
+            </div>
+        </div>
+        <div id="controlls" class="overlay-screen d-none"></div>
+        <div id="settings" class="overlay-screen d-none"></div>
+        <div id="end-screen" class="overlay-screen d-none"></div>
     </div>
     <h1>Super Candy Penguin</h1>
     <canvas id="canvas" width="1280px" height="720px"></canvas>

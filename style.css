@@ -18,11 +18,31 @@ body {
     height: 100dvh;
 }
 
-#start-screen,
-#end-screen {
+.overlay-screen{
     margin-top: 80px;
     width: 1280px;
     height: 720px;
+}
+
+#start-screen {
+    background-image: url(./img/menu-screens/backgrounds/start-background.png);
+}
+
+#container-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-button {
+    width: 230px;
+    height: 85px;
+    border: unset;
+    background-color: transparent;
+    background: url(./img/menu-screens/buttons/menu-button.png);
+    background-size: contain;
+    color: white;
+    font-size: 32px;
 }
 
 canvas {
