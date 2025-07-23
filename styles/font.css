@@ -1,4 +1,9 @@
 @font-face {
     font-family: Modak;
-    src: url('/font/Modak/Modak-Regular.ttf');
+    src: url('../font/Modak/Modak-Regular.ttf');
+}
+
+@font-face {
+    font-family: Chewy;
+    src: url('../font/Chewy/Chewy-Regular.ttf');
 }
