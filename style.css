@@ -53,9 +53,8 @@ h1 {
 }
 
 #start-screen {
-    background-image: url(./img/menu-screens/backgrounds/start-background.png);
+    background-image: url(./img/menu-screens/backgrounds/start-background-plain.png);
     display: flex;
-    flex-direction: column;
     gap: 15px;
 }
 
@@ -96,6 +95,36 @@ h1 {
     background: url(./img/menu-screens/buttons/sound-off.png);
     background-size: contain;
 } */
+
+#penguin-animated {
+    margin-top: 390px;
+    margin-left: 40px;
+    position: relative;
+    transform: scaleX(-1);
+    width: 149px;
+    height: 206px;
+    background-image: url('./img/menu-screens/sprite-sheets/penguin-sprite-sheet.png');
+    background-repeat: no-repeat;
+    animation: penguin-idle 2s steps(20) infinite;
+}
+
+@keyframes penguin-idle {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -2980px 0;
+    }
+}
+
+#lettering {
+    width: 721px;
+    height: 731px;
+    background-image: url('./img/menu-screens/backgrounds/lettering.png');
+    background-size: cover;
+    background-position: center;
+    filter:drop-shadow(2px 0 8px rgba(0 0 0 / 0.8))
+}
 
 canvas {
     margin: 0;
