@@ -13,6 +13,7 @@ export class World {
     ctx;
     canvas;
     keyboard;
+    game;
     camera_x = 0;
 
     character = new Character();
@@ -24,10 +25,11 @@ export class World {
     boss_healthbar = new BossHealthbar();
     level = level1;
     
-    constructor(canvas, keyboard) {
+    constructor(canvas, keyboard, game) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
+        this.game = game;
         this.setWorld();
         this.draw();
         this.run();

@@ -34,6 +34,7 @@ export class Character extends MovableObject {
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation('dead', this.IMAGES_DEAD, 45);
+                gameEnd('L');
             } else if (this.isHurt()) {
                 this.playAnimation('hurt', this.IMAGES_HURT, 48);
             } else if (this.isAboveGround()) {
@@ -68,8 +69,8 @@ export class Character extends MovableObject {
         }
         this.world.level.enemies.forEach(enemy => {
             if (this.isColliding(enemy) && this.canBeHit() && !this.isJumpedOnTop(enemy)) {
-                // this.hit();
-                // this.world.statusbar.setPercentage(this.life);
+                this.hit();
+                this.world.statusbar.setPercentage(this.life);
             };
         });
         this.world.level.enemies = this.world.level.enemies.filter(enemy => {

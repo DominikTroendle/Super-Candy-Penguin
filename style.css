@@ -155,6 +155,31 @@ h1 {
     filter:drop-shadow(2px 0 8px rgba(0 0 0 / 0.8))
 }
 
+.end-screen {
+    background-color: #1f1f1f;
+    background-position: right 110px center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: fade-in 1s normal;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#win-screen {
+    background-image: url(./img/menu-screens/backgrounds/you-win.png);
+}
+
+#game-over-screen {
+    background-image: url(./img/menu-screens/backgrounds/game-over.png);
+}
+
 canvas {
     margin: 0;
     background-color: black;

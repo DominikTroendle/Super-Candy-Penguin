@@ -2,7 +2,7 @@ import { World } from '../classes/world.class.js';
 import { Keyboard } from '../classes/keyboard.class.js';
 
 let canvas;
-let world;
+let isGameOver = false;
 let keyboard = new Keyboard();
 let startButton = document.getElementById('button-play');
 
@@ -12,7 +12,7 @@ startButton.addEventListener('click', () => {
 
 function init() {
     canvas = document.getElementById('canvas');
-    window.world = new World(canvas, keyboard);
+    window.world = new World(canvas, keyboard, this);
 }
 
 window.addEventListener('keydown', (event) => {

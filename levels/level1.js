@@ -78,7 +78,6 @@ export const level1 = new Level(
         new Coin(3600, 460)
     ],
     [
-        new Heart(500),
         new Heart(1500),
         new Heart(2000),
         new Heart(3000),
