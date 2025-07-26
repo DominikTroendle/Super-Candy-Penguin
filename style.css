@@ -5,7 +5,7 @@
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 body {
@@ -105,10 +105,26 @@ h1 {
     height: 206px;
     background-image: url('./img/menu-screens/sprite-sheets/penguin-sprite-sheet.png');
     background-repeat: no-repeat;
+}
+
+.penguin-animation-idle {
     animation: penguin-idle 2s steps(20) infinite;
 }
 
 @keyframes penguin-idle {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -2980px 0;
+    }
+}
+
+.penguin-animation-jump {
+    animation: penguin-jump 2s steps(20) infinite;
+}
+
+@keyframes penguin-jump {
     from {
         background-position: 0 0;
     }

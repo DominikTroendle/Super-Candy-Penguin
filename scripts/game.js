@@ -4,15 +4,16 @@ import { Keyboard } from '../classes/keyboard.class.js';
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let startButton = document.getElementById('button-play');
+
+startButton.addEventListener('click', () => {
+    init();
+})
 
 function init() {
     canvas = document.getElementById('canvas');
     window.world = new World(canvas, keyboard);
 }
-
-window.addEventListener('load', () => {
-    init();
-})
 
 window.addEventListener('keydown', (event) => {
     if (event.key == "ArrowRight" || event.key == "d") keyboard.RIGHT = true;

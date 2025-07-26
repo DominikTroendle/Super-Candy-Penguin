@@ -1,7 +1,6 @@
 import { Level } from "../classes/level.class.js";
 import { EnemyBig } from "../classes/enemy-big.class.js";
 import { EnemySmall } from "../classes/enemy-small.class.js";
-import { Endboss } from '../classes/endboss.class.js';
 import { Candy } from "../classes/candy.class.js";
 import { Coin } from "../classes/coin.class.js";
 import { Heart } from "../classes/heart.class.js";
@@ -21,26 +20,20 @@ export const level1 = new Level(
         new EnemySmall(3400),
         new EnemySmall(4000),
         new EnemyBig(640),
-        // new EnemyBig(840),
         new EnemyBig(1040),
         new EnemyBig(1240),
-        // new EnemyBig(1440),
         new EnemyBig(1640),
         new EnemyBig(1840),
         new EnemyBig(2040),
         new EnemyBig(2240),
-        // new EnemyBig(2440),
         new EnemyBig(2640),
         new EnemyBig(2840),
         new EnemyBig(3040),
         new EnemyBig(3240),
-        // new EnemyBig(3440),
         new EnemyBig(3640),
-        // new EnemyBig(3840),
         new EnemyBig(4040),
         new EnemyBig(4240),
         new EnemyBig(4440)
-        // new EnemyBig(4640)
     ],
     [
         new Candy(400),
