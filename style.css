@@ -100,14 +100,13 @@ h1 {
     margin-top: 390px;
     margin-left: 40px;
     position: relative;
-    transform: scaleX(-1);
-    width: 149px;
-    height: 206px;
-    background-image: url('./img/menu-screens/sprite-sheets/penguin-sprite-sheet.png');
+    background-image: url('./img/menu-screens/sprite-sheets/penguin-idle-sprite-sheet.png');
     background-repeat: no-repeat;
 }
 
 .penguin-animation-idle {
+    width: 149px;
+    height: 206px;
     animation: penguin-idle 2s steps(20) infinite;
 }
 
@@ -121,7 +120,9 @@ h1 {
 }
 
 .penguin-animation-jump {
-    animation: penguin-jump 2s steps(20) infinite;
+    width: 156px;
+    height: 211px;
+    animation: penguin-jump 0.8s steps(25) normal, jump 0.8s ease-in-out;
 }
 
 @keyframes penguin-jump {
@@ -129,7 +130,19 @@ h1 {
         background-position: 0 0;
     }
     to {
-        background-position: -2980px 0;
+        background-position: -3900px 0;
+    }
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-100px);
+    }
+    100% {
+        transform: translateY(0);
     }
 }
 
