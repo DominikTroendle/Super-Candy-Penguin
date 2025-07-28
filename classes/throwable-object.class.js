@@ -26,7 +26,7 @@ export class ThrowableObject extends MovableObject {
     }
 
     animate() {
-        setInterval(() => {
+        setStoppableInterval(() => {
             this.playAnimation('spinning', this.IMAGES_SPINNING, 10);
         })
     }
@@ -35,11 +35,11 @@ export class ThrowableObject extends MovableObject {
         this.speedY = 33;
         this.applyGravity();
         if (character.otherDirection) {
-            setInterval(() => {
+            setStoppableInterval(() => {
                 this.x -= 1.7;
             }, 1);
         } else {
-            setInterval(() => {
+            setStoppableInterval(() => {
                 this.x += 1.7;
             }, 1);
         }

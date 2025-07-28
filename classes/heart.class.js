@@ -25,7 +25,7 @@ export class Heart extends MovableObject {
     }
 
     animate() {
-        setInterval(() => {
+        setStoppableInterval(() => {
             this.playAnimation('spinning', this.IMAGES_HEART, 10);
         }, 1000 / 60);
     }

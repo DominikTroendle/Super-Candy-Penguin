@@ -66,11 +66,11 @@ export class EnemySmall extends Enemy {
     }
 
     animate() {
-        setInterval(() => {
+        setStoppableInterval(() => {
             this.enemyMoveLeft();
         }, 1000 / 30);
 
-        setInterval(() => {
+        setStoppableInterval(() => {
             if (this.isAttacking(this.character) && !this.character.isDead()) {
                 this.playAnimation('attacking', this.IMAGES_ATTACKING, 26);
             } else {

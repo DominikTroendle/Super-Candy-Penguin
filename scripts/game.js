@@ -4,11 +4,9 @@ import { Keyboard } from '../classes/keyboard.class.js';
 let canvas;
 let isGameOver = false;
 let keyboard = new Keyboard();
-let startButton = document.getElementById('button-play');
+let replayButtons = document.querySelectorAll('.replay-button');
 
-startButton.addEventListener('click', () => {
-    init();
-})
+replayButtons.forEach(e => e.addEventListener('click', init()));
 
 function init() {
     canvas = document.getElementById('canvas');

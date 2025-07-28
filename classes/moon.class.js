@@ -15,7 +15,7 @@ export class Moon extends MovingBackgroundObject {
     }
 
     animate() {
-         setInterval( () => {
+         setStoppableInterval( () => {
             this.x += this.speed;
 
             if (this.x > this.endX) {

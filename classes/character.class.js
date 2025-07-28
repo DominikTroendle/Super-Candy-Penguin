@@ -27,14 +27,16 @@ export class Character extends MovableObject {
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
         this.animate();
+        console.log(intervalIds);
+        
         this.applyGravity();
     }
 
     animate() {
-        setInterval(() => {
+        setStoppableInterval(() => {
             if (this.isDead()) {
                 this.playAnimation('dead', this.IMAGES_DEAD, 45);
-                gameEnd('L');
+                endGame('L');
             } else if (this.isHurt()) {
                 this.playAnimation('hurt', this.IMAGES_HURT, 48);
             } else if (this.isAboveGround()) {
@@ -46,7 +48,7 @@ export class Character extends MovableObject {
             }
         }, 1000 / 60);
 
-        setInterval(() => {
+        setStoppableInterval(() => {
             if (this.world.keyboard.RIGHT && !this.isDead()) {
                 this.moveRight();
                 this.otherDirection = false;

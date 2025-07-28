@@ -45,7 +45,7 @@ export class World {
     }
 
     run() {
-        setInterval(() => {
+        setStoppableInterval(() => {
             this.character.checkCollisions();
             this.checkThrowableObject();
             this.character.checkBossFight();
