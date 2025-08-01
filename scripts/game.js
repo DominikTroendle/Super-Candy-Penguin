@@ -2,15 +2,38 @@ import { World } from '../classes/world.class.js';
 import { Keyboard } from '../classes/keyboard.class.js';
 
 let canvas;
-let isGameOver = false;
 let keyboard = new Keyboard();
+let playButton = document.getElementById('button-play');
 let replayButtons = document.querySelectorAll('.replay-button');
 
-replayButtons.forEach(e => e.addEventListener('click', init()));
+window.addEventListener('DOMContentLoaded', () => {
+    checkGameStatus();
+});
+
+window.addEventListener('beforeunload', (e) => {
+    if (gameStarted && !gameEnded) {
+        e.preventDefault();
+    };
+});
+
+playButton.addEventListener('click', () => {
+    setLocalStorage(true);
+    showGame();
+    init();
+});
+
+replayButtons.forEach(e => e.addEventListener('click', () => {
+    setLocalStorage(true);
+    gameEnded = false;
+    restartGame();
+    init();
+}));
 
 function init() {
+    console.log("init called");
     canvas = document.getElementById('canvas');
     window.world = new World(canvas, keyboard, this);
+    gameStarted = true;
 }
 
 window.addEventListener('keydown', (event) => {

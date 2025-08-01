@@ -14,9 +14,9 @@
 </head>
 <body>
     <div id="overlays">
-        <div id="start-screen" class="overlay-screen">
+        <div id="start-screen" class="overlay-screen d-none">
             <div id="container-buttons">
-                <button class="menu-button" id="button-play" onclick="startGame()">PLAY</button>
+                <button class="menu-button" id="button-play">PLAY</button>
                 <button class="menu-button" id="button-settings">SETTINGS</button>
                 <button class="menu-button-sm" id="button-controls"></button>
             </div>
@@ -27,13 +27,13 @@
         <div id="settings" class="overlay-screen d-none"></div>
         <div id="win-screen" class="overlay-screen end-screen d-none">
             <div id="container-buttons">
-                <button class="menu-button replay-button" onclick="restartGame()">PLAY AGAIN</button>
+                <button class="menu-button replay-button">PLAY AGAIN</button>
                 <button class="menu-button" id="button-menu">MENU</button>
             </div>
         </div>
         <div id="game-over-screen" class="overlay-screen end-screen d-none">
             <div id="container-buttons">
-                <button class="menu-button replay-button" onclick="restartGame()">PLAY AGAIN</button>
+                <button class="menu-button replay-button">PLAY AGAIN</button>
                 <button class="menu-button" id="button-menu">MENU</button>
             </div>
         </div>
