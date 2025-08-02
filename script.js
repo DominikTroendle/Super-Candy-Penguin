@@ -7,25 +7,25 @@ function setStoppableInterval(fn, time) {
 }
 
 function showGame() {
-    document.getElementById('penguin-animated').classList.remove('penguin-animation-idle');
-    document.getElementById('penguin-animated').style.backgroundImage = "url('./img/menu-screens/sprite-sheets/penguin-jump-sprite-sheet.png')";
-    document.getElementById('start-screen').style.gap = '11.5px';
-    document.getElementById('penguin-animated').classList.add('penguin-animation-jump');
+    changeStartAnimation();
     setTimeout(() => {
-        document.getElementById('start-screen').classList.add('d-none');
+        resetOverlays();
         document.getElementById('penguin-animated').classList.remove('penguin-animation-jump');
     }, 1000);
 }
 
+function changeStartAnimation() {
+    document.getElementById('penguin-animated').classList.remove('penguin-animation-idle');
+    document.getElementById('penguin-animated').style.backgroundImage = "url('./img/menu-screens/sprite-sheets/penguin-jump-sprite-sheet.png')";
+    document.getElementById('start-screen').style.gap = '11.5px';
+    document.getElementById('penguin-animated').classList.add('penguin-animation-jump');
+}
+
 function endGame(condition) {
+    let overlay;
     if (gameEnded) return;
     gameEnded = true;
-    let overlay;
-    if (condition === "W") {
-        overlay = "win-screen";
-    } else {
-        overlay = "game-over-screen";
-    };
+    condition === "W" ? overlay = "win-screen" : overlay = "game-over-screen";
     setTimeout(() => {
         document.getElementById(overlay).classList.remove('d-none');
         intervalIds.forEach(clearInterval);
@@ -33,7 +33,13 @@ function endGame(condition) {
     }, 1200);
 }
 
-function hideWinLossScreen() {
-    document.getElementById('win-screen').classList.add('d-none');
-    document.getElementById('game-over-screen').classList.add('d-none');
+function resetOverlays() {
+    let overlays = ['start-screen', 'win-screen', 'game-over-screen', 'controls', 'settings'];
+    overlays.forEach((str) => {
+        document.getElementById(str).classList.add('d-none');
+    });
+}
+
+function showOverlay(overlay) {
+    document.getElementById(overlay).classList.remove('d-none');
 }

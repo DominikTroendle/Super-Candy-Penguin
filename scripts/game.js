@@ -15,16 +15,18 @@ playButton.addEventListener('click', () => {
 });
 
 settingsButton.addEventListener('click', () => {
-
+    resetOverlays();
+    showOverlay('settings');
 });
 
 controlsButton.addEventListener('click', () => {
-
+    resetOverlays();
+    showOverlay('controls');
 });
 
 replayButtons.forEach(e => e.addEventListener('click', () => {
     gameEnded = false;
-    hideWinLossScreen();
+    resetOverlays();
     init();
 }));
 

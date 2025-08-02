@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     
     <script type="module" src="scripts/game.js"></script>
+    <script src="https://kit.fontawesome.com/250eb2fe9b.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="overlays">
@@ -23,8 +24,26 @@
             <div id="penguin-animated" class="penguin-animation-idle"></div>
             <div id="lettering"></div>
         </div>
-        <div id="controls" class="overlay-screen d-none"></div>
-        <div id="settings" class="overlay-screen d-none"></div>
+        <div id="controls" class="overlay-screen settings-screen d-none">
+            <button class="menu-button start-screen-button home-button">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </div>
+        <div id="settings" class="overlay-screen settings-screen d-none">
+            <div>
+                <div class="volume-controls">
+                    <button id="sound-volume" class="button-soundbar"></button>
+                    <button id="sound-mute" class="menu-button-sm"></button>
+                </div>
+                <div class="volume-controls">
+                    <button id="music-volume" class="button-soundbar"></button>
+                    <button id="music-mute" class="menu-button-sm"></button>
+                </div>
+            </div>
+            <button class="menu-button start-screen-button home-button">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </div>
         <div id="win-screen" class="overlay-screen end-screen d-none">
             <div id="container-buttons">
                 <button class="menu-button replay-button">PLAY AGAIN</button>

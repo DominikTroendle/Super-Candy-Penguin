@@ -46,14 +46,27 @@ h1 {
     height: 100dvh;
 }
 
-.overlay-screen{
+.overlay-screen {
     margin-top: 145px;
     width: 1280px;
     height: 720px;
 }
 
-#start-screen {
+.settings-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 100px;
+}
+
+#start-screen,
+#controls,
+#settings {
     background-image: url(./img/menu-screens/backgrounds/start-background-plain.png);
+}
+
+#start-screen {
     display: flex;
     gap: 15px;
 }
@@ -77,6 +90,21 @@ h1 {
 .menu-button-sm {
     width: 60px;
     height: 60px;
+}
+
+.volume-controls {
+    display: flex;
+    gap: 50px;
+}
+
+.button-soundbar {
+    width: 530px;
+    height: 72px;
+}
+
+.home-button {
+    margin: 0 0 150px 150px;
+    align-self: flex-start;
 }
 
 #button-controls {
