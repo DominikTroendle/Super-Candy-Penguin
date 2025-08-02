@@ -4,36 +4,37 @@ import { Keyboard } from '../classes/keyboard.class.js';
 let canvas;
 let keyboard = new Keyboard();
 let playButton = document.getElementById('button-play');
+let settingsButton = document.getElementById('button-settings');
+let controlsButton = document.getElementById('button-controls');
 let replayButtons = document.querySelectorAll('.replay-button');
-
-window.addEventListener('DOMContentLoaded', () => {
-    checkGameStatus();
-});
-
-/* window.addEventListener('beforeunload', (e) => {
-    if (gameStarted && !gameEnded) {
-        e.preventDefault();
-    };
-}); */
+let startScreenButtons = document.querySelectorAll('.start-screen-button');
 
 playButton.addEventListener('click', () => {
-    gameStarted = true;
     showGame();
     init();
 });
 
+settingsButton.addEventListener('click', () => {
+
+});
+
+controlsButton.addEventListener('click', () => {
+
+});
+
 replayButtons.forEach(e => e.addEventListener('click', () => {
-    gameStarted = true;
     gameEnded = false;
-    restartGame();
+    hideWinLossScreen();
     init();
 }));
 
+startScreenButtons.forEach(e => e.addEventListener('click', () => {
+    window.location.reload();
+}));
+
 function init() {
-    console.log("init called");
     canvas = document.getElementById('canvas');
     window.world = new World(canvas, keyboard, this);
-    gameStarted = true;
 }
 
 window.addEventListener('keydown', (event) => {
