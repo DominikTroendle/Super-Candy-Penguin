@@ -10,20 +10,20 @@ window.addEventListener('DOMContentLoaded', () => {
     checkGameStatus();
 });
 
-window.addEventListener('beforeunload', (e) => {
+/* window.addEventListener('beforeunload', (e) => {
     if (gameStarted && !gameEnded) {
         e.preventDefault();
     };
-});
+}); */
 
 playButton.addEventListener('click', () => {
-    setLocalStorage(true);
+    gameStarted = true;
     showGame();
     init();
 });
 
 replayButtons.forEach(e => e.addEventListener('click', () => {
-    setLocalStorage(true);
+    gameStarted = true;
     gameEnded = false;
     restartGame();
     init();

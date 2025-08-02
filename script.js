@@ -8,7 +8,6 @@ function setStoppableInterval(fn, time) {
 }
 
 function checkGameStatus() {
-    gameStarted = getLocalStorage('gameStarted');
     if (gameStarted) {
         document.getElementById('start-screen').classList.add('d-none');
         document.getElementById('penguin-animated').classList.remove('penguin-animation-idle');
@@ -51,10 +50,10 @@ function restartGame() {
     document.getElementById('game-over-screen').classList.add('d-none');
 }
 
-function getLocalStorage(str) {
+/* function getLocalStorage(str) {
     return JSON.parse(localStorage.getItem(str));
 }
 
 function setLocalStorage(bool) {
     localStorage.setItem('gameStarted', JSON.stringify(bool));
-}
+} */
