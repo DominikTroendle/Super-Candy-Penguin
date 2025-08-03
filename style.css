@@ -23,7 +23,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.btn-hover:hover {
     transform: scale(1.1);
     filter: drop-shadow(0px 0px 5px lightblue);
     text-shadow: 1px 1px 0px rgba(0 0 0 / 0.7);
@@ -33,6 +33,14 @@ h1 {
     margin: 20px 0;
     font-family: Chewy;
     font-size: 80px;
+    color: #4aceff;
+    text-shadow: 2px 2px 8px rgba(0 0 0 / 0.8);
+}
+
+p {
+    margin-right: 25px;
+    font-family: Chewy;
+    font-size: 45px;
     color: #4aceff;
     text-shadow: 2px 2px 8px rgba(0 0 0 / 0.8);
 }
@@ -92,14 +100,74 @@ h1 {
     height: 60px;
 }
 
+#header-img-settings {
+    width: 643px;
+    height: 130px;
+    background: url(./img/menu-screens/backgrounds/settings.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#header-img-controls {
+    width: 622px;
+    height: 130px;
+    background: url(./img/menu-screens/backgrounds/controls.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.container-volume-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .volume-controls {
     display: flex;
-    gap: 50px;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu-button-xsm {
+    width: 50px;
+    height: 50px;
+}
+
+.btn-down {
+    background: url(./img/menu-screens/buttons/arrow-left.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.btn-up {
+    background: url(./img/menu-screens/buttons/arrow-right.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .button-soundbar {
-    width: 530px;
-    height: 72px;
+    background: url(./img/menu-screens/buttons/soundbar-100.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 368px;
+    height: 50px;
+    cursor: default;
+}
+
+#music-mute {
+    background: url(./img/menu-screens/buttons/music-off.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#sound-mute {
+    background: url(./img/menu-screens/buttons/sound-off.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.button-mute {
+    margin-left: 35px;
 }
 
 .home-button {
@@ -113,16 +181,6 @@ h1 {
     background-size: contain;
     background-repeat: no-repeat;
 }
-
-/* #button-music-off {
-    background: url(./img/menu-screens/buttons/music-off.png);
-    background-size: contain;
-} */
-
-/* #button-sound-off {
-    background: url(./img/menu-screens/buttons/sound-off.png);
-    background-size: contain;
-} */
 
 #penguin-animated {
     margin-top: 390px;

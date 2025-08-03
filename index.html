@@ -17,43 +17,51 @@
     <div id="overlays">
         <div id="start-screen" class="overlay-screen">
             <div id="container-buttons">
-                <button class="menu-button" id="button-play">PLAY</button>
-                <button class="menu-button" id="button-settings">SETTINGS</button>
-                <button class="menu-button-sm" id="button-controls"></button>
+                <button id="button-play" class="menu-button btn-hover">PLAY</button>
+                <button id="button-settings" class="menu-button btn-hover">SETTINGS</button>
+                <button id="button-controls" class="menu-button-sm btn-hover"></button>
             </div>
             <div id="penguin-animated" class="penguin-animation-idle"></div>
             <div id="lettering"></div>
         </div>
         <div id="controls" class="overlay-screen settings-screen d-none">
-            <button class="menu-button start-screen-button home-button">
+            <div id="header-img-controls"></div>
+            <button class="menu-button start-screen-button home-button btn-hover">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
         </div>
         <div id="settings" class="overlay-screen settings-screen d-none">
-            <div>
+            <div id="header-img-settings"></div>
+            <div class="container-volume-controls">
                 <div class="volume-controls">
+                    <p>Sound</p>
+                    <button id="sound-down" class="menu-button-xsm btn-hover btn-down"></button>
                     <button id="sound-volume" class="button-soundbar"></button>
-                    <button id="sound-mute" class="menu-button-sm"></button>
+                    <button id="sound-up" class="menu-button-xsm btn-hover btn-up"></button>
+                    <button id="sound-mute" class="menu-button-sm button-mute btn-hover"></button>
                 </div>
                 <div class="volume-controls">
+                    <p>Music</p>
+                    <button id="music-down" class="menu-button-xsm btn-hover btn-down"></button>
                     <button id="music-volume" class="button-soundbar"></button>
-                    <button id="music-mute" class="menu-button-sm"></button>
+                    <button id="music-up" class="menu-button-xsm btn-hover btn-up"></button>
+                    <button id="music-mute" class="menu-button-sm button-mute btn-hover"></button>
                 </div>
             </div>
-            <button class="menu-button start-screen-button home-button">
+            <button class="menu-button start-screen-button home-button btn-hover">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
         </div>
         <div id="win-screen" class="overlay-screen end-screen d-none">
             <div id="container-buttons">
-                <button class="menu-button replay-button">PLAY AGAIN</button>
-                <button class="menu-button start-screen-button">MENU</button>
+                <button class="menu-button replay-button btn-hover">PLAY AGAIN</button>
+                <button class="menu-button start-screen-button btn-hover">MENU</button>
             </div>
         </div>
         <div id="game-over-screen" class="overlay-screen end-screen d-none">
             <div id="container-buttons">
-                <button class="menu-button replay-button">PLAY AGAIN</button>
-                <button class="menu-button start-screen-button">MENU</button>
+                <button class="menu-button replay-button btn-hover">PLAY AGAIN</button>
+                <button class="menu-button start-screen-button btn-hover">MENU</button>
             </div>
         </div>
     </div>
