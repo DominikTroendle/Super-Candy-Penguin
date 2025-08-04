@@ -1,5 +1,8 @@
 let gameEnded = false;
 let intervalIds = [];
+let soundControls = Array.from(document.querySelectorAll('.sound-control'));
+let musicVolume = 0.5;
+let soundVolume = 0.5;
 
 function setStoppableInterval(fn, time) {
     let id = setInterval(fn, time);
@@ -42,4 +45,25 @@ function resetOverlays() {
 
 function showOverlay(overlay) {
     document.getElementById(overlay).classList.remove('d-none');
+}
+
+soundControls.forEach(e => e.addEventListener('click', () => {
+    changeVolume(e.id);
+}));
+
+function changeVolume(id) {
+    if (id === "sound-down" && soundVolume != 0) {
+        soundVolume -= 0.1;
+    } else if (id === "sound-up" && soundVolume != 0.5) {
+        soundVolume += 0.1;
+    } else if (id === "sound-mute") {
+        soundVolume = 0;
+    } else if (id === "music-down" && musicVolume != 0) {
+        musicVolume -= 0.1;
+    } else if (id === "music-up" && musicVolume != 0.5) {
+        musicVolume += 0.1;
+    } else if (id === "music-mute") {
+        musicVolume = 0;  
+    };
+    soundVolume = Math.round(soundVolume * 10) / 10;
 }

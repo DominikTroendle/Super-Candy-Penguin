@@ -24,6 +24,14 @@ export class World {
     endboss = new Endboss();
     boss_healthbar = new BossHealthbar();
     level = level1;
+
+    backgroundMusic = {
+        bgMusic: Object.assign(document.createElement('audio'), {
+            src: './audio/music/ES_Frosty Tale - Ludvig Moulin.mp3',
+            loop: true,
+            volume: musicVolume
+        })
+    }
     
     constructor(canvas, keyboard, game) {
         this.ctx = canvas.getContext('2d');
@@ -33,6 +41,7 @@ export class World {
         this.setWorld();
         this.draw();
         this.run();
+        setTimeout(() => this.backgroundMusic.bgMusic.play(), 1000);
     }
 
     setWorld() {
