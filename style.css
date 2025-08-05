@@ -194,7 +194,8 @@ p {
     height: 50px;
 }
 
-.menu-button-xsm:disabled {
+.menu-button-xsm:disabled,
+.button-soundbar:disabled {
     transform: scale(1);
     filter: drop-shadow(0 0 0);
     filter: grayscale(1);
@@ -224,13 +225,13 @@ p {
 }
 
 #music-mute {
-    background: url(./img/menu-screens/buttons/music-off.png);
+    background: url(./img/menu-screens/buttons/music-on.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 #sound-mute {
-    background: url(./img/menu-screens/buttons/sound-off.png);
+    background: url(./img/menu-screens/buttons/sound-on.png);
     background-size: contain;
     background-repeat: no-repeat;
 }

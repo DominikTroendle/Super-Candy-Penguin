@@ -29,7 +29,7 @@ export class World {
         bgMusic: Object.assign(document.createElement('audio'), {
             src: './audio/music/ES_Frosty Tale - Ludvig Moulin.mp3',
             loop: true,
-            volume: musicVolume
+            volume: musicMuted ? 0 : musicVolume
         })
     }
     
@@ -42,6 +42,8 @@ export class World {
         this.draw();
         this.run();
         setTimeout(() => this.backgroundMusic.bgMusic.play(), 1000);
+        console.log(this.backgroundMusic.bgMusic.volume);
+        
     }
 
     setWorld() {
