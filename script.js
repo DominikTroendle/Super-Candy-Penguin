@@ -3,6 +3,14 @@ let intervalIds = [];
 let soundControls = Array.from(document.querySelectorAll('.sound-control'));
 let musicVolume = 0.5;
 let soundVolume = 0.5;
+let volumeMap = {
+    "sound-down": () => soundVolume = Math.max(0, soundVolume - 0.1),
+    "sound-up": () => soundVolume = Math.min(0.5, soundVolume + 0.1),
+    "sound-mute": () => soundVolume = 0,
+    "music-down": () => musicVolume = Math.max(0, musicVolume - 0.1),
+    "music-up": () => musicVolume = Math.min(0.5, musicVolume + 0.1),
+    "music-mute": () => musicVolume = 0
+};
 
 function setStoppableInterval(fn, time) {
     let id = setInterval(fn, time);
@@ -52,18 +60,31 @@ soundControls.forEach(e => e.addEventListener('click', () => {
 }));
 
 function changeVolume(id) {
-    if (id === "sound-down" && soundVolume != 0) {
-        soundVolume -= 0.1;
-    } else if (id === "sound-up" && soundVolume != 0.5) {
-        soundVolume += 0.1;
-    } else if (id === "sound-mute") {
-        soundVolume = 0;
-    } else if (id === "music-down" && musicVolume != 0) {
-        musicVolume -= 0.1;
-    } else if (id === "music-up" && musicVolume != 0.5) {
-        musicVolume += 0.1;
-    } else if (id === "music-mute") {
-        musicVolume = 0;  
+    if (volumeMap[id]) {
+        volumeMap[id]();
+        soundVolume = Math.round(soundVolume * 10) / 10;
+        musicVolume = Math.round(musicVolume * 10) / 10;
+        localStorage.setItem('soundVolume', soundVolume);
+        localStorage.setItem('musicVolume', musicVolume);
+        changeVolumeDisplay(id);
     };
-    soundVolume = Math.round(soundVolume * 10) / 10;
 }
+
+function changeVolumeDisplay(id) {
+    let percent;
+    let type = id.split("-");
+    if (type[0] === "sound") {
+        percent = (soundVolume*100)*2;
+    } else {
+        percent = (musicVolume*100)*2;
+    };
+    document.getElementById(`${type[0]}-volume`).style.backgroundImage = `url('./img/menu-screens/buttons/soundbar-${percent}.png')`;
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    soundVolume = parseFloat(localStorage.getItem('soundVolume')) || 0.5;
+    musicVolume = parseFloat(localStorage.getItem('musicVolume')) || 0.5;
+
+    changeVolumeDisplay('sound-volume');
+    changeVolumeDisplay('music-volume');
+});
