@@ -37,6 +37,7 @@ export class Character extends MovableObject {
             if (this.isDead()) {
                 this.playAnimation('dead', this.IMAGES_DEAD, 45);
                 endGame('L');
+                setTimeout(() => this.world.backgroundMusic.bgMusic.pause(), 1200);
             } else if (this.isHurt()) {
                 this.playAnimation('hurt', this.IMAGES_HURT, 48);
             } else if (this.isAboveGround()) {

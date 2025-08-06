@@ -43,7 +43,6 @@ export class World {
         this.run();
         setTimeout(() => this.backgroundMusic.bgMusic.play(), 1000);
         console.log(this.backgroundMusic.bgMusic.volume);
-        
     }
 
     setWorld() {

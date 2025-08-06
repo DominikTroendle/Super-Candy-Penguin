@@ -4,15 +4,20 @@ let soundVolume = 0.5;
 let musicMuted = false;
 let soundMuted = false;
 let volumeMap = {
-    "sound-down": () => soundVolume = Math.max(0, soundVolume - 0.1),
-    "sound-up": () => soundVolume = Math.min(0.5, soundVolume + 0.1),
-    "sound-mute": () => soundMuted = !soundMuted,
+    "sound-down": () => clickSound.volume = soundVolume = Math.max(0, soundVolume - 0.1),
+    "sound-up": () => clickSound.volume = soundVolume = Math.min(0.5, soundVolume + 0.1),
+    "sound-mute": () => {
+        soundMuted = !soundMuted;
+        clickSound.volume = soundMuted ? 0 : soundVolume
+    },
     "music-down": () => musicVolume = Math.max(0, musicVolume - 0.1),
     "music-up": () => musicVolume = Math.min(0.5, musicVolume + 0.1),
     "music-mute": () => musicMuted = !musicMuted
 };
+let clickSound = new Audio('./audio/sounds/click.mp3');
 
 soundControls.forEach(e => e.addEventListener('click', () => {
+    clickSound.play();
     changeVolume(e.id);
 }));
 
@@ -21,13 +26,21 @@ function changeVolume(id) {
         volumeMap[id]();
         soundVolume = Math.round(soundVolume * 10) / 10;
         musicVolume = Math.round(musicVolume * 10) / 10;
-        localStorage.setItem('soundVolume', soundVolume);
-        localStorage.setItem('soundMuted', soundMuted);
-        localStorage.setItem('musicVolume', musicVolume);
-        localStorage.setItem('musicMuted', musicMuted);
+        setLocalStorage();
         changeVolumeDisplay(id);
     };
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+    getLocalStorage();
+    changeVolumeDisplay('sound-volume');
+    changeVolumeDisplay('music-volume');
+    if (soundMuted) {
+        changeVolumeDisplay('sound-mute');
+        clickSound.volume = 0;
+    };
+    if (musicMuted) changeVolumeDisplay('music-mute');
+});
 
 function changeVolumeDisplay(id) {
     let percent;
@@ -48,15 +61,18 @@ function changeVolumeDisplay(id) {
     };
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+function setLocalStorage() {
+    localStorage.setItem('soundVolume', soundVolume);
+    localStorage.setItem('soundMuted', soundMuted);
+    localStorage.setItem('musicVolume', musicVolume);
+    localStorage.setItem('musicMuted', musicMuted);
+}
+
+function getLocalStorage() {
     let storedSoundVolume = localStorage.getItem('soundVolume');
     let storedMusicVolume = localStorage.getItem('musicVolume');
-    soundVolume = storedSoundVolume !== null ? parseFloat(storedSoundVolume) : 0.5;
+    clickSound.volume = soundVolume = storedSoundVolume !== null ? parseFloat(storedSoundVolume) : 0.5;
     musicVolume = storedMusicVolume !== null ? parseFloat(storedMusicVolume) : 0.5;
     soundMuted = localStorage.getItem('soundMuted') === "true";
     musicMuted = localStorage.getItem('musicMuted') === "true";
-    changeVolumeDisplay('sound-volume');
-    changeVolumeDisplay('music-volume');
-    if (soundMuted) changeVolumeDisplay('sound-mute');
-    if (musicMuted) changeVolumeDisplay('music-mute');
-});
+}
