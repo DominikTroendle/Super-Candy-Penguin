@@ -104,14 +104,6 @@ export class MovableObject extends DrawableObject {
             this.y + this.bossCollisionOffset.top + this.bossCollisionOffset.width > character.y + this.collisionOffset.top;
     }
 
-    /* isTouching(object) {
-        return this.x + this.characterOffset.left + this.characterOffset.width > object.x &&
-            this.y + this.characterOffset.top + this.characterOffset.height > object.y &&
-            this.x + this.characterOffset.left < object.x + object.width &&
-            this.y + this.characterOffset.top < object.y + object.height;
-    } */
-   // slap function to be implemented in the future
-
     isJumpedOnTop(object) {
         return this.y + this.collisionOffset.top + this.collisionOffset.height >= this.groundY - object.height &&
             this.x + this.collisionOffset.left + this.collisionOffset.width > object.x &&

@@ -60,19 +60,22 @@ export class Character extends MovableObject {
             }
             if (this.world.keyboard.SPACE && !this.isAboveGround() && !this.isDead()) {
                 this.jump();
+                this.world.playSound('jump');
             }
             if (this.x < 3850 && !this.isBossfight) this.world.camera_x = -this.x;
         }, 1000 / 30);
     }
 
     checkCollisions() {
-        if (this.isBossfight && this.canBeHit() && this.world.endboss.bossIsAttacking(this)) {
+        if (this.isBossfight && this.canBeHit() && this.world.endboss.bossIsAttacking(this) && !this.isDead()) {
             this.hit();
+            this.world.playSound('hurt');
             this.world.statusbar.setPercentage(this.life);
         }
         this.world.level.enemies.forEach(enemy => {
-            if (this.isColliding(enemy) && this.canBeHit() && !this.isJumpedOnTop(enemy)) {
+            if (this.isColliding(enemy) && this.canBeHit() && !this.isJumpedOnTop(enemy) && !this.isDead()) {
                 this.hit();
+                this.world.playSound('hurt');
                 this.world.statusbar.setPercentage(this.life);
             };
         });

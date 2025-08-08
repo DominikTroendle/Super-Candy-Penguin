@@ -15,6 +15,7 @@ let volumeMap = {
     "music-mute": () => musicMuted = !musicMuted
 };
 let clickSound = new Audio('./audio/sounds/click.mp3');
+let menuMusic = new Audio('./audio/music/blizzard.mp3');
 
 soundControls.forEach(e => e.addEventListener('click', () => {
     clickSound.play();
@@ -40,6 +41,8 @@ window.addEventListener('DOMContentLoaded', () => {
         clickSound.volume = 0;
     };
     if (musicMuted) changeVolumeDisplay('music-mute');
+    menuMusic.volume = musicMuted ? 0 : musicVolume
+    menuMusic.play();
 });
 
 function changeVolumeDisplay(id) {

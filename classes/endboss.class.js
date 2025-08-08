@@ -56,6 +56,7 @@ export class Endboss extends Enemy {
         if (this.x === this.targetLocation) {
             this.generateTargetLocation();
             this.throwingAttack();
+            this.world.playSound('boss_throw');
         }
         if (this.targetLocation === this.lastLocation || this.x === this.targetLocation) return;
         this.otherDirection = this.x < this.targetLocation;
@@ -89,6 +90,8 @@ export class Endboss extends Enemy {
     checkSnowballCollision() {
         for (let i = 0; i < this.snowballs.length; i++) {
             if (this.world.character.isColliding(this.snowballs[i])) {
+                this.world.playSound('hit_snowball');
+                this.world.playSound('hurt');
                 this.world.character.hit();
                 this.world.statusbar.setPercentage(this.world.character.life);
                 return true;

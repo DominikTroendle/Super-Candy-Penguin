@@ -42,7 +42,6 @@ export class World {
         this.draw();
         this.run();
         setTimeout(() => this.backgroundMusic.bgMusic.play(), 1000);
-        console.log(this.backgroundMusic.bgMusic.volume);
     }
 
     setWorld() {
@@ -68,6 +67,7 @@ export class World {
             let candy = new ThrowableObject(this.character, this.character.x + 290, this.character.y + 200);
             this.throwableObjects.push(candy);
             this.candyCounter.decreaseCount(this.candyCounter);
+            this.playSound('throw');
         };
         this.throwableObjects = this.throwableObjects.filter(candy => {
             if (candy.y > 720) {
@@ -82,6 +82,7 @@ export class World {
     checkCandyCollision(candy) {
         for (let i = 0; i < this.level.enemies.length; i++) {
             if (candy.isHittingEnemy(this.level.enemies[i])) {
+                this.playSound('hit');
                 this.removeEnemy(i);
                 return true;
             };
@@ -165,5 +166,11 @@ export class World {
     resetCtx(object) {
         this.ctx.restore();
         object.x = object.x * -1;
+    }
+
+    playSound(key) {
+        let sound = new Audio(`./audio/sounds/${key}.mp3`);
+        sound.volume = soundMuted ? 0 : soundVolume;
+        sound.play();
     }
 }
