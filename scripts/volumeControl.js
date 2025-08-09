@@ -15,8 +15,8 @@ let volumeMap = {
     "music-mute": () => musicMuted = !musicMuted
 };
 let clickSound = new Audio('./audio/sounds/click.mp3');
-let winMusic = new Audio('./audio/music/winmutedguitar-39644.mp3')
-let gameOverMusic = new Audio('./audio/music/game-over-284367.mp3');
+let winMusic = new Audio('./audio/music/win-music.mp3')
+let gameOverMusic = new Audio('./audio/music/game-over-music.mp3');
 
 soundControls.forEach(e => e.addEventListener('click', () => {
     clickSound.play();
@@ -83,4 +83,9 @@ function playWinLoseMusic(status) {
     winMusic.volume = musicMuted ? 0 : musicVolume;
     gameOverMusic.volume = musicMuted ? 0 : musicVolume;
     status == "win-screen" ? winMusic.play() : gameOverMusic.play();
+}
+
+function pauseAllMusic() {
+    winMusic.pause();
+    gameOverMusic.pause();
 }

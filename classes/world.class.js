@@ -27,7 +27,12 @@ export class World {
 
     backgroundMusic = {
         bgMusic: Object.assign(document.createElement('audio'), {
-            src: './audio/music/ES_Frosty Tale - Ludvig Moulin.mp3',
+            src: './audio/music/background-music.mp3',
+            loop: true,
+            volume: musicMuted ? 0 : musicVolume
+        }),
+        bossMusic: Object.assign(document.createElement('audio'), {
+            src: './audio/music/bossfight_music.mp3',
             loop: true,
             volume: musicMuted ? 0 : musicVolume
         })
@@ -58,7 +63,11 @@ export class World {
             this.character.checkCollisions();
             this.checkThrowableObject();
             this.character.checkBossFight();
-            if (this.character.isBossfight) this.endboss.checkSnowballs();
+            if (this.character.isBossfight) {
+                this.endboss.checkSnowballs();
+                this.backgroundMusic.bgMusic.pause();
+                this.backgroundMusic.bossMusic.play();
+            }
         }, 100);
     }
 

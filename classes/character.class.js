@@ -28,7 +28,6 @@ export class Character extends MovableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.animate();
         console.log(intervalIds);
-        
         this.applyGravity();
     }
 
