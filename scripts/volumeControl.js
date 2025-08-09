@@ -15,7 +15,8 @@ let volumeMap = {
     "music-mute": () => musicMuted = !musicMuted
 };
 let clickSound = new Audio('./audio/sounds/click.mp3');
-let menuMusic = new Audio('./audio/music/blizzard.mp3');
+let winMusic = new Audio('./audio/music/winmutedguitar-39644.mp3')
+let gameOverMusic = new Audio('./audio/music/game-over-284367.mp3');
 
 soundControls.forEach(e => e.addEventListener('click', () => {
     clickSound.play();
@@ -41,8 +42,6 @@ window.addEventListener('DOMContentLoaded', () => {
         clickSound.volume = 0;
     };
     if (musicMuted) changeVolumeDisplay('music-mute');
-    menuMusic.volume = musicMuted ? 0 : musicVolume
-    menuMusic.play();
 });
 
 function changeVolumeDisplay(id) {
@@ -78,4 +77,10 @@ function getLocalStorage() {
     musicVolume = storedMusicVolume !== null ? parseFloat(storedMusicVolume) : 0.5;
     soundMuted = localStorage.getItem('soundMuted') === "true";
     musicMuted = localStorage.getItem('musicMuted') === "true";
+}
+
+function playWinLoseMusic(status) {
+    winMusic.volume = musicMuted ? 0 : musicVolume;
+    gameOverMusic.volume = musicMuted ? 0 : musicVolume;
+    status == "win-screen" ? winMusic.play() : gameOverMusic.play();
 }

@@ -81,6 +81,7 @@ export class Character extends MovableObject {
         });
         this.world.level.enemies = this.world.level.enemies.filter(enemy => {
             if (this.isJumpedOnTop(enemy)) {
+                this.world.playSound('jump_ontop');
                 return false;
             }
             return true;
@@ -88,6 +89,7 @@ export class Character extends MovableObject {
         this.world.level.candys = this.world.level.candys.filter(candy => {
             if (this.isColliding(candy)) {
                 this.world.candyCounter.increaseCount(this.world.candyCounter);
+                this.world.playSound('pickup_candy');
                 return false;
             }
             return true;
@@ -95,6 +97,7 @@ export class Character extends MovableObject {
         this.world.level.coins = this.world.level.coins.filter(coin => {
             if (this.isColliding(coin)) {
                 this.world.coinCounter.increaseCount(this.world.coinCounter);
+                this.world.playSound('pickup_coin');
                 return false;
             }
             return true;
@@ -103,6 +106,7 @@ export class Character extends MovableObject {
             if (this.isColliding(heart) && this.life < 100) {
                 this.life += 20;
                 this.world.statusbar.setPercentage(this.life);
+                this.world.playSound('pickup_heart');
                 return false;
             }
             return true;

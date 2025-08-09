@@ -89,6 +89,7 @@ export class World {
         };
         if (this.character.isBossfight) {
             if (candy.isHittingBoss(this.endboss)) {
+                this.playSound('hit');
                 this.endboss.isDamaged();
                 return true;
             };

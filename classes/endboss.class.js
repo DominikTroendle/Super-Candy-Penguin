@@ -48,7 +48,10 @@ export class Endboss extends Enemy {
 
     isDamaged() {
         this.health -= 10;
-        if (this.health <= 0) this.health = 0;
+        if (this.health <= 0) {
+            this.health = 0;
+            this.world.playSound('boss_dead');
+        };
         this.world.boss_healthbar.setPercentage(this.health);
     }
 

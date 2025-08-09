@@ -16,8 +16,6 @@ playButton.addEventListener('click', () => {
 });
 
 settingsButton.addEventListener('click', () => {
-    console.log(clickSound.volume);
-
     clickSound.play();
     resetOverlays();
     showOverlay('settings');

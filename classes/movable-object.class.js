@@ -119,6 +119,7 @@ export class MovableObject extends DrawableObject {
         } else {
             this.lastHit = new Date().getTime();
         }
+        if (this.life == 0) this.world.playSound('character_dead');
     }
 
     timeSinceLastHit() {

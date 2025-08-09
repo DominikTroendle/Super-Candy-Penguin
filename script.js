@@ -28,6 +28,7 @@ function endGame(condition) {
     condition === "W" ? overlay = "win-screen" : overlay = "game-over-screen";
     setTimeout(() => {
         document.getElementById(overlay).classList.remove('d-none');
+        playWinLoseMusic(overlay);
         intervalIds.forEach(clearInterval);
         intervalIds = [];
     }, 1200);
