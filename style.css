@@ -64,32 +64,91 @@ p {
 }
 
 #mobile-controls-left,
-#mobile-controls-left {
+#mobile-controls-right {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: flex-end;
 }
 
 #mobile-controls-left {
+    gap: 200px;
+}
 
+#mobile-controls-walking,
+#mobile-controls-actions,
+#mobile-controls-settings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-size: contain;
 }
 
 #mobile-controls-walking {
     width: 200px;
-    height: 75px;
+    height: 100px;
     border: 1px solid green;
+}
+
+#walk-left {
+    background: url(./img/menu-screens/buttons/button-left.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#walk-right {
+    background: url(./img/menu-screens/buttons/button-right.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #mobile-controls-actions {
     width: 200px;
-    height: 75px;
+    height: 100px;
     border: 1px solid red;
 }
 
+#jump {
+    background: url(./img/menu-screens/buttons/button-up.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#throw {
+    background: url(./img/menu-screens/buttons/button-throw.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 #mobile-controls-settings {
-    width: 200px;
-    height: 75px;
+    width: 100px;
+    height: 200px;
+    flex-direction: column;
     border: 1px solid yellow;
+}
+
+#mobile-sound-mute {
+    background: url(./img/menu-screens/buttons/sound-off.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#mobile-music-mute {
+    background: url(./img/menu-screens/buttons/music-off.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.mobile-control-button {
+    width:100px;
+    height:100px;
+    border: 1px solid white;
 }
 
 .overlay-screen {
