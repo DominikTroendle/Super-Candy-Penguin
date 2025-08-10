@@ -13,6 +13,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: url(./img/background/landscape.png);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 button {
@@ -33,8 +36,8 @@ h1 {
     margin: 20px 0;
     font-family: Chewy;
     font-size: 80px;
-    color: #4aceff;
-    text-shadow: 2px 2px 8px rgba(0 0 0 / 0.8);
+    color: #3b8ae6;
+    text-shadow: 3px 3px 5px rgba(0 0 0 / 0.8);
 }
 
 p {
@@ -46,16 +49,51 @@ p {
 }
 
 #overlays {
-    display: flex;
     position: absolute;
+    display: flex;
     flex-direction: column;
     align-items: center;
     width: 100dvw;
     height: 100dvh;
 }
 
+#mobile-controls {
+    width: 1280px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#mobile-controls-left,
+#mobile-controls-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#mobile-controls-left {
+
+}
+
+#mobile-controls-walking {
+    width: 200px;
+    height: 75px;
+    border: 1px solid green;
+}
+
+#mobile-controls-actions {
+    width: 200px;
+    height: 75px;
+    border: 1px solid red;
+}
+
+#mobile-controls-settings {
+    width: 200px;
+    height: 75px;
+    border: 1px solid yellow;
+}
+
 .overlay-screen {
-    margin-top: 145px;
+    margin-top: 144px;
     width: 1280px;
     height: 720px;
 }
