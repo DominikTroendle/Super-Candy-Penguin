@@ -85,7 +85,9 @@ function playWinLoseMusic(status) {
     status == "win-screen" ? winMusic.play() : gameOverMusic.play();
 }
 
-function pauseAllMusic() {
+function stopAllMusic() {
     winMusic.pause();
+    winMusic.currentTime = 0;
     gameOverMusic.pause();
+    gameOverMusic.currentTime = 0;
 }

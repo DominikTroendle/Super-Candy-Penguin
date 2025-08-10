@@ -21,13 +21,15 @@ function changeStartAnimation() {
     document.getElementById('penguin-animated').classList.add('penguin-animation-jump');
 }
 
-function endGame(condition) {
+function endGame(condition, coins) {
     let overlay;
+    let collectedCoinsDisplay = Array.from(document.querySelectorAll('.collected-coins'));
     if (gameEnded) return;
     gameEnded = true;
     condition === "W" ? overlay = "win-screen" : overlay = "game-over-screen";
     setTimeout(() => {
         document.getElementById(overlay).classList.remove('d-none');
+        collectedCoinsDisplay.forEach(e => e.innerText = coins);
         playWinLoseMusic(overlay);
         intervalIds.forEach(clearInterval);
         intervalIds = [];

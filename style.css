@@ -79,7 +79,7 @@ p {
     gap: 15px;
 }
 
-#container-buttons {
+.container-buttons {
     display: flex;
     flex-direction: column;
     width: 230px;
@@ -334,6 +334,22 @@ p {
 
 #game-over-screen {
     background-image: url(./img/menu-screens/backgrounds/game-over.png);
+}
+
+.container-collectables {
+    margin: 50px 0 0 120px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-collectables p {
+    color: white;
+}
+
+.container-collectables p:nth-child(2) {
+    color: orange;
 }
 
 canvas {

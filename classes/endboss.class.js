@@ -32,7 +32,7 @@ export class Endboss extends Enemy {
         setStoppableInterval(() => {
             if (this.health <= 0) {
                 this.playAnimation('dead', this.IMAGES_DEATH, 10);
-                endGame('W');
+                endGame('W', this.world.coinCounter.currentAmount);
                 setTimeout(() => this.world.backgroundMusic.bossMusic.pause(), 1200);
             } else if (this.bossIsAttacking(this.character) && !this.character.isDead()) {
                 this.faceCharacter();

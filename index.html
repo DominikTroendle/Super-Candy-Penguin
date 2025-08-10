@@ -16,7 +16,7 @@
 <body>
     <div id="overlays">
         <div id="start-screen" class="overlay-screen">
-            <div id="container-buttons">
+            <div class="container-buttons">
                 <button id="button-play" class="menu-button btn-hover button-clickable">PLAY</button>
                 <button id="button-settings" class="menu-button btn-hover button-clickable">SETTINGS</button>
                 <button id="button-controls" class="menu-button-sm btn-hover button-clickable"></button>
@@ -81,15 +81,25 @@
             </button>
         </div>
         <div id="win-screen" class="overlay-screen end-screen d-none">
-            <div id="container-buttons">
+            <div class="container-buttons">
                 <button class="menu-button replay-button btn-hover button-clickable">PLAY AGAIN</button>
                 <button class="menu-button start-screen-button btn-hover button-clickable">MENU</button>
             </div>
+            <div class="container-collectables">
+                <p>Collected</p>
+                <p class="collected-coins">0</p>
+                <p>coins</p>
+            </div>
         </div>
         <div id="game-over-screen" class="overlay-screen end-screen d-none">
-            <div id="container-buttons">
+            <div class="container-buttons">
                 <button class="menu-button replay-button btn-hover button-clickable">PLAY AGAIN</button>
                 <button class="menu-button start-screen-button btn-hover button-clickable">MENU</button>
+            </div>
+            <div class="container-collectables">
+                <p>Collected</p>
+                <p class="collected-coins">0</p>
+                <p>coins</p>
             </div>
         </div>
     </div>

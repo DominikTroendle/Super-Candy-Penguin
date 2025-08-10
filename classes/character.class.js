@@ -35,7 +35,7 @@ export class Character extends MovableObject {
         setStoppableInterval(() => {
             if (this.isDead()) {
                 this.playAnimation('dead', this.IMAGES_DEAD, 45);
-                endGame('L');
+                endGame('L', this.world.coinCounter.currentAmount);
                 setTimeout(() => this.world.backgroundMusic.bgMusic.pause(), 1200);
             } else if (this.isHurt()) {
                 this.playAnimation('hurt', this.IMAGES_HURT, 48);
