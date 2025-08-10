@@ -3,7 +3,7 @@ import { Statusbar } from '../classes/statusbar.class.js';
 import { CoinCounter } from '../classes/coin-counter.class.js';
 import { CandyCounter } from '../classes/candy-counter.class.js';
 import { ThrowableObject } from '../classes/throwable-object.class.js';
-import { level1 } from '../levels/level1.js';
+import { Level1 } from '../levels/level1.class.js';
 import { Enemy } from "../classes/enemy.class.js";
 import { Endboss } from '../classes/endboss.class.js';
 import { Counter } from './counter.class.js';
@@ -23,7 +23,7 @@ export class World {
     throwableObjects = [];
     endboss = new Endboss();
     boss_healthbar = new BossHealthbar();
-    level = level1;
+    level = new Level1();
 
     backgroundMusic = {
         bgMusic: Object.assign(document.createElement('audio'), {

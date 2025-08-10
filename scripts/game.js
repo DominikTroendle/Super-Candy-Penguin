@@ -31,7 +31,7 @@ replayButtons.forEach(e => e.addEventListener('click', () => {
     clickSound.play();
     gameEnded = false;
     resetOverlays();
-    pauseAllMusic()
+    pauseAllMusic();
     init();
 }));
 
