@@ -10,6 +10,7 @@ function showGame() {
     changeStartAnimation();
     setTimeout(() => {
         resetOverlays();
+        if (window.innerWidth < 1400) document.getElementById('mobile-controls').classList.remove('d-none');
         document.getElementById('penguin-animated').classList.remove('penguin-animation-jump');
     }, 1000);
 }
@@ -27,6 +28,7 @@ function endGame(condition, coins) {
     if (gameEnded) return;
     gameEnded = true;
     condition === "W" ? overlay = "win-screen" : overlay = "game-over-screen";
+    resetOverlays();
     setTimeout(() => {
         document.getElementById(overlay).classList.remove('d-none');
         collectedCoinsDisplay.forEach(e => e.innerText = coins);
@@ -37,7 +39,7 @@ function endGame(condition, coins) {
 }
 
 function resetOverlays() {
-    let overlays = ['start-screen', 'win-screen', 'game-over-screen', 'controls', 'settings'];
+    let overlays = ['start-screen', 'win-screen', 'game-over-screen', 'controls', 'settings', 'mobile-controls'];
     overlays.forEach((str) => {
         document.getElementById(str).classList.add('d-none');
     });
