@@ -10,6 +10,8 @@
 
 body {
     margin: 0;
+    min-width: 100dvw;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,16 +51,21 @@ p {
 }
 
 #overlays {
+    margin-top: 144px;
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100dvw;
-    height: 100dvh;
+    width: 1280px;
+    height: 720px;
+}
+
+.overlay-screen {
+    width: 100%;
+    height: 100%;
 }
 
 #mobile-controls {
-    width: 1280px;
     display: flex;
     justify-content: space-between;
 }
@@ -149,15 +156,9 @@ p {
 }
 
 .mobile-control-button {
-    width:100px;
-    height:100px;
+    width: 100px;
+    height: 100px;
     border: 1px solid white;
-}
-
-.overlay-screen {
-    margin-top: 144px;
-    width: 1280px;
-    height: 720px;
 }
 
 .settings-screen {
@@ -458,6 +459,12 @@ canvas {
 }
 
 @media only screen and (max-width: 1280px) {
+    body {
+        height: 100dvh;
+        width: 100dvw;
+        flex-direction: row;
+    }
+
     h1 {
         display: none;
     }
@@ -470,9 +477,17 @@ canvas {
         gap: 200px;
     }
 
+    #overlays {
+        width: 100%;
+        justify-content: center;
+    }
+
     .overlay-screen {
         width: 100%;
-        height: 77%;
+        /* aspect-ratio: auto 1280 / 720; */
+        height: 77.78%;
+        margin: 0;
+        border: 1px solid red;
     }
 
     #start-screen {
@@ -491,6 +506,7 @@ canvas {
 
     canvas {
         width: 100%;
+        border: 1px solid yellow;
     }
 }
 
