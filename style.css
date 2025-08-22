@@ -18,13 +18,14 @@ body {
     background: url(./img/background/landscape.png);
     background-position: center;
     background-repeat: no-repeat;
+    font-size: 62.5%;
 }
 
 button {
     border: unset;
     font-family: Chewy;
     color: #4aaeff;
-    font-size: 38px;
+    font-size: clamp(16px, calc(38 / 1280 * 100vw), 38px);
     cursor: pointer;
 }
 
@@ -37,7 +38,7 @@ button {
 h1 {
     margin: 20px 0;
     font-family: Chewy;
-    font-size: 80px;
+    font-size: 8em;
     color: #3b8ae6;
     text-shadow: 3px 3px 5px rgba(0 0 0 / 0.8);
 }
@@ -45,19 +46,19 @@ h1 {
 p {
     margin-right: 25px;
     font-family: Chewy;
-    font-size: 45px;
+    font-size: 4.5em;
     color: #4aceff;
     text-shadow: 2px 2px 8px rgba(0 0 0 / 0.8);
 }
 
 #overlays {
+    width: 1280px;
+    height: 720px;
     margin-top: 144px;
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 1280px;
-    height: 720px;
 }
 
 .overlay-screen {
@@ -246,7 +247,7 @@ p {
 
 .binding {
     font-family: Chewy;
-    font-size: 45px;
+    font-size: 4.5em;
     color: #4aceff;
     text-shadow: 2px 2px 5px rgba(0 0 0 / 0.8);
 }
@@ -256,7 +257,7 @@ p {
     align-items: center;
     justify-content: center;
     font-family: Chewy;
-    font-size: 30px;
+    font-size: 3em;
     color: #1ba8db;
     text-shadow: 2px 2px 2px rgba(0 0 0 / 0.8);
 }
@@ -353,9 +354,7 @@ p {
 }
 
 #penguin-animated {
-    margin-top: 390px;
-    margin-left: 40px;
-    position: relative;
+    margin: 390px 0 0 40px;
     background-image: url('./img/menu-screens/sprite-sheets/penguin-idle-sprite-sheet.png');
     background-repeat: no-repeat;
 }
@@ -469,23 +468,19 @@ canvas {
         display: none;
     }
 
-    #mobile-controls {
-        width: 100%;
-    }
-
     #mobile-controls-left {
         gap: 200px;
     }
 
     #overlays {
-        width: 100%;
+        margin: 0;
         justify-content: center;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1280 / 720;
     }
 
     .overlay-screen {
-        width: 100%;
-        /* aspect-ratio: auto 1280 / 720; */
-        height: 77.78%;
         margin: 0;
         border: 1px solid red;
     }
@@ -497,15 +492,41 @@ canvas {
 
     .container-buttons {
         width: 18%;
-        margin: 11.75% 0 0 7.85%;
+        margin: 11.7% 0 0 7.8%;
     }
 
     .menu-button {
-        height: 14.92%;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 230 / 85;
+    }
+
+    .menu-button-sm {
+        width: 26%;
+    }
+
+    #penguin-animated {
+        margin: 30.4% 0 0 3%;
+        width: 11.6%;
+        height: 16%;
+        animation: none;
+        background-image: url(./img/characters/Character02/Idle/Character-Idle-StartScreen.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    #lettering {
+        width: 56.3%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 
     canvas {
         width: 100%;
+        height: auto;
+        aspect-ratio: 1280 / 720;
         border: 1px solid yellow;
     }
 }
