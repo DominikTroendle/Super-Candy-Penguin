@@ -341,8 +341,14 @@ p {
     margin-left: 35px;
 }
 
-.home-button {
+.container-home-button {
+    width: 230px;
     margin: 0 0 150px 150px;
+    align-self: flex-start;
+}
+
+.home-button {
+    width: 100%;
     align-self: flex-start;
 }
 
@@ -485,7 +491,9 @@ canvas {
         border: 1px solid red;
     }
 
-    #start-screen {
+    #start-screen,
+    #settings,
+    #controls {
         background-size: contain;
         background-repeat: no-repeat;
     }
@@ -507,8 +515,8 @@ canvas {
 
     #penguin-animated {
         margin: 30.4% 0 0 3%;
-        width: 11.6%;
-        height: 16%;
+        width: 11.7%;
+        height: 28.7%;
         animation: none;
         background-image: url(./img/characters/Character02/Idle/Character-Idle-StartScreen.png);
         background-position: center;
@@ -523,11 +531,38 @@ canvas {
         background-position: center;
     }
 
+    #header-img-settings {
+        width: 50.2%;
+        height: auto;
+        aspect-ratio: 643 / 130;
+    }
+
+    .container-volume-controls {
+        width: 58.43%;
+        height: auto;
+        aspect-ratio: 748 / 130;
+    }
+
+    .container-home-button {
+        margin: 0 0 11.7% 11.7%;
+        width: 17.96%;
+        height: auto;
+        aspect-ratio: 230 / 85;
+    }
+
     canvas {
         width: 100%;
         height: auto;
         aspect-ratio: 1280 / 720;
         border: 1px solid yellow;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container-buttons {
+        gap: 10px;
+        width: 22%;
+        margin: 11.7% 0 0 4%;
     }
 }
 

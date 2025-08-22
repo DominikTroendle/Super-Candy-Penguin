@@ -10,16 +10,18 @@ function showGame() {
     changeStartAnimation();
     setTimeout(() => {
         resetOverlays();
-        if (window.innerWidth < 1400) document.getElementById('mobile-controls').classList.remove('d-none');
+        if (window.innerWidth < 1280) document.getElementById('mobile-controls').classList.remove('d-none');
         document.getElementById('penguin-animated').classList.remove('penguin-animation-jump');
     }, 1000);
 }
 
 function changeStartAnimation() {
-    document.getElementById('penguin-animated').classList.remove('penguin-animation-idle');
-    document.getElementById('penguin-animated').style.backgroundImage = "url('./img/menu-screens/sprite-sheets/penguin-jump-sprite-sheet.png')";
-    document.getElementById('start-screen').style.gap = '11.5px';
-    document.getElementById('penguin-animated').classList.add('penguin-animation-jump');
+    if (window.innerWidth >= 1280) {
+        document.getElementById('penguin-animated').classList.remove('penguin-animation-idle');
+        document.getElementById('penguin-animated').style.backgroundImage = "url('./img/menu-screens/sprite-sheets/penguin-jump-sprite-sheet.png')";
+        document.getElementById('start-screen').style.gap = '11.5px';
+        document.getElementById('penguin-animated').classList.add('penguin-animation-jump');
+    }
 }
 
 function endGame(condition, coins) {
