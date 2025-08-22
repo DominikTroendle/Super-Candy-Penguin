@@ -494,7 +494,6 @@ canvas {
 
     .overlay-screen {
         margin: 0;
-        border: 1px solid red;
     }
 
     #start-screen,
@@ -574,15 +573,36 @@ canvas {
         width: 100%;
         height: auto;
         aspect-ratio: 1280 / 720;
-        border: 1px solid yellow;
     }
 }
 
 @media only screen and (max-width: 768px) {
+    p {
+        margin-right: 15px;
+    }
+    
     .container-buttons {
         gap: 10px;
         width: 22%;
         margin: 11.7% 0 0 4%;
+    }
+
+    #start-screen {
+        gap: 10px;
+    }
+
+    .container-volume-controls {
+        gap: 10px;
+    }
+
+    .button-mute {
+        margin-left: 15px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .container-volume-controls {
+        gap: 5px;
     }
 }
 
