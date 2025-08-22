@@ -46,7 +46,7 @@ h1 {
 p {
     margin-right: 25px;
     font-family: Chewy;
-    font-size: 4.5em;
+    font-size: clamp(16px, calc(45 / 1280 * 100vw), 45px);
     color: #4aceff;
     text-shadow: 2px 2px 8px rgba(0 0 0 / 0.8);
 }
@@ -329,12 +329,18 @@ p {
     background: url(./img/menu-screens/buttons/music-on.png);
     background-size: contain;
     background-repeat: no-repeat;
+    width: 60px;
+    height: auto;
+    aspect-ratio: 1 / 1;
 }
 
 #sound-mute {
     background: url(./img/menu-screens/buttons/sound-on.png);
     background-size: contain;
     background-repeat: no-repeat;
+    width: 60px;
+    height: auto;
+    aspect-ratio: 1 / 1;
 }
 
 .button-mute {
@@ -531,6 +537,10 @@ canvas {
         background-position: center;
     }
 
+    #settings {
+        gap: 13.88%;
+    }
+
     #header-img-settings {
         width: 50.2%;
         height: auto;
@@ -541,6 +551,16 @@ canvas {
         width: 58.43%;
         height: auto;
         aspect-ratio: 748 / 130;
+    }
+
+    .button-soundbar {
+        height: auto;
+        aspect-ratio: 365 / 50;
+    }
+
+    .menu-button-xsm {
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 
     .container-home-button {
