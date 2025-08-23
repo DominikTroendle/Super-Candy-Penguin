@@ -320,7 +320,7 @@ p {
 
 .button-soundbar {
     background: url(./img/menu-screens/buttons/soundbar-100.png);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     width: 368px;
     height: 50px;
@@ -539,7 +539,7 @@ canvas {
     }
 
     #settings {
-        gap: 13.88%;
+        gap: 12.5%;
     }
 
     #header-img-settings {
@@ -549,19 +549,33 @@ canvas {
     }
 
     .container-volume-controls {
-        width: 58.43%;
+        width: 70%;
         height: auto;
-        aspect-ratio: 748 / 130;
+    }
+
+    p {
+        width: 11.1%;
+        margin-right: 3.3%;
     }
 
     .button-soundbar {
+        background-position: center;
+        background-size: contain;
+        width: 49.2%;
         height: auto;
-        aspect-ratio: 365 / 50;
+        aspect-ratio: 368 / 50;
     }
 
     .menu-button-xsm {
+        width: 8%;
         height: auto;
         aspect-ratio: 1 / 1;
+    }
+
+    #sound-mute,
+    #music-mute {
+        width: 8%;
+        margin-left: 4.7%;
     }
 
     .container-home-button {
@@ -617,10 +631,6 @@ canvas {
 }
 
 @media only screen and (max-width: 768px) {
-    p {
-        margin-right: 15px;
-    }
-    
     .container-buttons {
         gap: 10px;
         width: 22%;
@@ -635,10 +645,6 @@ canvas {
         gap: 10px;
     }
 
-    .button-mute {
-        margin-left: 15px;
-    }
-
     .keybindings-row {
         gap: 25px;
     }
@@ -648,11 +654,58 @@ canvas {
     .container-volume-controls {
         gap: 5px;
     }
+
+    #settings {
+        gap: 12%;
+    }
 }
 
 @media only screen and (max-width: 500px) {
     .keybindings-row {
         gap: 15px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #start-screen {
+        gap: 5px;
+    }
+
+    .container-buttons {
+        width: 25%;
+        margin: 11.7% 0 0 3%;
+        gap: 5px;
+    }
+
+    .menu-button {
+        aspect-ratio: 230 / 90;
+    }
+
+    #penguin-animated {
+        margin: 30.4% 0 0 2%;
+    }
+
+    p {
+        line-height: 16px;
+    }
+
+    .container-keybindings {
+        width: 65%;
+    }
+
+    .row-left,
+    .row-right {
+        gap: 5px;
+    }
+
+    .binding {
+        line-height: 16px;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .container-keybindings {
+        width: 80%;
     }
 }
 
