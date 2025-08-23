@@ -78,10 +78,6 @@ p {
     justify-content: flex-end;
 }
 
-#mobile-controls-left {
-    gap: 200px;
-}
-
 #mobile-controls-walking,
 #mobile-controls-actions,
 #mobile-controls-settings {
@@ -615,6 +611,36 @@ canvas {
         width: 42.7%;
         height: auto;
         aspect-ratio: 161 / 60;
+    }
+
+    #mobile-controls-left,
+    #mobile-controls-right {
+        height: 100%;
+        width: 17.2%; 
+    }
+
+    #mobile-controls-walking,
+    #mobile-controls-actions {
+        width: 90.9%;
+        height: auto;
+        aspect-ratio: 2 / 1;
+        gap: 9.1%;
+    }
+
+    #mobile-controls-walking {
+        margin: 0 0 9.1% 9.1%;
+    }
+
+    #mobile-controls-actions {
+        margin: 0 9.1% 9.1% 0;
+    }
+
+    #walk-left,
+    #walk-right,
+    #jump,
+    #throw {
+        width: 100%;
+        height: 100%;
     }
 
     canvas {
