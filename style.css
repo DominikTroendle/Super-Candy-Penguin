@@ -43,7 +43,7 @@ h1 {
     text-shadow: 3px 3px 5px rgba(0 0 0 / 0.8);
 }
 
-p {
+.text-settings {
     margin-right: 25px;
     font-family: Chewy;
     font-size: clamp(16px, calc(45 / 1280 * 100vw), 45px);
@@ -428,6 +428,11 @@ p {
     animation: fade-in 1s normal;
 }
 
+.text-win-end-screen {
+    font-family: Chewy;
+    font-size: clamp(16px, calc(45 / 1280 * 100vw), 45px);
+}
+
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -467,7 +472,7 @@ canvas {
     background-color: black;
 }
 
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1280px) and (max-height: 720px) {
     body {
         height: 100dvh;
         width: 100dvw;
@@ -549,7 +554,7 @@ canvas {
         height: auto;
     }
 
-    p {
+    .text-settings {
         width: 11.1%;
         margin-right: 3.3%;
     }
@@ -643,6 +648,15 @@ canvas {
         height: 100%;
     }
 
+    .end-screen {
+        background-position: right 8.6% center;
+    }
+
+    .container-collectables {
+        margin: 6.7% 0 0 9.4%;
+        width: 15.63%;
+    }
+
     canvas {
         width: 100%;
         height: auto;
@@ -673,6 +687,10 @@ canvas {
 
     .keybindings-row {
         gap: 25px;
+    }
+
+    .margin-sm {
+        margin: 6% 0 0 7%;
     }
 }
 
@@ -711,7 +729,7 @@ canvas {
         margin: 30.4% 0 0 2%;
     }
 
-    p {
+    .text-settings {
         line-height: 16px;
     }
 
@@ -727,15 +745,58 @@ canvas {
     .binding {
         line-height: 16px;
     }
+
+    .margin-sm {
+        margin: 5% 0 0 7%;
+    }
+
+    .text-win-end-screen {
+        line-height: 18px;
+    }
 }
 
 @media only screen and (max-width: 390px) {
     .container-keybindings {
         width: 80%;
     }
+
+    .replay-button {
+        font-size: 14px;
+    }
+
+    .text-win-end-screen {
+        line-height: 16px;
+    }
 }
 
-@media only screen and (max-height: 720px) {
+@media only screen and (max-width: 330px) {
+    .replay-button {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-height: 865px) {
+    h1 {
+        display: none;
+    }
+
+    body {
+        height: 100dvh;
+        width: 100dvw;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    #overlays {
+        margin: 0;
+    }
+
+    .overlay-screen {
+        margin: 0;
+    }
+}
+
+/* @media only screen and (max-height: 720px) {
     .overlay-screen {
         height: 100vh;
     }
@@ -743,4 +804,4 @@ canvas {
     canvas {
         height: 100vh;
     }
-}
+} */

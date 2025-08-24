@@ -15,7 +15,7 @@
 </head>
 <body>
     <div id="overlays">
-        <div id="mobile-controls" class="overlay-screen">
+        <div id="mobile-controls" class="overlay-screen d-none">
             <div id="mobile-controls-left">
                 <div id="mobile-controls-walking">
                     <div id="walk-left" class="mobile-control-button"></div>
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div id="start-screen" class="overlay-screen d-none">
+        <div id="start-screen" class="overlay-screen">
             <div class="container-buttons">
                 <button id="button-play" class="menu-button btn-hover button-clickable">PLAY</button>
                 <button id="button-settings" class="menu-button btn-hover button-clickable">SETTINGS</button>
@@ -78,14 +78,14 @@
             <div id="header-img-settings"></div>
             <div class="container-volume-controls">
                 <div class="volume-controls">
-                    <p>Sound</p>
+                    <p class="text-settings">Sound</p>
                     <button id="sound-down" class="menu-button-xsm btn-hover btn-down sound-control"></button>
                     <button id="sound-volume" class="button-soundbar"></button>
                     <button id="sound-up" class="menu-button-xsm btn-hover btn-up sound-control"></button>
                     <button id="sound-mute" class="button-mute btn-hover sound-control"></button>
                 </div>
                 <div class="volume-controls">
-                    <p>Music</p>
+                    <p class="text-settings">Music</p>
                     <button id="music-down" class="menu-button-xsm btn-hover btn-down sound-control"></button>
                     <button id="music-volume" class="button-soundbar"></button>
                     <button id="music-up" class="menu-button-xsm btn-hover btn-up sound-control"></button>
@@ -103,10 +103,10 @@
                 <button class="menu-button replay-button btn-hover button-clickable">PLAY AGAIN</button>
                 <button class="menu-button start-screen-button btn-hover button-clickable">MENU</button>
             </div>
-            <div class="container-collectables">
-                <p>Collected</p>
-                <p class="collected-coins">0</p>
-                <p>coins</p>
+            <div class="container-collectables margin-sm">
+                <p class="text-win-end-screen">Collected</p>
+                <p class="text-win-end-screen collected-coins">0</p>
+                <p class="text-win-end-screen">coins</p>
             </div>
         </div>
         <div id="game-over-screen" class="overlay-screen end-screen d-none">
@@ -114,10 +114,10 @@
                 <button class="menu-button replay-button btn-hover button-clickable">PLAY AGAIN</button>
                 <button class="menu-button start-screen-button btn-hover button-clickable">MENU</button>
             </div>
-            <div class="container-collectables">
-                <p>Collected</p>
-                <p class="collected-coins">0</p>
-                <p>coins</p>
+            <div class="container-collectables margin-sm">
+                <p class="text-win-end-screen">Collected</p>
+                <p class="text-win-end-screen collected-coins">0</p>
+                <p class="text-win-end-screen">coins</p>
             </div>
         </div>
     </div>
