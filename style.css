@@ -10,7 +10,7 @@
 
 body {
     margin: 0;
-    min-width: 10dvw;
+    min-width: 100vw;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -18,6 +18,7 @@ body {
     background: url(./img/background/landscape.png);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
     font-size: 62.5%;
 }
 
@@ -472,12 +473,99 @@ canvas {
     background-color: black;
 }
 
-@media only screen and ((min-width: 1280px) and (max-height: 720px)),
-       only screen and ((max-width: 1280px) and (min-height: 720px)) {
+@media only screen and ((max-width: 1280px) and (min-aspect-ratio: 16/9)) {
+    #overlays {
+        margin: 0;
+        justify-content: center;
+    }
+
+    #overlays,
+    canvas {
+        width: auto;
+        height: 100vh;
+        aspect-ratio: 1280 / 720;
+    }
+
+    button,
+    .binding,
+    .text-settings {
+        font-size: clamp(16px, calc(38 / 720 * 100vh), 38px);
+    }
+}
+
+@media only screen and ((max-width: 1280px) and (max-aspect-ratio: 16/9)) {
+    #overlays {
+        margin: 0;
+        justify-content: center;
+    }
+
+    #overlays,
+    canvas {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1280 / 720;
+    }
+}
+
+/* @media only screen and ((min-width: 1280px) and (max-height: 865px)) {
+    #overlays {
+        margin: 0;
+    }
+
+    .overlay-screen {
+        margin: 0;
+    }
+} */
+
+@media only screen and (max-height: 865px) {
+    h1 {
+        display: none;
+    }
+
     body {
         height: 100vh;
         width: 100vw;
         flex-direction: row;
+        justify-content: center;
+    }
+
+    #overlays {
+        margin: 0;
+    }
+
+    /* #overlays {
+        margin: 0;
+        height: 100vh;
+        width: calc(100vh * (1280 / 720));
+    }
+
+    .overlay-screen {
+        margin: 0;
+    }
+
+    canvas {
+        height: 100vh;
+        width: auto;
+    } */
+}
+
+@media only screen and (max-height: 720px) {
+    #overlays {
+        height: 100vh;
+        width: calc((100vh / 56.25) * 100);
+    }
+
+    canvas {
+        height: 100vh;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        flex-direction: row;
+        justify-content: center;
     }
 
     h1 {
@@ -650,76 +738,6 @@ canvas {
         width: 15.63%;
     }
 }
-
-@media only screen and (min-width: 1280px) and (max-height: 720px) {
-    #overlays {
-        margin: 0;
-        justify-content: center;
-        width: auto;
-        height: 100vh;
-        aspect-ratio: 1280 / 720;
-    }
-
-    canvas {
-        width: auto;
-        height: 100vh;
-        aspect-ratio: 1280 / 720;
-    }
-
-    button,
-    .binding,
-    .text-settings {
-        font-size: clamp(16px, calc(38 / 720 * 100vh), 38px);
-    }
-}
-
-@media only screen and (max-width: 1280px) and (min-height: 720px) {
-    #overlays {
-        margin: 0;
-        justify-content: center;
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1280 / 720;
-    }
-
-    canvas {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1280 / 720;
-    }
-}
-
-@media only screen and (max-height: 865px) {
-    h1 {
-        display: none;
-    }
-
-    body {
-        height: 100vh;
-        width: 100vw;
-        flex-direction: row;
-        justify-content: center;
-    }
-
-    #overlays {
-        margin: 0;
-    }
-
-    .overlay-screen {
-        margin: 0;
-    }
-}
-
-/* @media only screen and (max-height: 720px) {
-    #overlays {
-        height: 100vh;
-        width: calc((100vh / 56.25) * 100);
-    }
-
-    canvas {
-        height: 100vh;
-    }
-} */
 
 @media only screen and (max-width: 825px) {
     .keybindings-row {
