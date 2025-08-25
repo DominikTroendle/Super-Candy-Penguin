@@ -45,7 +45,9 @@ h1 {
 }
 
 .text-settings {
-    margin-right: 25px;
+    /* margin-right: 25px; */
+    width: 11.1%;
+    margin-right: 3.3%;
     font-family: Chewy;
     font-size: clamp(16px, calc(45 / 1280 * 100vw), 45px);
     color: #4aceff;
@@ -164,13 +166,15 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    gap: 100px;
+    /* gap: 100px; */
+    gap: 12.5%;
 }
 
 #start-screen,
 #controls,
 #settings {
     background-image: url(./img/menu-screens/backgrounds/start-background-plain.png);
+    background-size: cover;
 }
 
 #start-screen {
@@ -181,34 +185,48 @@ h1 {
 .container-buttons {
     display: flex;
     flex-direction: column;
-    width: 230px;
+    /* width: 230px; */
+    width: 18%;
     gap: 15px;
-    margin: 150px 0 0 100px;
+    /* margin: 150px 0 0 100px; */
+    margin: 11.7% 0 0 7.8%;
 }
 
 .menu-button {
-    height: 85px;
+    /* height: 85px; */
+    width: 100%;
+    height: auto;
+    aspect-ratio: 230 / 85;
     background: url(./img/menu-screens/buttons/menu-button.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .menu-button-sm {
-    width: 60px;
-    height: 60px;
+    /* width: 60px; */
+    width: 26%;
+    /* height: 60px; */
+    height: 26%;
 }
 
 #header-img-settings {
-    width: 643px;
-    height: 130px;
+    /* width: 643px; */
+    /* height: 130px; */
+    width: 50.2%;
+    height: auto;
+    aspect-ratio: 643 / 130;
     background: url(./img/menu-screens/backgrounds/settings.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 #header-img-controls {
-    width: 622px;
-    height: 130px;
+    /* width: 622px; */
+    /* height: 130px; */
+    margin-top: 2.4%;
+    width: 50.2%;
+    height: auto;
+    aspect-ratio: 643 / 130;
     background: url(./img/menu-screens/backgrounds/controls.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -219,7 +237,8 @@ h1 {
 }
 
 .container-keybindings {
-    width: 800px;
+    /* width: 800px; */
+    width: 62.5%;
     height: 325px;
     display: flex;
     flex-direction: column;
@@ -228,7 +247,8 @@ h1 {
 
 .keybindings-row {
     width: 100%;
-    height: 80px;
+    /* height: 80px; */
+    height: 24.6%;
     display: flex;
     gap: 50px;
 }
@@ -262,22 +282,30 @@ h1 {
 }
 
 .key-sm {
-    width: 60px;
-    height: 60px;
+    /* width: 60px; */
+    /* height: 60px; */
+    width: 16%;
+    height: auto;
+    aspect-ratio: 1 / 1;
     background: url(./img/menu-screens/buttons/empty.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .key-bg {
-    width: 161px;
-    height: 60px;
+    /* width: 161px; */
+    /* height: 60px; */
+    width: 42.7%;
+    height: auto;
+    aspect-ratio: 161 / 60;
     background: url(./img/menu-screens/buttons/menu-button.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .container-volume-controls {
+    width: 70%;
+    height: auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -290,8 +318,11 @@ h1 {
 }
 
 .menu-button-xsm {
-    width: 50px;
-    height: 50px;
+    /* width: 50px; */
+    /* height: 50px; */
+    width: 8%;
+    height: auto;
+    aspect-ratio: 1 / 1;
 }
 
 .menu-button-xsm:disabled,
@@ -317,18 +348,25 @@ h1 {
 
 .button-soundbar {
     background: url(./img/menu-screens/buttons/soundbar-100.png);
-    background-size: cover;
     background-repeat: no-repeat;
-    width: 368px;
-    height: 50px;
+    /* background-size: cover; */
+    /* width: 368px; */
+    /* height: 50px; */
     cursor: default;
+
+    background-position: center;
+    background-size: contain;
+    width: 49.2%;
+    height: auto;
+    aspect-ratio: 368 / 50;
 }
 
 #music-mute {
     background: url(./img/menu-screens/buttons/music-on.png);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 60px;
+    /* width: 60px; */
+    width: 8%;
     height: auto;
     aspect-ratio: 1 / 1;
 }
@@ -337,19 +375,26 @@ h1 {
     background: url(./img/menu-screens/buttons/sound-on.png);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 60px;
+    /* width: 60px; */
+    width: 8%;
     height: auto;
     aspect-ratio: 1 / 1;
 }
 
 .button-mute {
-    margin-left: 35px;
+    /* margin-left: 35px; */
+    margin-left: 4.7%;
 }
 
 .container-home-button {
-    width: 230px;
-    margin: 0 0 150px 150px;
+    /* width: 230px; */
+    /* margin: 0 0 150px 150px; */
     align-self: flex-start;
+
+    margin: 0 0 11.7% 11.7%;
+    width: 17.96%;
+    height: auto;
+    aspect-ratio: 230 / 85;
 }
 
 .home-button {
@@ -365,7 +410,8 @@ h1 {
 }
 
 #penguin-animated {
-    margin: 390px 0 0 40px;
+    /* margin: 390px 0 0 40px; */
+    margin: 30.4% 0 0 3%;
     background-image: url('./img/menu-screens/sprite-sheets/penguin-idle-sprite-sheet.png');
     background-repeat: no-repeat;
 }
@@ -413,8 +459,10 @@ h1 {
 }
 
 #lettering {
-    width: 721px;
-    height: 731px;
+    /* width: 721px; */
+    /* height: 731px; */
+    width: 56.3%;
+    height: 100%;
     background-image: url('./img/menu-screens/backgrounds/lettering.png');
     background-size: cover;
     background-position: center;
@@ -423,7 +471,8 @@ h1 {
 
 .end-screen {
     background-color: #1f1f1f;
-    background-position: right 110px center;
+    /* background-position: right 110px center; */
+    background-position: right 8.6% center;
     background-repeat: no-repeat;
     background-size: contain;
     animation: fade-in 1s normal;
@@ -452,8 +501,10 @@ h1 {
 }
 
 .container-collectables {
-    margin: 50px 0 0 120px;
-    width: 200px;
+    /* margin: 50px 0 0 120px; */
+    /* width: 200px; */
+    margin: 6.7% 0 0 9.4%;
+    width: 15.63%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -555,6 +606,23 @@ canvas {
         width: calc((100vh / 56.25) * 100);
     }
 
+    button,
+    .binding,
+    .text-settings {
+        font-size: clamp(16px, calc(38 / 720 * 100vh), 38px);
+    }
+
+    #penguin-animated {
+        margin: 30.4% 0 0 3%;
+        width: 11.7%;
+        height: 28.7%;
+        animation: none;
+        background-image: url(./img/characters/Character02/Idle/Character-Idle-StartScreen.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
     canvas {
         height: 100vh;
     }
@@ -572,9 +640,9 @@ canvas {
         display: none;
     }
 
-    #mobile-controls-left {
+    /* #mobile-controls-left {
         gap: 200px;
-    }
+    } */
 
     .overlay-screen {
         margin: 0;
