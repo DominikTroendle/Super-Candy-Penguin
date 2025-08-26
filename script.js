@@ -7,10 +7,11 @@ function setStoppableInterval(fn, time) {
 }
 
 function showGame() {
+    let media = window.matchMedia("(pointer: coarse)")
     changeStartAnimation();
     setTimeout(() => {
         resetOverlays();
-        if (window.innerWidth < 1280) document.getElementById('mobile-controls').classList.remove('d-none');
+        if (media.matches) document.getElementById('mobile-controls').classList.remove('d-none');
         document.getElementById('penguin-animated').classList.remove('penguin-animation-jump');
     }, 1000);
 }
