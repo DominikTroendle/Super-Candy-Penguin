@@ -604,9 +604,13 @@ canvas {
     } */
 }
 
-@media only screen and (max-height: 720px) {
-    #overlays {
+@media only screen and ((max-height: 720px) and (min-aspect-ratio: 16/9)) {
+    #overlays,
+    canvas {
         height: 100vh;
+    }
+
+    #overlays {
         width: calc(100vh * (1280 / 720));
     }
 
@@ -626,10 +630,6 @@ canvas {
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
-    }
-
-    canvas {
-        height: 100vh;
     }
 }
 
@@ -813,7 +813,7 @@ canvas {
 }
 
 @media only screen and (orientation: portrait) and (max-width: 1040px) and (pointer: coarse) {
-    .overlay-landscape-spinner {
+    .overlay-portrait-spinner {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -826,7 +826,7 @@ canvas {
         z-index: 5;
     }
 
-    .landscape-spinner {
+    .portrait-spinner {
         display: flex;
         justify-content: center;
         align-items: center;
