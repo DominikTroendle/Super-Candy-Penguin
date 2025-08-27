@@ -77,6 +77,7 @@ export class World {
             this.throwableObjects.push(candy);
             this.candyCounter.decreaseCount(this.candyCounter);
             this.playSound('throw');
+            this.keyboard.F = false;
         };
         this.throwableObjects = this.throwableObjects.filter(candy => {
             if (candy.y > 720) {

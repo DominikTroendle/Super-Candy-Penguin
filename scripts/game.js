@@ -45,7 +45,7 @@ function init() {
     window.world = new World(canvas, keyboard, this);
 }
 
-window.addEventListener('keydown', (event) => {
+/* window.addEventListener('keydown', (event) => {
     if (event.key == "ArrowRight" || event.key == "d") keyboard.RIGHT = true;
     if (event.key == "ArrowLeft" || event.key == "a") keyboard.LEFT = true;
     if (event.key == "f") keyboard.F = true;
@@ -57,4 +57,4 @@ window.addEventListener('keyup', (event) => {
     if (event.key == "ArrowLeft" || event.key == "a") keyboard.LEFT = false;
     if (event.key == "f") keyboard.F = false;
     if (event.key == " ") keyboard.SPACE = false;
-});
+}); */

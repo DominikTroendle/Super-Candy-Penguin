@@ -48,9 +48,9 @@ function changeVolumeDisplay(id) {
     let percent;
     let [type, action] = id.split("-");
     if (type === "sound") {
-        percent = (soundVolume*100)*2;
+        percent = (soundVolume * 100) * 2;
     } else {
-        percent = (musicVolume*100)*2;
+        percent = (musicVolume * 100) * 2;
     };
     if (action === "mute") {
         document.getElementById(`${type}-volume`).disabled = (type === "sound" ? soundMuted : musicMuted);
