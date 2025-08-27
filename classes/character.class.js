@@ -33,44 +33,76 @@ export class Character extends MovableObject {
 
     animate() {
         setStoppableInterval(() => {
-            if (this.isDead()) {
-                this.playAnimation('dead', this.IMAGES_DEAD, 45);
-                endGame('L', this.world.coinCounter.currentAmount);
-                setTimeout(() => this.world.backgroundMusic.bgMusic.pause(), 1200);
-            } else if (this.isHurt()) {
-                this.playAnimation('hurt', this.IMAGES_HURT, 48);
-            } else if (this.isAboveGround()) {
-                this.playAnimation('jumping', this.IMAGES_JUMPING, 25);
-            } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                this.playAnimation('walking', this.IMAGES_WALKING, 30);
-            } else {
-                this.playAnimation('idle', this.IMAGES_IDLE, 20);
-            }
+            this.animateCharacter();
         }, 1000 / 60);
-
         setStoppableInterval(() => {
-            if (this.world.keyboard.RIGHT && !this.isDead()) {
-                this.moveRight();
-                this.otherDirection = false;
-            }
-            if (this.world.keyboard.LEFT && !this.isDead() && this.x > 0) {
-                this.moveLeft();
-                this.otherDirection = true;
-            }
-            if (this.world.keyboard.SPACE && !this.isAboveGround() && !this.isDead()) {
-                this.jump();
-                this.world.playSound('jump');
-            }
-            if (this.x < 3850 && !this.isBossfight) this.world.camera_x = -this.x;
+            this.moveCharacter();
         }, 1000 / 30);
     }
 
+    animateCharacter() {
+        if (this.isDead()) {
+           this.executeLostGameEnding();
+        } else if (this.isHurt()) {
+            this.playAnimation('hurt', this.IMAGES_HURT, 48);
+        } else if (this.isAboveGround()) {
+            this.playAnimation('jumping', this.IMAGES_JUMPING, 25);
+        } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+            this.playAnimation('walking', this.IMAGES_WALKING, 30);
+        } else {
+            this.playAnimation('idle', this.IMAGES_IDLE, 20);
+        };
+    }
+
+    executeLostGameEnding() {
+        this.playAnimation('dead', this.IMAGES_DEAD, 45);
+        endGame('L', this.world.coinCounter.currentAmount);
+        setTimeout(() => this.world.backgroundMusic.bgMusic.pause(), 1200);
+    }
+
+    moveCharacter() {
+        this.moveCameraX();
+        if (this.isDead()) return;
+        if (this.world.keyboard.RIGHT) {
+            this.moveRight();
+            this.otherDirection = false;
+        };
+        if (this.world.keyboard.LEFT && this.x > 0) {
+            this.moveLeft();
+            this.otherDirection = true;
+        };
+        if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+            this.jump();
+            this.world.playSound('jump');
+        };
+    }
+
+    moveCameraX() {
+        if (this.x < 3850 && !this.isBossfight) this.world.camera_x = -this.x;
+    }
+
     checkCollisions() {
+        this.checkBossCollision();
+        this.checkEnemysCollision();
+        this.checkCandyCollisions();
+        this.checkCoinCollisions();
+        this.checkHeartCollisions();
+    }
+
+    checkBossCollision() {
         if (this.isBossfight && this.canBeHit() && this.world.endboss.bossIsAttacking(this) && !this.isDead()) {
             this.hit();
             this.world.playSound('hurt');
             this.world.statusbar.setPercentage(this.life);
-        }
+        };
+    }
+
+    checkEnemysCollision() {
+        this.checkEnemyisHitting();
+        this.checkEnemyisHit();
+    }
+
+    checkEnemyisHitting() {
         this.world.level.enemies.forEach(enemy => {
             if (this.isColliding(enemy) && this.canBeHit() && !this.isJumpedOnTop(enemy) && !this.isDead()) {
                 this.hit();
@@ -78,38 +110,50 @@ export class Character extends MovableObject {
                 this.world.statusbar.setPercentage(this.life);
             };
         });
+    }
+
+    checkEnemyisHit() {
         this.world.level.enemies = this.world.level.enemies.filter(enemy => {
             if (this.isJumpedOnTop(enemy)) {
                 this.world.playSound('jump_ontop');
                 return false;
-            }
+            };
             return true;
         });
+    }
+
+    checkCandyCollisions() {
         this.world.level.candys = this.world.level.candys.filter(candy => {
             if (this.isColliding(candy)) {
                 this.world.candyCounter.increaseCount(this.world.candyCounter);
                 this.world.playSound('pickup_candy');
                 return false;
-            }
+            };
             return true;
         });
+    }
+
+    checkCoinCollisions() {
         this.world.level.coins = this.world.level.coins.filter(coin => {
             if (this.isColliding(coin)) {
                 this.world.coinCounter.increaseCount(this.world.coinCounter);
                 this.world.playSound('pickup_coin');
                 return false;
-            }
+            };
             return true;
         });
+    }
+
+    checkHeartCollisions() {
         this.world.level.hearts = this.world.level.hearts.filter(heart => {
             if (this.isColliding(heart) && this.life < 100) {
                 this.life += 20;
                 this.world.statusbar.setPercentage(this.life);
                 this.world.playSound('pickup_heart');
                 return false;
-            }
+            };
             return true;
-        })
+        });
     }
 
     checkBossFight() {
@@ -118,7 +162,7 @@ export class Character extends MovableObject {
         }
     }
 
-    drawBorder(ctx) {
+    /* drawBorder(ctx) {
         ctx.beginPath();
         ctx.lineWidth = '2';
         ctx.strokeStyle = 'blue';
@@ -130,5 +174,5 @@ export class Character extends MovableObject {
         ctx.strokeStyle = 'red';
         ctx.rect(this.x + this.collisionOffset.left, this.y + this.collisionOffset.top, this.collisionOffset.width, this.collisionOffset.height);
         ctx.stroke();
-    }
+    } */
 }

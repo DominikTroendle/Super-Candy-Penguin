@@ -28,7 +28,7 @@ export class ThrowableObject extends MovableObject {
     animate() {
         setStoppableInterval(() => {
             this.playAnimation('spinning', this.IMAGES_SPINNING, 10);
-        })
+        });
     }
     
     throw(character) {
@@ -42,7 +42,7 @@ export class ThrowableObject extends MovableObject {
             setStoppableInterval(() => {
                 this.x += 1.7;
             }, 1);
-        }
+        };
     }
 
     isHittingEnemy(enemy) {

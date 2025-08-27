@@ -75,4 +75,4 @@ export const ENDBOSS_IMAGES = {
         'img/enemys/Death Sprite/skeleton-animation_8.png',
         'img/enemys/Death Sprite/skeleton-animation_9.png'
     ]
-}
+};

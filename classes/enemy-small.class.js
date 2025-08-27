@@ -52,9 +52,6 @@ export class EnemySmall extends Enemy {
         'img/enemys/Monster4/Attack/skeleton-Attack_24.png',
         'img/enemys/Monster4/Attack/skeleton-Attack_25.png'
     ];
-    /* IMAGES_DEATH = [
-        ''
-    ]; */
     speed = 0.8;
 
     constructor(startX) {
@@ -69,13 +66,16 @@ export class EnemySmall extends Enemy {
         setStoppableInterval(() => {
             this.enemyMoveLeft();
         }, 1000 / 30);
-
         setStoppableInterval(() => {
-            if (this.isAttacking(this.character) && !this.character.isDead()) {
-                this.playAnimation('attacking', this.IMAGES_ATTACKING, 26);
-            } else {
-                this.playAnimation('walking', this.IMAGES_WALKING, 24);
-            }
+            this.animateSmallEnemy()
         }, 1000 / 60);
+    }
+
+    animateSmallEnemy() {
+        if (this.isAttacking(this.character) && !this.character.isDead()) {
+            this.playAnimation('attacking', this.IMAGES_ATTACKING, 26);
+        } else {
+            this.playAnimation('walking', this.IMAGES_WALKING, 24);
+        };
     }
 }

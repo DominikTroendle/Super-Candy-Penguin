@@ -55,7 +55,7 @@ export class World {
         this.endboss.character = this.character;
         this.level.enemies.forEach(enemy => {
             enemy.setCharacter(this.character);
-        })
+        });
     }
 
     run() {
@@ -67,18 +67,24 @@ export class World {
                 this.endboss.checkSnowballs();
                 this.backgroundMusic.bgMusic.pause();
                 this.backgroundMusic.bossMusic.play();
-            }
+            };
         }, 100);
     }
 
     checkThrowableObject() {
-        if (this.keyboard.F && this.candyCounter.currentAmount != 0) {
-            let candy = new ThrowableObject(this.character, this.character.x + 290, this.character.y + 200);
-            this.throwableObjects.push(candy);
-            this.candyCounter.decreaseCount(this.candyCounter);
-            this.playSound('throw');
-            this.keyboard.F = false;
-        };
+        if (this.keyboard.F && this.candyCounter.currentAmount != 0) this.createThrowableObject();
+        this.filterCandys();
+    }
+
+    createThrowableObject() {
+        let candy = new ThrowableObject(this.character, this.character.x + 290, this.character.y + 200);
+        this.throwableObjects.push(candy);
+        this.candyCounter.decreaseCount(this.candyCounter);
+        this.playSound('throw');
+        this.keyboard.F = false;
+    }
+
+    filterCandys() {
         this.throwableObjects = this.throwableObjects.filter(candy => {
             if (candy.y > 720) {
                 return false;
@@ -103,7 +109,7 @@ export class World {
                 this.endboss.isDamaged();
                 return true;
             };
-        }
+        };
     }
 
     removeEnemy(i) {
@@ -163,8 +169,8 @@ export class World {
             for (let x = startX; x < endX + o.width; x += o.width) {
                 let drawX = x + relCamera_x;
                 this.ctx.drawImage(o.img, drawX, o.y, o.width + 0.5, o.height);
-        }
-        })
+            };
+        });
     }
 
     mirrorCtx(object) {

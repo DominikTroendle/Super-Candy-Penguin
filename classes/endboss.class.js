@@ -30,20 +30,28 @@ export class Endboss extends Enemy {
 
     animate() {
         setStoppableInterval(() => {
-            if (this.health <= 0) {
-                this.playAnimation('dead', this.IMAGES_DEATH, 10);
-                endGame('W', this.world.coinCounter.currentAmount);
-                setTimeout(() => this.world.backgroundMusic.bossMusic.pause(), 1200);
-            } else if (this.bossIsAttacking(this.character) && !this.character.isDead()) {
-                this.faceCharacter();
-                this.playAnimation('attacking', this.IMAGES_ATTACKING, 55);
-            } else if (this.world.character.isBossfight && !this.character.isDead()) {
-                this.playAnimation('walking', this.IMAGES_WALKING, 18);
-                this.moveRandom();
-            } else {
-                this.playAnimation('idle', this.IMAGES_IDLE, 18);
-            }
+            this.animateEndboss();
         }, 1000 / 60);
+    }
+
+    animateEndboss() {
+        if (this.health <= 0) {
+            this.executeWonGameEnding();
+        } else if (this.bossIsAttacking(this.character) && !this.character.isDead()) {
+            this.faceCharacter();
+            this.playAnimation('attacking', this.IMAGES_ATTACKING, 55);
+        } else if (this.world.character.isBossfight && !this.character.isDead()) {
+            this.playAnimation('walking', this.IMAGES_WALKING, 18);
+            this.moveRandom();
+        } else {
+            this.playAnimation('idle', this.IMAGES_IDLE, 18);
+        };
+    }
+
+    executeWonGameEnding() {
+        this.playAnimation('dead', this.IMAGES_DEATH, 10);
+        endGame('W', this.world.coinCounter.currentAmount);
+        setTimeout(() => this.world.backgroundMusic.bossMusic.pause(), 1200);
     }
 
     isDamaged() {
@@ -60,7 +68,7 @@ export class Endboss extends Enemy {
             this.generateTargetLocation();
             this.throwingAttack();
             this.world.playSound('boss_throw');
-        }
+        };
         if (this.targetLocation === this.lastLocation || this.x === this.targetLocation) return;
         this.otherDirection = this.x < this.targetLocation;
         this.x += (this.otherDirection ? 1 : -1) * this.speed;
@@ -102,7 +110,7 @@ export class Endboss extends Enemy {
         };
     }
 
-    drawBorder(ctx) {
+    /* drawBorder(ctx) {
         ctx.beginPath();
         ctx.lineWidth = '2';
         ctx.strokeStyle = 'blue';
@@ -114,5 +122,5 @@ export class Endboss extends Enemy {
         ctx.strokeStyle = 'red';
         ctx.rect(this.x + this.bossCollisionOffset.left, this.y + this.bossCollisionOffset.top, this.bossCollisionOffset.width, this.bossCollisionOffset.height);
         ctx.stroke();
-    }
+    } */
 }

@@ -16,14 +16,17 @@ export class Moon extends MovingBackgroundObject {
 
     animate() {
          setStoppableInterval( () => {
-            this.x += this.speed;
-
-            if (this.x > this.endX) {
-                this.x = this.startX;
-                this.y = this.startY;
-            }
-            const t = (this.x - this.startX) / (this.endX - this.startX);
-            this.y = this.startY - Math.sin(t * Math.PI) * this.amplitude; 
+             this.moveMoon();
         }, 1000 / 60);
+    }
+
+    moveMoon() {
+        this.x += this.speed;
+        if (this.x > this.endX) {
+            this.x = this.startX;
+            this.y = this.startY;
+        };
+        const t = (this.x - this.startX) / (this.endX - this.startX);
+        this.y = this.startY - Math.sin(t * Math.PI) * this.amplitude;
     }
 }

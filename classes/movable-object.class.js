@@ -63,16 +63,16 @@ export class MovableObject extends DrawableObject {
     moveRight() {
         if (this.x < this.world.level.level_end_x) {
             this.x += this.speed;
-        }
+        };
     }
 
     moveLeft() {
         if (!this.isBossfight) {
             this.x -= this.speed;
-        }
+        };
         if (this.isBossfight && this.x >= 3650) {
             this.x -= this.speed;
-        }
+        };
     }
 
     enemyMoveLeft() {
@@ -118,7 +118,7 @@ export class MovableObject extends DrawableObject {
             this.life = 0;
         } else {
             this.lastHit = new Date().getTime();
-        }
+        };
         if (this.life == 0) this.world.playSound('character_dead');
     }
 

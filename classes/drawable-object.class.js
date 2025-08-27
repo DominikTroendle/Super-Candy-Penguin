@@ -30,23 +30,27 @@ export class DrawableObject {
             let img = new Image();
             img.src = path;
             this.imageCache[path] = img;
-        })
+        });
     }
 
     playAnimation(name, images, fps) {
-        if (this.currentAnimation !== name) {
-            this.currentAnimation = name;
-            this.currentImage = 0;
-            this.lastAnimationFrameTime = Date.now();
-            this.animationFinished = false;
-        }
+        this.resetAnimation(name);
         if (name === 'dead' && this.animationFinished) return;
         let now = Date.now();
         let frameDuration = 1000 / fps;
         if (!this.currentAnimation || (now - this.lastAnimationFrameTime) >= frameDuration) {
             this.animateImages(images, name);
             this.lastAnimationFrameTime = now;
-        }
+        };
+    }
+
+    resetAnimation(name) {
+        if (this.currentAnimation !== name) {
+            this.currentAnimation = name;
+            this.currentImage = 0;
+            this.lastAnimationFrameTime = Date.now();
+            this.animationFinished = false;
+        };
     }
 
     animateImages(imagesArr, name) {

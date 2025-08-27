@@ -24,6 +24,11 @@ export class BossHealthbar extends DrawableObject {
         this.loadImages(this.IMAGES);
     }
 
+    /**
+     * Draws the boss name on the given 2d canvas rendering context with styles such as
+     * font, fillStyle and shadow.
+     * @param {CanvasRenderingContext2D} ctx - the 2D rendering context of the canvas
+     */
     drawBossName(ctx) {
         ctx.font = '48px Modak';
         ctx.fillStyle = 'white';
@@ -38,6 +43,10 @@ export class BossHealthbar extends DrawableObject {
         ctx.shadowOffsetY = 0;
     }
 
+    /**
+     * Updates the objects image based on the given percentage.
+     * @param {number} percentage - the percentage value used to determine which image to display
+     */
     setPercentage(percentage) {
         let index = percentage / 10;
         let path = this.IMAGES[index];

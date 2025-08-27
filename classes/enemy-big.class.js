@@ -62,13 +62,16 @@ export class EnemyBig extends Enemy {
         setStoppableInterval(() => {
             this.enemyMoveLeft();
         }, 1000 / 30);
-
         setStoppableInterval(() => {
-            if (this.isAttacking(this.character) && !this.character.isDead()) {
-                this.playAnimation('attacking', this.IMAGES_ATTACKING, 44);
-            } else {
-                this.playAnimation('walking', this.IMAGES_WALKING, 18);
-            }
+            this.animateBigEnemy();
         }, 1000 / 60);
+    }
+
+    animateBigEnemy() {
+        if (this.isAttacking(this.character) && !this.character.isDead()) {
+            this.playAnimation('attacking', this.IMAGES_ATTACKING, 44);
+        } else {
+            this.playAnimation('walking', this.IMAGES_WALKING, 18);
+        };
     }
 }
