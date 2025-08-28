@@ -2,8 +2,7 @@ import { Character } from '../classes/character.class.js';
 import { Statusbar } from '../classes/statusbar.class.js';
 import { CoinCounter } from '../classes/coin-counter.class.js';
 import { CandyCounter } from '../classes/candy-counter.class.js';
-import { CandyManager } from '../classes/candyManager.class.js';
-import { ThrowableObject } from '../classes/throwable-object.class.js';
+import { CandyManager } from './candy-manager.class.js';
 import { Level1 } from '../levels/level1.class.js';
 import { Enemy } from "../classes/enemy.class.js";
 import { Endboss } from '../classes/endboss.class.js';
@@ -22,7 +21,6 @@ export class World {
     coinCounter = new CoinCounter();
     candyCounter = new CandyCounter();
     candyManager = new CandyManager(this);
-    // throwableObjects = [];
     endboss = new Endboss();
     boss_healthbar = new BossHealthbar();
     level = new Level1();
@@ -46,7 +44,7 @@ export class World {
         this.keyboard = keyboard;
         this.game = game;
         this.setWorld();
-        this.draw();
+        this.loop();
         this.run();
         setTimeout(() => this.backgroundMusic.bgMusic.play(), 1000);
     }
@@ -75,15 +73,27 @@ export class World {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
+        this.drawBackground();
+        this.ctx.translate(this.camera_x, 0);
+        this.drawForeground();
+        this.ctx.translate(-this.camera_x, 0);
+    }
+
+    loop() {
+        this.draw();
+        requestAnimationFrame(() => this.loop());
+    }
+
+    drawBackground() {
         this.addObjectsToCanvas(this.level.staticBackground);
         this.addLoopingObjectsToCanvas(this.level.movingBackground);
         this.addToCanvas(this.statusbar);
         this.addToCanvas(this.coinCounter);
         this.addToCanvas(this.candyCounter);
         if (this.character.isBossfight) this.addToCanvas(this.boss_healthbar);
+    }
 
-        this.ctx.translate(this.camera_x, 0);
+    drawForeground() {
         this.addObjectsToCanvas(this.level.candys);
         this.addObjectsToCanvas(this.level.coins);
         this.addObjectsToCanvas(this.level.hearts);
@@ -92,12 +102,6 @@ export class World {
         this.addObjectsToCanvas(this.endboss.snowballs);
         this.addToCanvas(this.character);
         this.addObjectsToCanvas(this.candyManager.throwableObjects);
-        this.ctx.translate(-this.camera_x, 0);
-        
-        let self = this;
-        requestAnimationFrame(function() {
-            self.draw();
-        });
     }
 
     addObjectsToCanvas(objects) {

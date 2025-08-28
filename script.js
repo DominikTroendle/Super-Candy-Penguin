@@ -33,12 +33,20 @@ function endGame(condition, coins) {
     condition === "W" ? overlay = "win-screen" : overlay = "game-over-screen";
     resetOverlays();
     setTimeout(() => {
-        document.getElementById(overlay).classList.remove('d-none');
-        collectedCoinsDisplay.forEach(e => e.innerText = coins);
-        playWinLoseMusic(overlay);
-        intervalIds.forEach(clearInterval);
-        intervalIds = [];
+        initializeGameEndingOverlay(overlay, collectedCoinsDisplay, coins);
+        clearIntervals();
     }, 1200);
+}
+
+function initializeGameEndingOverlay(overlay, collectedCoinsDisplay, coins) {
+    document.getElementById(overlay).classList.remove('d-none');
+    collectedCoinsDisplay.forEach(e => e.innerText = coins);
+    playWinLoseMusic(overlay);
+}
+
+function clearIntervals() {
+    intervalIds.forEach(clearInterval);
+    intervalIds = [];
 }
 
 function resetOverlays() {

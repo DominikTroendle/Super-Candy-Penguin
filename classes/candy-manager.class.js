@@ -1,4 +1,4 @@
-import { ThrowableObject } from '../classes/throwable-object.class.js';
+import { ThrowableObject } from './throwable-object.class.js';
 
 export class CandyManager {
     constructor(world) {
@@ -23,13 +23,22 @@ export class CandyManager {
 
     filterCandys() {
         this.throwableObjects = this.throwableObjects.filter(candy => {
-            if (candy.y > 720) return false;
-            if (this.checkCandyCollision(candy)) return false;
+            if (candy.y > 720) {
+                return false;
+            } else if (this.checkCandyCollision(candy)) {
+                return false;
+            };
             return true;
         });
     }
 
     checkCandyCollision(candy) {
+        if (this.handleEnemyHit(candy)) return true;
+        if (this.handleBossHit(candy)) return true;
+        return false;
+    }
+
+    handleEnemyHit(candy) {
         for (let enemy of this.world.level.enemies) {
             if (candy.isHittingEnemy(enemy)) {
                 this.world.playSound('hit');
@@ -37,6 +46,10 @@ export class CandyManager {
                 return true;
             };
         };
+        return false;
+    }
+
+    handleBossHit(candy) {
         if (this.world.character.isBossfight && candy.isHittingBoss(this.world.endboss)) {
             this.world.playSound('hit');
             this.world.endboss.isDamaged();

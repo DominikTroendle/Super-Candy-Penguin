@@ -53,14 +53,18 @@ function changeVolumeDisplay(id) {
         percent = (musicVolume * 100) * 2;
     };
     if (action === "mute") {
-        document.getElementById(`${type}-volume`).disabled = (type === "sound" ? soundMuted : musicMuted);
-        document.getElementById(`${type}-down`).disabled = (type === "sound" ? soundMuted : musicMuted);
-        document.getElementById(`${type}-up`).disabled = (type === "sound" ? soundMuted : musicMuted);
-        document.getElementById('sound-mute').style.backgroundImage = soundMuted ? `url('./img/menu-screens/buttons/sound-off.png')` : `url('./img/menu-screens/buttons/sound-on.png')`;
-        document.getElementById('music-mute').style.backgroundImage = musicMuted ? `url('./img/menu-screens/buttons/music-off.png')` : `url('./img/menu-screens/buttons/music-on.png')`;
+        updateMuteButtons(type);
     } else {
         document.getElementById(`${type}-volume`).style.backgroundImage = `url('./img/menu-screens/buttons/soundbar-${percent}.png')`;
     };
+}
+
+function updateMuteButtons(type) {
+    document.getElementById(`${type}-volume`).disabled = (type === "sound" ? soundMuted : musicMuted);
+    document.getElementById(`${type}-down`).disabled = (type === "sound" ? soundMuted : musicMuted);
+    document.getElementById(`${type}-up`).disabled = (type === "sound" ? soundMuted : musicMuted);
+    document.getElementById('sound-mute').style.backgroundImage = soundMuted ? `url('./img/menu-screens/buttons/sound-off.png')` : `url('./img/menu-screens/buttons/sound-on.png')`;
+    document.getElementById('music-mute').style.backgroundImage = musicMuted ? `url('./img/menu-screens/buttons/music-off.png')` : `url('./img/menu-screens/buttons/music-on.png')`;
 }
 
 function setLocalStorage() {
