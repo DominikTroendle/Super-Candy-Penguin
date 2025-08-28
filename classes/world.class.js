@@ -2,6 +2,7 @@ import { Character } from '../classes/character.class.js';
 import { Statusbar } from '../classes/statusbar.class.js';
 import { CoinCounter } from '../classes/coin-counter.class.js';
 import { CandyCounter } from '../classes/candy-counter.class.js';
+import { CandyManager } from '../classes/candyManager.class.js';
 import { ThrowableObject } from '../classes/throwable-object.class.js';
 import { Level1 } from '../levels/level1.class.js';
 import { Enemy } from "../classes/enemy.class.js";
@@ -20,7 +21,8 @@ export class World {
     statusbar = new Statusbar();
     coinCounter = new CoinCounter();
     candyCounter = new CandyCounter();
-    throwableObjects = [];
+    candyManager = new CandyManager(this);
+    // throwableObjects = [];
     endboss = new Endboss();
     boss_healthbar = new BossHealthbar();
     level = new Level1();
@@ -61,7 +63,7 @@ export class World {
     run() {
         setStoppableInterval(() => {
             this.character.checkCollisions();
-            this.checkThrowableObject();
+            this.candyManager.checkThrowableObject();
             this.character.checkBossFight();
             if (this.character.isBossfight) {
                 this.endboss.checkSnowballs();
@@ -69,51 +71,6 @@ export class World {
                 this.backgroundMusic.bossMusic.play();
             };
         }, 100);
-    }
-
-    checkThrowableObject() {
-        if (this.keyboard.F && this.candyCounter.currentAmount != 0) this.createThrowableObject();
-        this.filterCandys();
-    }
-
-    createThrowableObject() {
-        let candy = new ThrowableObject(this.character, this.character.x + 290, this.character.y + 200);
-        this.throwableObjects.push(candy);
-        this.candyCounter.decreaseCount(this.candyCounter);
-        this.playSound('throw');
-        this.keyboard.F = false;
-    }
-
-    filterCandys() {
-        this.throwableObjects = this.throwableObjects.filter(candy => {
-            if (candy.y > 720) {
-                return false;
-            } else if (this.checkCandyCollision(candy)) {
-                return false;
-            };
-            return true;
-        });
-    }
-
-    checkCandyCollision(candy) {
-        for (let i = 0; i < this.level.enemies.length; i++) {
-            if (candy.isHittingEnemy(this.level.enemies[i])) {
-                this.playSound('hit');
-                this.removeEnemy(i);
-                return true;
-            };
-        };
-        if (this.character.isBossfight) {
-            if (candy.isHittingBoss(this.endboss)) {
-                this.playSound('hit');
-                this.endboss.isDamaged();
-                return true;
-            };
-        };
-    }
-
-    removeEnemy(i) {
-        this.level.enemies.splice(i, 1);
     }
 
     draw() {
@@ -134,7 +91,7 @@ export class World {
         this.addToCanvas(this.endboss);
         this.addObjectsToCanvas(this.endboss.snowballs);
         this.addToCanvas(this.character);
-        this.addObjectsToCanvas(this.throwableObjects);
+        this.addObjectsToCanvas(this.candyManager.throwableObjects);
         this.ctx.translate(-this.camera_x, 0);
         
         let self = this;

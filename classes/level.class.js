@@ -15,4 +15,11 @@ export class Level {
         this.staticBackground = staticBackground;
         this.movingBackground = movingBackground;
     }
+
+    removeEnemy(enemy) {
+        let index = this.enemies.indexOf(enemy);
+        if (index > -1) {
+            this.enemies.splice(index, 1);
+        };
+    }
 }
