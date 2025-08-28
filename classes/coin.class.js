@@ -24,6 +24,9 @@ export class Coin extends MovableObject {
         this.animate();
     }
 
+    /**
+     * Plays the coin's spinning aninmation.
+     */
     animate() {
         setStoppableInterval(() => {
             this.playAnimation('spinning', this.IMAGES_COIN, 10);

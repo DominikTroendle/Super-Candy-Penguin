@@ -27,10 +27,12 @@ export class Character extends MovableObject {
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
         this.animate();
-        console.log(intervalIds);
         this.applyGravity();
     }
 
+    /**
+     * Starts the character's main animation and movement loops.
+     */
     animate() {
         setStoppableInterval(() => {
             this.animateCharacter();
@@ -40,6 +42,10 @@ export class Character extends MovableObject {
         }, 1000 / 30);
     }
 
+    /**
+     * Plays an animation for the character based on their current state
+     * (dead, hurt, jumping, walking, idle).
+     */
     animateCharacter() {
         if (this.isDead()) {
            this.executeLostGameEnding();
@@ -54,12 +60,22 @@ export class Character extends MovableObject {
         };
     }
 
+    /**
+     * Executes the ending sequence when the player has lost the game.
+     * Plays the character's death animation, ends the game with a loss and
+     * pauses the background music.
+     */
     executeLostGameEnding() {
         this.playAnimation('dead', this.IMAGES_DEAD, 45);
         endGame('L', this.world.coinCounter.currentAmount);
         setTimeout(() => this.world.backgroundMusic.bgMusic.pause(), 1200);
     }
 
+    /**
+     * Handles character movement based on keyboard input.
+     * Moves the camera, checks if the character can move sideways or jump,
+     * executes the according movement and plays the jump sound when jumping.
+     */
     moveCharacter() {
         this.moveCameraX();
         if (this.isDead()) return;
@@ -77,10 +93,16 @@ export class Character extends MovableObject {
         };
     }
 
+    /**
+     * Moves the cmaera along the x-axis to follow the character, stopping at the boss fight trigger point.
+     */
     moveCameraX() {
         if (this.x < 3850 && !this.isBossfight) this.world.camera_x = -this.x;
     }
 
+    /**
+     * Checks for all types of collisions (boss, enemies, candies, coins, hearts).
+     */
     checkCollisions() {
         this.checkBossCollision();
         this.checkEnemysCollision();
@@ -89,6 +111,10 @@ export class Character extends MovableObject {
         this.checkHeartCollisions();
     }
 
+    /**
+     * Checks if the boss collides with the character while attacking,
+     * applies damage, plays the hurt sound, and updates the status bar.
+     */
     checkBossCollision() {
         if (this.isBossfight && this.canBeHit() && this.world.endboss.bossIsAttacking(this) && !this.isDead()) {
             this.hit();
@@ -97,11 +123,17 @@ export class Character extends MovableObject {
         };
     }
 
+    /**
+     * Checks for enemy collisions (character being hit or character jumping on an enemy).
+     */
     checkEnemysCollision() {
         this.checkEnemyisHitting();
         this.checkEnemyisHit();
     }
 
+    /**
+     * Checks if any enemy collides with the character (when not jumping on top). Applies damage and updates the characters status bar.
+     */
     checkEnemyisHitting() {
         this.world.level.enemies.forEach(enemy => {
             if (this.isColliding(enemy) && this.canBeHit() && !this.isJumpedOnTop(enemy) && !this.isDead()) {
@@ -112,6 +144,9 @@ export class Character extends MovableObject {
         });
     }
 
+    /**
+     * Removes enemies from the level when the character jumps on them and plays the according sound.
+     */
     checkEnemyisHit() {
         this.world.level.enemies = this.world.level.enemies.filter(enemy => {
             if (this.isJumpedOnTop(enemy)) {
@@ -122,6 +157,9 @@ export class Character extends MovableObject {
         });
     }
 
+    /**
+     * Handles collisions with candies. Increases the candy counter, plays pickup sound, and removes the collected candy.
+     */
     checkCandyCollisions() {
         this.world.level.candys = this.world.level.candys.filter(candy => {
             if (this.isColliding(candy)) {
@@ -133,6 +171,9 @@ export class Character extends MovableObject {
         });
     }
 
+    /**
+     * Handles collisions with coins. Increases the coin counter, plays pickup sound, and removes the collected coin.
+     */
     checkCoinCollisions() {
         this.world.level.coins = this.world.level.coins.filter(coin => {
             if (this.isColliding(coin)) {
@@ -144,6 +185,10 @@ export class Character extends MovableObject {
         });
     }
 
+    /**
+     * Handles collisions with hearts. If life is below 100, increases life, updates status bar, plays pickup sound,
+     * and removes the collected heart.
+     */
     checkHeartCollisions() {
         this.world.level.hearts = this.world.level.hearts.filter(heart => {
             if (this.isColliding(heart) && this.life < 100) {
@@ -156,6 +201,9 @@ export class Character extends MovableObject {
         });
     }
 
+    /**
+     * Checks if the character has reached the boss fight trigger point. Activates the boss fight if true.
+     */
     checkBossFight() {
         if (this.x > 3840) {
             this.isBossfight = true;

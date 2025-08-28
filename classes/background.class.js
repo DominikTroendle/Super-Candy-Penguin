@@ -11,7 +11,7 @@ export class Background {
 
     /**
      * Loads an image from the given path.
-     * @param {string} path - path the image should be loaded from
+     * @param {String} path - path the image should be loaded from
      */
     loadImage(path) {
         this.img = new Image();

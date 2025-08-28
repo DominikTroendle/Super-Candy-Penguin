@@ -45,7 +45,7 @@ export class BossHealthbar extends DrawableObject {
 
     /**
      * Updates the objects image based on the given percentage.
-     * @param {number} percentage - the percentage value used to determine which image to display
+     * @param {Number} percentage - the percentage value used to determine which image to display
      */
     setPercentage(percentage) {
         let index = percentage / 10;

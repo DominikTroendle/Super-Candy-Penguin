@@ -28,12 +28,19 @@ export class Endboss extends Enemy {
         this.animate();
     }
 
+    /**
+     * Starts the endboss's main animation.
+     */
     animate() {
         setStoppableInterval(() => {
             this.animateEndboss();
         }, 1000 / 60);
     }
 
+    /**
+     * Plays an animation for the endboss based on their current state
+     * (dead, attacking, walking, idle).
+     */
     animateEndboss() {
         if (this.health <= 0) {
             this.executeWonGameEnding();
@@ -48,12 +55,21 @@ export class Endboss extends Enemy {
         };
     }
 
+    /**
+     * Executes the ending sequence when the player has won the game.
+     * Plays the endboss's death animation, ends the game with a win and
+     * pauses the background music.
+     */
     executeWonGameEnding() {
         this.playAnimation('dead', this.IMAGES_DEATH, 10);
         endGame('W', this.world.coinCounter.currentAmount);
         setTimeout(() => this.world.backgroundMusic.bossMusic.pause(), 1200);
     }
 
+    /**
+     * Reduces the endboss's health when damaged.
+     * Plays the death sound when health reaches 0 and updates the boss health bar.
+     */
     isDamaged() {
         this.health -= 10;
         if (this.health <= 0) {
@@ -63,6 +79,11 @@ export class Endboss extends Enemy {
         this.world.boss_healthbar.setPercentage(this.health);
     }
 
+    /**
+     * Moves the endboss toward a random target location.
+     * When reaching a target location, generates a new target,
+     * triggers a throwing attack, and plays the throw sound.
+     */
     moveRandom() {
         if (this.x === this.targetLocation) {
             this.generateTargetLocation();
@@ -74,19 +95,31 @@ export class Endboss extends Enemy {
         this.x += (this.otherDirection ? 1 : -1) * this.speed;
     }
 
+    /**
+     * Generates a random x-coordinate within the boss movement range and sets it as the new target location.
+     */
     generateTargetLocation() {
         this.targetLocation = Math.floor(Math.random() * (4800 - 4200 + 1)) + 4200;
     }
 
+    /**
+     * Updates the boss's facing direction based on the character's position.
+     */
     faceCharacter() {
         this.otherDirection = this.character.x + this.characterOffset.left > this.x + this.bossCollisionOffset.left;
     }
 
+    /**
+     * Creates a new snowball and adds it to the snowballs array.
+     */
     throwingAttack() {
         let snowball = new Snowball(this.x, this.y);
         this.snowballs.push(snowball);
     }
 
+    /**
+     * Filters the snowballs array to remove those that are either off-screen or have collided with the character.
+     */
     checkSnowballs() {
         this.snowballs = this.snowballs.filter(snowball => {
             if (snowball.y > 720) {
@@ -98,6 +131,12 @@ export class Endboss extends Enemy {
         });
     }
 
+    /**
+     * Checks for collisions between snowballs and the character.
+     * If a collision is detected, plays hit sounds, applies damage and updates the character's health bar.
+     *
+     * @returns {Boolean} - true if a collision occurred, false otherwise
+     */
     checkSnowballCollision() {
         for (let i = 0; i < this.snowballs.length; i++) {
             if (this.world.character.isColliding(this.snowballs[i])) {
