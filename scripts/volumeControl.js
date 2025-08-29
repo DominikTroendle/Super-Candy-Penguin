@@ -18,11 +18,19 @@ let clickSound = new Audio('./audio/sounds/click.mp3');
 let winMusic = new Audio('./audio/music/win-music.mp3')
 let gameOverMusic = new Audio('./audio/music/game-over-music.mp3');
 
+/**
+ * Handles clicking any sound control button: plays a click sound and changes volume based on the clicked button's ID.
+ */
 soundControls.forEach(e => e.addEventListener('click', () => {
     clickSound.play();
     changeVolume(e.id);
 }));
 
+/**
+ * Changes the volume or mute state based on the given sound control button ID.
+ *
+ * @param {String} id - the ID of the clicked sound control button
+ */
 function changeVolume(id) {
     if (volumeMap[id]) {
         volumeMap[id]();
@@ -33,6 +41,9 @@ function changeVolume(id) {
     };
 }
 
+/**
+ * Restores volume and mute settings from localStorage and updates the UI once the DOM is fully loaded.
+ */
 window.addEventListener('DOMContentLoaded', () => {
     getLocalStorage();
     changeVolumeDisplay('sound-volume');
@@ -44,6 +55,11 @@ window.addEventListener('DOMContentLoaded', () => {
     if (musicMuted) changeVolumeDisplay('music-mute');
 });
 
+/**
+ * Updates the visual volume bar or mute button for  the sound control button with the given ID.
+ *
+ * @param {String} id - the sound control buttons ID
+ */
 function changeVolumeDisplay(id) {
     let percent;
     let [type, action] = id.split("-");
@@ -59,6 +75,11 @@ function changeVolumeDisplay(id) {
     };
 }
 
+/**
+ * Updates the mute buttons and disables/enables corresponding controls depending on the mute state of sound or music.
+ *
+ * @param {String} type - the buttons type ("sound" or "music")
+ */
 function updateMuteButtons(type) {
     document.getElementById(`${type}-volume`).disabled = (type === "sound" ? soundMuted : musicMuted);
     document.getElementById(`${type}-down`).disabled = (type === "sound" ? soundMuted : musicMuted);
@@ -67,6 +88,9 @@ function updateMuteButtons(type) {
     document.getElementById('music-mute').style.backgroundImage = musicMuted ? `url('./img/menu-screens/buttons/music-off.png')` : `url('./img/menu-screens/buttons/music-on.png')`;
 }
 
+/**
+ * Saves the current sound and music volume/mute settings to localStorage.
+ */
 function setLocalStorage() {
     localStorage.setItem('soundVolume', soundVolume);
     localStorage.setItem('soundMuted', soundMuted);
@@ -74,6 +98,9 @@ function setLocalStorage() {
     localStorage.setItem('musicMuted', musicMuted);
 }
 
+/**
+ * Loads sound and music volume/mute settings from localStorage. If no settings are stored, default values are used.
+ */
 function getLocalStorage() {
     let storedSoundVolume = localStorage.getItem('soundVolume');
     let storedMusicVolume = localStorage.getItem('musicVolume');
@@ -83,12 +110,20 @@ function getLocalStorage() {
     musicMuted = localStorage.getItem('musicMuted') === "true";
 }
 
+/**
+ * Plays either the win or game over music depending on the given game's status.
+ *
+ * @param {String} status - the game's status
+ */
 function playWinLoseMusic(status) {
     winMusic.volume = musicMuted ? 0 : musicVolume;
     gameOverMusic.volume = musicMuted ? 0 : musicVolume;
     status == "win-screen" ? winMusic.play() : gameOverMusic.play();
 }
 
+/**
+ * Stops all background music (win and game over) and resets playback time to the beginning.
+ */
 function stopAllMusic() {
     winMusic.pause();
     winMusic.currentTime = 0;

@@ -14,12 +14,20 @@ export class Moon extends MovingBackgroundObject {
         this.animate();
     }
 
+    /**
+     * Starts the moon's main animation.
+     */
     animate() {
          setStoppableInterval( () => {
              this.moveMoon();
         }, 1000 / 60);
     }
 
+    /**
+     * Updates the moon's position to create a smooth curved movement across the screen
+     * which resets to the starting position when the moon reaches the end position.
+     *
+     */
     moveMoon() {
         this.x += this.speed;
         if (this.x > this.endX) {

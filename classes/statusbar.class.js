@@ -21,6 +21,12 @@ export class Statusbar extends DrawableObject {
         this.loadImages(this.IMAGES);
     }
 
+    /**
+     * Updates the class-specific percentage value with the given percentage value
+     * and selects the corresponding image from the preloaded image cache.
+     *
+     * @param {Number} percentage - the given percentage value (0–100)
+     */
     setPercentage(percentage) {
         this.percentage = percentage;
         let index = percentage / 20;

@@ -13,6 +13,10 @@ export class Snowball extends MovableObject {
         this.fly();
     }
 
+    /**
+     * Makes this object (the boss's snowball) fly by giving it an initial upward velocity, applying gravity over time
+     * and moving the object horizontally to the left at a constant speed.
+     */
     fly() {
         this.speedY = 40;
         this.applyGravity();

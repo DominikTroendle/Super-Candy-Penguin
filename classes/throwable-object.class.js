@@ -25,12 +25,21 @@ export class ThrowableObject extends MovableObject {
         this.throw(character);
     }
 
+    /**
+     * Starts the throwable object's spinning animation.
+     */
     animate() {
         setStoppableInterval(() => {
             this.playAnimation('spinning', this.IMAGES_SPINNING, 10);
         });
     }
     
+    /**
+     * Throws the object in the direction the character is facing by applying an upward velocity
+     * and gravity while moving it horizontally until it collides or leaves the screen.
+     *
+     * @param {Character} character - the character that throws the object
+     */
     throw(character) {
         this.speedY = 33;
         this.applyGravity();
@@ -45,6 +54,12 @@ export class ThrowableObject extends MovableObject {
         };
     }
 
+    /**
+     * Checks if this object (the throwable object/candy) collides with the given enemy.
+     *
+     * @param {Enemy} enemy - the enemy instance to check against
+     * @returns {Boolean} - true if the objects are colliding, otherwise false
+     */
     isHittingEnemy(enemy) {
         return this.x + this.width > enemy.x &&
             this.y + this.height > enemy.y &&
@@ -52,6 +67,13 @@ export class ThrowableObject extends MovableObject {
             this.y < enemy.y + enemy.height;
     }
 
+    /**
+     * Checks if this object (the throwable object/candy) collides with the given boss
+     * by using the boss's specified collision offset.
+     *
+     * @param {Boss} boss - the boss to check against
+     * @returns {Boolean} - true if the objects are colliding, otherwise false
+     */
     isHittingBoss(boss) {
         return this.x + this.width > boss.x + this.bossCollisionOffset.left &&
             this.y + this.height > boss.y + this.bossCollisionOffset.top &&

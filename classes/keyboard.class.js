@@ -18,11 +18,17 @@ export class Keyboard {
         this.bindButtonPressEvents();
     }
 
+    /**
+     * Binds keyboard press and button touch events for controlling the character.
+     */
     bindKeyPressEvents() {
         this.bindKeydownEvents();
         this.bindKeyupEvents();
     }
 
+    /**
+     * Binds keydown events to update character movement and actions.
+     */
     bindKeydownEvents() {
         window.addEventListener('keydown', (event) => {
             if (event.key == "ArrowRight" || event.key == "d") this.RIGHT = true;
@@ -32,6 +38,9 @@ export class Keyboard {
         });
     }
 
+    /**
+     * Checks and enforces a cooldown for the throw action.
+     */
     checkThrowCooldown() {
         if (!this.THROW_REQUEST_START || new Date().getTime() - this.THROW_REQUEST_START > 750) {
             this.THROW_REQUEST_START = new Date().getTime();
@@ -39,6 +48,9 @@ export class Keyboard {
         };
     }
 
+    /**
+     * Binds keyup events to stop character movement and actions.
+     */
     bindKeyupEvents() {
         window.addEventListener('keyup', (event) => {
             if (event.key == "ArrowRight" || event.key == "d") this.RIGHT = false;
@@ -47,6 +59,9 @@ export class Keyboard {
         });
     }
 
+    /**
+     * Binds button touch events for mobile controls by connecting each control element to its corresponding action key.
+     */
     bindButtonPressEvents() {
         Object.entries(this.controls).forEach(([id, key]) => {
             let element = document.getElementById(id);
@@ -55,6 +70,12 @@ export class Keyboard {
         });
     }
 
+    /**
+     * Adds a touchstart listener to a button element and activates the corresponding control key or triggers the throw cooldown.
+     *
+     * @param {HTMLElement} element - the button element to bind
+     * @param {String} key - the control key to activate (e.g. "RIGHT", "LEFT", "SPACE", "F")
+     */
     addTouchstartListener(element, key) {
         element.addEventListener('touchstart', (e) => {
             e.preventDefault();
@@ -66,6 +87,12 @@ export class Keyboard {
         });
     }
 
+    /**
+     * Adds a touchend listener to a button element and deactivates the corresponding control key.
+     *
+     * @param {HTMLElement} element - the button element to bind
+     * @param {String} key - the control key to deactivate
+     */
     addTouchendListener(element, key) {
         element.addEventListener('touchend', (e) => {
             e.preventDefault();

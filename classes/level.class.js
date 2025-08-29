@@ -16,6 +16,11 @@ export class Level {
         this.movingBackground = movingBackground;
     }
 
+    /**
+     * Removes the given enemy from the enemies list if it exists.
+     *
+     * @param {Object} enemy - the enemy instance to remove
+     */
     removeEnemy(enemy) {
         let index = this.enemies.indexOf(enemy);
         if (index > -1) {

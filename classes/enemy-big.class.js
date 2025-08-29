@@ -58,6 +58,9 @@ export class EnemyBig extends Enemy {
         this.loadImages(this.IMAGES_ATTACKING);
     }
 
+    /**
+     * Starts the enemy's main animation and movement loops.
+     */
     animate() {
         setStoppableInterval(() => {
             this.enemyMoveLeft();
@@ -67,6 +70,9 @@ export class EnemyBig extends Enemy {
         }, 1000 / 60);
     }
 
+    /**
+     * Plays an animation for the enemy based on their current state (attacking, walking).)
+     */
     animateBigEnemy() {
         if (this.isAttacking(this.character) && !this.character.isDead()) {
             this.playAnimation('attacking', this.IMAGES_ATTACKING, 44);

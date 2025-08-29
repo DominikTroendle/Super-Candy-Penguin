@@ -1,11 +1,20 @@
 let gameEnded = false;
 let intervalIds = [];
 
+/**
+ * Creates a stoppable interval by storing its ID in the global intervalIds array.
+ *
+ * @param {Function} fn - the callback function to be executed repeatedly
+ * @param {Number} time - the interval delay in ms
+ */
 function setStoppableInterval(fn, time) {
     let id = setInterval(fn, time);
     intervalIds.push(id);
 }
 
+/**
+ * Displays the game screen, triggers the start animation and shows mobile controls if the device uses a coarse pointer (touch).
+ */
 function showGame() {
     let media = window.matchMedia("(pointer: coarse)")
     changeStartAnimation();
@@ -16,6 +25,9 @@ function showGame() {
     }, 1000);
 }
 
+/**
+ * Changes the penguin animation on the start screen from idle to jump if the window is wide enough.
+ */
 function changeStartAnimation() {
     if (window.innerWidth >= 1280) {
         document.getElementById('penguin-animated').classList.remove('penguin-animation-idle');
@@ -25,6 +37,12 @@ function changeStartAnimation() {
     };
 }
 
+/**
+ * Ends the game by showing the corresponding overlay (win or game over), stopping all intervals and displaying collected coins.
+ *
+ * @param {String} condition - the end condition ("W" = win, "L" = lose)
+ * @param {Number} coins - the number of collected coins to display
+ */
 function endGame(condition, coins) {
     let overlay;
     let collectedCoinsDisplay = Array.from(document.querySelectorAll('.collected-coins'));
@@ -38,17 +56,30 @@ function endGame(condition, coins) {
     }, 1200);
 }
 
+/**
+ * Shows the game ending overlay, updates the coin counters and plays the corresponding music.
+ *
+ * @param {String} overlay - the ID of the overlay element to display
+ * @param {HTMLElement} collectedCoinsDisplay - elements displaying collected coins
+ * @param {Number} coins - the total number of collected coins
+ */
 function initializeGameEndingOverlay(overlay, collectedCoinsDisplay, coins) {
     document.getElementById(overlay).classList.remove('d-none');
     collectedCoinsDisplay.forEach(e => e.innerText = coins);
     playWinLoseMusic(overlay);
 }
 
+/**
+ * Clears all active intervals stored in the intervalIds array and the array itself.
+ */
 function clearIntervals() {
     intervalIds.forEach(clearInterval);
     intervalIds = [];
 }
 
+/**
+ * Hides all overlay screens (start, win, game over, controls, settings, mobile controls).
+ */
 function resetOverlays() {
     let overlays = ['start-screen', 'win-screen', 'game-over-screen', 'controls', 'settings', 'mobile-controls'];
     overlays.forEach((str) => {
@@ -56,6 +87,11 @@ function resetOverlays() {
     });
 }
 
+/**
+ * Shows the given overlay by removing its `d-none` class.
+ *
+ * @param {string} overlay - the ID of the overlay element to display
+ */
 function showOverlay(overlay) {
     document.getElementById(overlay).classList.remove('d-none');
 }
