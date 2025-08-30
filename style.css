@@ -24,9 +24,6 @@ body {
 
 button {
     border: unset;
-    font-family: Chewy;
-    color: #4aaeff;
-    font-size: clamp(16px, calc(38 / 1280 * 100vw), 38px);
     cursor: pointer;
 }
 
@@ -174,7 +171,8 @@ h1 {
 
 #start-screen,
 #controls,
-#settings {
+#settings,
+#imprint {
     background-image: url(./img/menu-screens/backgrounds/start-background-plain.png);
     background-size: cover;
 }
@@ -199,6 +197,10 @@ h1 {
     background: url(./img/menu-screens/buttons/menu-button.png);
     background-size: contain;
     background-repeat: no-repeat;
+    font-family: Chewy;
+    color: #4aaeff;
+    font-size: clamp(16px, calc(38 / 1280 * 100vw), 38px);
+    cursor: pointer;
 }
 
 #last-row {
@@ -217,6 +219,12 @@ h1 {
     background: url(./img/menu-screens/buttons/menu-button.png);
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+#button-imprint {
+    font-family: Chewy;
+    color: #4aaeff;
+    font-size: clamp(16px, calc(24 / 1280 * 100vw), 24px);
 }
 
 .menu-button-sm {
@@ -401,6 +409,63 @@ h1 {
     background: url(./img/menu-screens/buttons/keyboard.png);
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+#header-img-imprint {
+    margin: 2.4% 0 2.4% 0;
+    width: 50.2%;
+    height: auto;
+    aspect-ratio: 643 / 130;
+    background: url(./img/menu-screens/backgrounds/imprint.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#imprint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#imprint a {
+    color: black;
+    text-decoration: none;
+}
+
+#imprint a:hover {
+    color: #3b8ae6;
+}
+
+#imprint h3 {
+    font-family: Chewy;
+    /* font-size: clamp(16px, calc(24 / 1280 * 100vw), 24px); */
+    font-size: 24px;
+    color: #4aceff;
+    text-shadow: 2px 2px 8px rgba(0 0 0 / 0.8);
+}
+
+#imprint p,
+#imprint ul {
+    /* font-size: clamp(16px, calc(20 / 1280 * 100vw), 2px); */
+    font-size: 18px;
+}
+
+#imprint ul {
+    list-style: none;
+}
+
+.imprint-first-row {
+    width: 100%;
+    display: flex;
+    gap: 10%;
+}
+
+.container-imprint {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
 }
 
 #penguin-animated {
@@ -794,6 +859,10 @@ canvas {
     #settings {
         gap: 12%;
     }
+
+    #button-imprint {
+        font-size: 12px;
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -856,6 +925,10 @@ canvas {
 
     .text-win-end-screen {
         line-height: 16px;
+    }
+
+    #button-imprint {
+        font-size: 10px;
     }
 }
 
