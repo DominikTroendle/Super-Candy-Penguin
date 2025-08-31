@@ -439,17 +439,16 @@ h1 {
 }
 
 #container-imprint-text h3 {
+    margin-bottom: 2%;
     font-family: Chewy;
-    /* font-size: clamp(16px, calc(24 / 1280 * 100vw), 24px); */
-    font-size: 40px;
+    font-size: clamp(16px, calc(40 / 1280 * 100vw), 40px);
     color: #4aceff;
     text-shadow: 2px 2px 8px rgba(0 0 0 / 0.8);
 }
 
 #container-imprint-text p,
 #imprint ul {
-    /* font-size: clamp(16px, calc(18 / 1280 * 100vw), 18px); */
-    font-size: 32px;
+    font-size: clamp(16px, calc(32 / 1280 * 100vw), 32px);
 }
 
 #container-imprint-text ul {
@@ -465,18 +464,17 @@ h1 {
 }
 
 .container-imprint-text {
-    width: 50%;
+    width: 70%;
     height: 80%;
+    display: flex;
 }
 
 #imprint-close {
-    margin-bottom: 1%;
+    min-width: 40px;
+    height: 40px;
     border: 2px solid #3b8ae6;;
     border-radius: 5px;
     background: transparent;
-    width: 7%;
-    height: auto;
-    aspect-ratio: 1 / 1;
     font-size: 32px;
     font-weight: bold;
     color: #3b8ae6;
@@ -484,6 +482,24 @@ h1 {
 
 #imprint-close:hover {
     background: rgba(74 206 255 / 0.2);
+}
+
+.container-template-content {
+    min-width: 100%;
+    display: flex;
+    gap: 5%;
+}
+
+.container-template-text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-template-text div {
+    width: 100%;
+    display: flex;
+    gap: 5%;
 }
 
 .imprint-row {
