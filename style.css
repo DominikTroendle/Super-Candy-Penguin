@@ -614,11 +614,11 @@ canvas {
         aspect-ratio: 1280 / 720;
     }
 
-    button,
+    /* button,
     .binding,
     .text-settings {
         font-size: clamp(16px, calc(38 / 720 * 100vh), 38px);
-    }
+    } */
 }
 
 @media only screen and ((max-width: 1280px) and (max-aspect-ratio: 16/9)) {
@@ -666,7 +666,15 @@ canvas {
     .binding,
     .key,
     .text-settings {
-        font-size: clamp(16px, calc(38 / 720 * 100vh), 38px);
+        font-size: clamp(16px, calc(38 / 720 * 100vh), 38px) !important;
+    }
+
+    #button-imprint {
+        font-size: clamp(14px, calc(24 / 720 * 100vh), 24px) !important;
+    }
+
+    .text-win-end-screen {
+        font-size: clamp(16px, calc(45 / 720 * 100vh), 45px) !important;
     }
 
     #penguin-animated {
