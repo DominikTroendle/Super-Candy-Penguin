@@ -411,6 +411,13 @@ h1 {
     background-repeat: no-repeat;
 }
 
+#imprint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 #header-img-imprint {
     margin: 2.4% 0 2.4% 0;
     width: 50.2%;
@@ -421,50 +428,67 @@ h1 {
     background-repeat: no-repeat;
 }
 
-#imprint {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-#imprint a {
-    color: black;
+#container-imprint-text a {
+    color: #4aceff;
+    text-shadow: 2px 2px 2px rgba(0 0 0 / 1);
     text-decoration: none;
 }
 
-#imprint a:hover {
-    color: #3b8ae6;
+#container-imprint-text a:hover {
+    text-decoration: underline;
 }
 
-#imprint h3 {
+#container-imprint-text h3 {
     font-family: Chewy;
     /* font-size: clamp(16px, calc(24 / 1280 * 100vw), 24px); */
-    font-size: 24px;
+    font-size: 40px;
     color: #4aceff;
     text-shadow: 2px 2px 8px rgba(0 0 0 / 0.8);
 }
 
-#imprint p,
+#container-imprint-text p,
 #imprint ul {
-    /* font-size: clamp(16px, calc(20 / 1280 * 100vw), 2px); */
-    font-size: 18px;
+    /* font-size: clamp(16px, calc(18 / 1280 * 100vw), 18px); */
+    font-size: 32px;
 }
 
-#imprint ul {
+#container-imprint-text ul {
     list-style: none;
 }
 
-.imprint-first-row {
-    width: 100%;
-    display: flex;
-    gap: 10%;
-}
-
-.container-imprint {
-    height: 100%;
+.container-imprint-buttons {
+    width: 50%;
+    height: 80%;
     display: flex;
     flex-direction: column;
+    gap: 5%;
+}
+
+.container-imprint-text {
+    width: 50%;
+    height: 80%;
+}
+
+#imprint-close {
+    margin-bottom: 1%;
+    border: 2px solid #3b8ae6;;
+    border-radius: 5px;
+    background: transparent;
+    width: 7%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    font-size: 32px;
+    font-weight: bold;
+    color: #3b8ae6;
+}
+
+#imprint-close:hover {
+    background: rgba(74 206 255 / 0.2);
+}
+
+.imprint-row {
+    width: 100%;
+    display: flex;
     gap: 5%;
 }
 
@@ -912,6 +936,10 @@ canvas {
     .text-win-end-screen {
         line-height: 18px;
     }
+
+    .btn-imprint {
+        font-size: 14px;
+    }
 }
 
 @media only screen and (max-width: 390px) {
@@ -929,6 +957,10 @@ canvas {
 
     #button-imprint {
         font-size: 10px;
+    }
+
+    .btn-imprint {
+        font-size: 12px;
     }
 }
 

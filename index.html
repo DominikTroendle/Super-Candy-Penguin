@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div id="start-screen" class="overlay-screen d-none">
+        <div id="start-screen" class="overlay-screen">
             <div class="container-buttons">
                 <button id="button-play" class="menu-button btn-hover button-clickable">PLAY</button>
                 <button id="button-settings" class="menu-button btn-hover button-clickable">SETTINGS</button>
@@ -104,35 +104,27 @@
                 </button>
             </div>
         </div>
-        <div id="imprint" class="overlay-screen">
+        <div id="imprint" class="overlay-screen d-none">
             <div id="header-img-imprint"></div>
-            <div class="container-imprint">
-                <div class="imprint-first-row">
-                    <div>
-                        <h3>Imprint</h3>
-                        <p>Dominik Tröndle<br>Munich 81735<br>Germany</p>
-                        <p>Email: <a href="mailto:domi.troendle@gmail.com">domi.troendle@gmail.com</a></p>
-                    </div>
-                    <div>
-                        <h3>Credits</h2>
-                        <ul>
-                            <li>Sprites: <a href="https://craftpix.net" target="_blank">Craftpix</a></li>
-                            <li>Music: <a href="https://freesound.org" target="_blank">Freesound</a></li>
-                            <li>Sound effects: <a href="https://zapsplat.com" target="_blank">Zapsplat</a></li>
-                            <li>Font: <a href="https://fonts.google.com/" target="_blank">Google Fonts</a></li>
-                        </ul>
-                    </div>
+            <div id="container-imprint-buttons" class="container-imprint-buttons">
+                <div class="imprint-row">
+                    <button id="Imprint" class="menu-button btn-hover btn-imprint">
+                        IMPRINT
+                    </button>
+                    <button id="Credits" class="menu-button btn-hover btn-imprint">
+                        CREDITS
+                    </button>
                 </div>
-                <div>
-                    <h3>Privacy Policy</h2>
-                    <p>This game does not collect or store any personal data.</p>
-                </div>
-                <div>
-                    <h3>Disclaimer</h2>
-                    <p>Despite careful content control, we assume no liability for the content of external links.<br>The operators of the linked pages are solely responsible for their content.
-                    </p>
+                <div class="imprint-row">
+                    <button id="Privacy" class="menu-button btn-hover btn-imprint">
+                        PRIVACY
+                    </button>
+                    <button id="Disclaimer" class="menu-button btn-hover btn-imprint">
+                        DISCLAIMER
+                    </button>
                 </div>
             </div>
+            <div id="container-imprint-text" class="container-imprint-text d-none"></div>
             <div class="container-home-button">
                 <button class="menu-button start-screen-button home-button btn-hover button-clickable">
                     <i class="fa-solid fa-arrow-left"></i>
@@ -167,4 +159,5 @@
 </body>
 <script src="script.js"></script>
 <script src="./scripts/volumeControl.js"></script>
+<script src="./templates/template.js"></script>
 </html>

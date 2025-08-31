@@ -6,6 +6,8 @@ let keyboard = new Keyboard();
 let playButton = document.getElementById('button-play');
 let settingsButton = document.getElementById('button-settings');
 let controlsButton = document.getElementById('button-controls');
+let imprintPageButton = document.getElementById('button-imprint');
+let imprintButtons = document.querySelectorAll('.btn-imprint');
 let replayButtons = document.querySelectorAll('.replay-button');
 let startScreenButtons = document.querySelectorAll('.start-screen-button');
 
@@ -35,6 +37,23 @@ controlsButton.addEventListener('click', () => {
     resetOverlays();
     showOverlay('controls');
 });
+
+/**
+ * Handles clicking the imprint button: plays a click sound, resets overlays and shows the imprint overlay.
+ */
+imprintPageButton.addEventListener('click', () => {
+    clickSound.play();
+    resetOverlays();
+    showOverlay('imprint');
+});
+
+/**
+ * Handles clicking any imprint button: plays a click sound and toggles the imprint's text overlay.
+ */
+imprintButtons.forEach(e => e.addEventListener('click', () => {
+    clickSound.play();
+    toggleImprintText(e.id);
+}));
 
 /**
  * Handles clicking any replay button: plays a click sound, resets the game state and overlays,
