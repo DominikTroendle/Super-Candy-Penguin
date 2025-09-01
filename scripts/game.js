@@ -48,7 +48,7 @@ imprintPageButton.addEventListener('click', () => {
 
 /**
  * Handles clicking any replay button: plays a click sound, resets the game state and overlays,
- * stops all music and restarts the game world.
+ * shows the mobile controls if the device is a touch device, stops all music and restarts the game world.
  */
 replayButtons.forEach(e => e.addEventListener('click', () => {
     let media = window.matchMedia("(pointer: coarse)");
