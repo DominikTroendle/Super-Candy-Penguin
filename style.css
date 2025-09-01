@@ -616,12 +616,6 @@ canvas {
         height: 100vh;
         aspect-ratio: 1280 / 720;
     }
-
-    /* button,
-    .binding,
-    .text-settings {
-        font-size: clamp(16px, calc(38 / 720 * 100vh), 38px);
-    } */
 }
 
 @media only screen and ((max-width: 1280px) and (max-aspect-ratio: 16/9)) {
@@ -674,6 +668,15 @@ canvas {
 
     #button-imprint {
         font-size: clamp(14px, calc(24 / 720 * 100vh), 24px) !important;
+    }
+
+    #imprint h3 {
+        font-size: clamp(16px, calc(40 / 720 * 100vh), 40px);
+    }
+
+    #imprint p,
+    #imprint ul {
+        font-size: clamp(12px, calc(32 / 720 * 100vh), 32px);
     }
 
     .text-win-end-screen {
