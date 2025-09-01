@@ -63,7 +63,10 @@ export class Endboss extends Enemy {
     executeWonGameEnding() {
         this.playAnimation('dead', this.IMAGES_DEATH, 10);
         endGame('W', this.world.coinCounter.currentAmount);
-        setTimeout(() => this.world.backgroundMusic.bossMusic.pause(), 1200);
+        setTimeout(() => {
+            this.world.backgroundMusic.bgMusic.pause();
+            this.world.backgroundMusic.bossMusic.pause();
+        }, 1200);
     }
 
     /**

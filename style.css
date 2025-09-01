@@ -86,14 +86,14 @@ h1 {
 #mobile-controls-settings {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 20px;
     background-size: contain;
 }
 
 #mobile-controls-walking {
     margin: 0 0 20px 20px;
-    width: 200px;
+    width: 300px;
     height: 100px;
 }
 
@@ -113,7 +113,7 @@ h1 {
 
 #mobile-controls-actions {
     margin: 0 20px 20px 0;
-    width: 200px;
+    width: 300px;
     height: 100px;
 }
 
@@ -733,14 +733,14 @@ canvas {
     #mobile-controls-left,
     #mobile-controls-right {
         height: 100%;
-        width: 17.2%; 
+        width: 27%;
     }
 
     #mobile-controls-walking,
     #mobile-controls-actions {
         width: 90.9%;
         height: auto;
-        aspect-ratio: 2 / 1;
+        aspect-ratio: 3 / 1;
         gap: 9.1%;
     }
 
