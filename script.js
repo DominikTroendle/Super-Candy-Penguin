@@ -16,7 +16,7 @@ function setStoppableInterval(fn, time) {
  * Displays the game screen, triggers the start animation and shows mobile controls if the device uses a coarse pointer (touch).
  */
 function showGame() {
-    let media = window.matchMedia("(pointer: coarse)")
+    let media = window.matchMedia("(pointer: coarse)");
     changeStartAnimation();
     setTimeout(() => {
         resetOverlays();

@@ -51,9 +51,11 @@ imprintPageButton.addEventListener('click', () => {
  * stops all music and restarts the game world.
  */
 replayButtons.forEach(e => e.addEventListener('click', () => {
+    let media = window.matchMedia("(pointer: coarse)");
     clickSound.play();
     gameEnded = false;
     resetOverlays();
+    if (media.matches) document.getElementById('mobile-controls').classList.remove('d-none');
     stopAllMusic();
     init();
 }));
