@@ -95,25 +95,3 @@ function resetOverlays() {
 function showOverlay(overlay) {
     document.getElementById(overlay).classList.remove('d-none');
 }
-
-/**
- * Toggles the visibility of the imprint text and imprint buttons.
- * 
- * @param {String} text - the key used to generate the corresponding imprint HTML
- */
-function toggleImprintText(text) {
-    let containerBtnsRef = document.getElementById('container-imprint-buttons');
-    document.getElementById('container-imprint-text').classList.toggle('d-none');
-    containerBtnsRef.classList.toggle('d-none');
-    if (containerBtnsRef.classList.contains('d-none')) document.getElementById('container-imprint-text').innerHTML = getImprintHTML(text);
-}
-
-/**
- * Closes the imprint text section and restores the imprint buttons.
- *
- */
-function closeImprintText() {
-    document.getElementById('container-imprint-text').classList.add('d-none');
-    document.getElementById('container-imprint-buttons').classList.remove('d-none');
-    document.getElementById('container-imprint-text').innerHTML = "";
-}
