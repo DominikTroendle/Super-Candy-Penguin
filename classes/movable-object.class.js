@@ -33,14 +33,6 @@ export class MovableObject extends DrawableObject {
         super();
     }
 
-    /* drawBorder(ctx) {
-        ctx.beginPath();
-        ctx.lineWidth = '2';
-        ctx.strokeStyle = 'blue';
-        ctx.rect(this.x, this.y, this.width, this.height);
-        ctx.stroke();
-    } */
-
     /**
      * Applies gravity to the object by updating its vertical position over time based on speed and acceleration.
      * Ensures the character cannot fall below the ground level.

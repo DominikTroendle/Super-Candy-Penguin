@@ -90,7 +90,7 @@ function resetOverlays() {
 /**
  * Shows the given overlay by removing its `d-none` class.
  *
- * @param {string} overlay - the ID of the overlay element to display
+ * @param {String} overlay - the ID of the overlay element to display
  */
 function showOverlay(overlay) {
     document.getElementById(overlay).classList.remove('d-none');

@@ -116,7 +116,7 @@ export class Character extends MovableObject {
      * applies damage, plays the hurt sound, and updates the status bar.
      */
     checkBossCollision() {
-        if (this.isBossfight && this.canBeHit() && this.world.endboss.bossIsAttacking(this) && !this.isDead()) {
+        if (this.isBossfight && this.canBeHit() && this.world.endboss.bossIsAttacking(this) && !this.isDead() && !gameEnded) {
             this.hit();
             this.world.playSound('hurt');
             this.world.statusbar.setPercentage(this.life);
@@ -209,18 +209,4 @@ export class Character extends MovableObject {
             this.isBossfight = true;
         }
     }
-
-    /* drawBorder(ctx) {
-        ctx.beginPath();
-        ctx.lineWidth = '2';
-        ctx.strokeStyle = 'blue';
-        ctx.rect(this.x + this.characterOffset.left, this.y + this.characterOffset.top, this.characterOffset.width, this.characterOffset.height);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.lineWidth = '2';
-        ctx.strokeStyle = 'red';
-        ctx.rect(this.x + this.collisionOffset.left, this.y + this.collisionOffset.top, this.collisionOffset.width, this.collisionOffset.height);
-        ctx.stroke();
-    } */
 }

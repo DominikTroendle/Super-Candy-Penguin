@@ -4,7 +4,6 @@ import { CoinCounter } from '../classes/coin-counter.class.js';
 import { CandyCounter } from '../classes/candy-counter.class.js';
 import { CandyManager } from './candy-manager.class.js';
 import { Level1 } from '../levels/level1.class.js';
-// import { Enemy } from "../classes/enemy.class.js";
 import { Endboss } from '../classes/endboss.class.js';
 import { Counter } from './counter.class.js';
 import { BossHealthbar } from './boss-healthbar.class.js';
@@ -142,8 +141,6 @@ export class World {
         let flip = object.otherDirection;
         if (flip) this.mirrorCtx(object);
         object.drawObject(this.ctx);
-        /* if (object instanceof Character || object instanceof Enemy || object instanceof Endboss) object.drawBorder(this.ctx);
-        // after deleting border drawing, also delete import of enemy and endboss */
         if (object instanceof Counter) object.drawCounter(this.ctx, object);
         if (object instanceof BossHealthbar) object.drawBossName(this.ctx);
         if (flip) this.resetCtx(object);

@@ -80,7 +80,7 @@ export class CandyManager {
      * @returns - true if the boss was hit, false otherwise
      */
     handleBossHit(candy) {
-        if (this.world.character.isBossfight && candy.isHittingBoss(this.world.endboss)) {
+        if (this.world.character.isBossfight && candy.isHittingBoss(this.world.endboss) &&! gameEnded) {
             this.world.playSound('hit');
             this.world.endboss.isDamaged();
             return true;
