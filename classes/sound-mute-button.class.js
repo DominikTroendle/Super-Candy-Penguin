@@ -27,6 +27,6 @@ export class SoundMuteButton extends Settings {
             this.loadImage('./img/menu-screens/buttons/sound-on.png');
             this.world.soundVol = soundVolume;
             this.world.soundVol = soundVolume;
-        }
+        };
     }
 }

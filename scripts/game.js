@@ -56,7 +56,7 @@ replayButtons.forEach(e => e.addEventListener('click', () => {
     clickSound.play();
     gameEnded = false;
     resetOverlays();
-    document.getElementById('overlays').classList.add('d-none');
+    if (!media.matches) document.getElementById('overlays').classList.add('d-none');
     if (media.matches) document.getElementById('mobile-controls').classList.remove('d-none');
     stopAllMusic();
     init();
