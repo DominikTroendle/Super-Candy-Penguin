@@ -2,6 +2,7 @@ import { Settings } from "./settings.class.js";
 
 export class SoundMuteButton extends Settings {
     y = 285;
+    world;
 
     constructor() {
         super().loadImage('./img/menu-screens/buttons/sound-on.png');
@@ -17,14 +18,15 @@ export class SoundMuteButton extends Settings {
     }
 
     onClick() {
-        console.log('button clicked');
-        
-        /* volumeControl.soundMute = !volumeControl.soundMute;
-
-        if (volumeControl.soundMute) {
+        soundMuted = !soundMuted;
+        if (soundMuted) {
             this.loadImage('./img/menu-screens/buttons/sound-off.png');
+            this.world.soundVol = 0;
+            this.world.soundVol = 0;
         } else {
             this.loadImage('./img/menu-screens/buttons/sound-on.png');
-        } */
+            this.world.soundVol = soundVolume;
+            this.world.soundVol = soundVolume;
+        }
     }
 }

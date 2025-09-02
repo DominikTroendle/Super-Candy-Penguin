@@ -42,6 +42,7 @@ export class World {
             volume: musicMuted ? 0 : musicVolume
         })
     }
+    soundVol = soundMuted ? 0 : soundVolume;
     
     constructor(canvas, keyboard, game) {
         this.ctx = canvas.getContext('2d');
@@ -57,8 +58,6 @@ export class World {
 
     registerClickEvents() {
         this.canvas.addEventListener("click", (e) => {
-            console.log('eventListener fired');
-            
             const rect = canvas.getBoundingClientRect();
             const mouseX = e.clientX - rect.left;
             const mouseY = e.clientY - rect.top;
@@ -79,6 +78,9 @@ export class World {
         this.endboss.character = this.character;
         this.level.enemies.forEach(enemy => {
             enemy.setCharacter(this.character);
+        });
+        this.settingsBtns.forEach(btn => {
+            btn.world = this;
         });
     }
 
@@ -217,7 +219,7 @@ export class World {
      */
     playSound(key) {
         let sound = new Audio(`./audio/sounds/${key}.mp3`);
-        sound.volume = soundMuted ? 0 : soundVolume;
+        sound.volume = this.soundVol;
         sound.play();
     }
 }
