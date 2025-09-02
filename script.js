@@ -17,24 +17,31 @@ function setStoppableInterval(fn, time) {
  */
 function showGame() {
     let media = window.matchMedia("(pointer: coarse)");
-    changeStartAnimation();
+    handleStartAnimation('change');
     setTimeout(() => {
         resetOverlays();
+        document.getElementById('overlays').classList.add('d-none');
         if (media.matches) document.getElementById('mobile-controls').classList.remove('d-none');
         document.getElementById('penguin-animated').classList.remove('penguin-animation-jump');
     }, 1000);
 }
 
 /**
- * Changes the penguin animation on the start screen from idle to jump if the window is wide enough.
+ * 
+ * Handles the penguin animation on the start screen depending on the given key and screen width
+ * by changing the animation, switching the sprite sheet and adjusting the start screen's gap.
+ *
+ * @param {String} key - animation identifier ("change", "reset")
  */
-function changeStartAnimation() {
-    if (window.innerWidth >= 1280) {
-        document.getElementById('penguin-animated').classList.remove('penguin-animation-idle');
-        document.getElementById('penguin-animated').style.backgroundImage = "url('./img/menu-screens/sprite-sheets/penguin-jump-sprite-sheet.png')";
-        document.getElementById('start-screen').style.gap = '11.5px';
-        document.getElementById('penguin-animated').classList.add('penguin-animation-jump');
-    };
+function handleStartAnimation(key) {
+    if (window.innerWidth < 1280) return;
+    const penguinRef = document.getElementById('penguin-animated');
+    const startScreenRef = document.getElementById('start-screen');
+    const change = key === "change";
+    penguinRef.classList.remove('penguin-animation-idle', 'penguin-animation-jump');
+    penguinRef.classList.add(change ? 'penguin-animation-jump' : 'penguin-animation-idle');
+    penguinRef.style.backgroundImage = change ? "url('./img/menu-screens/sprite-sheets/penguin-jump-sprite-sheet.png')" : "url('./img/menu-screens/sprite-sheets/penguin-idle-sprite-sheet.png')";
+    startScreenRef.style.gap = change ? '11.5px' : '15px';
 }
 
 /**
@@ -51,6 +58,7 @@ function endGame(condition, coins) {
     condition === "W" ? overlay = "win-screen" : overlay = "game-over-screen";
     setTimeout(() => {
         resetOverlays();
+        document.getElementById('overlays').classList.remove('d-none');
         initializeGameEndingOverlay(overlay, collectedCoinsDisplay, coins);
         clearIntervals();
     }, 1200);

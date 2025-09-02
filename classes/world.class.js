@@ -48,10 +48,26 @@ export class World {
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.game = game;
+        this.registerClickEvents();
         this.setWorld();
         this.loop();
         this.run();
         setTimeout(() => this.backgroundMusic.bgMusic.play(), 1000);
+    }
+
+    registerClickEvents() {
+        this.canvas.addEventListener("click", (e) => {
+            console.log('eventListener fired');
+            
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            this.settingsBtns.forEach(btn => {
+                if (btn.isClicked(mouseX, mouseY)) {
+                    btn.onClick();
+                };
+            });
+        });
     }
 
     /**
