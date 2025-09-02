@@ -7,3 +7,8 @@
     font-family: Chewy;
     src: url('../font/Chewy/Chewy-Regular.ttf');
 }
+
+@font-face {
+    font-family: Poiret;
+    src: url('../font/Poiret_One/PoiretOne-Regular.ttf');
+}
