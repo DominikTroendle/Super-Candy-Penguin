@@ -126,7 +126,7 @@ export class World {
         this.addToCanvas(this.statusbar);
         this.addToCanvas(this.coinCounter);
         this.addToCanvas(this.candyCounter);
-        this.addObjectsToCanvas(this.settingsBtns);
+        if (!window.matchMedia('(pointer: coarse)').matches) this.addObjectsToCanvas(this.settingsBtns);
         if (this.character.isBossfight) this.addToCanvas(this.boss_healthbar);
     }
 

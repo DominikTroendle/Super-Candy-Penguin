@@ -20,7 +20,7 @@ function showGame() {
     handleStartAnimation('change');
     setTimeout(() => {
         resetOverlays();
-        document.getElementById('overlays').classList.add('d-none');
+        if (!media.matches) document.getElementById('overlays').classList.add('d-none');
         if (media.matches) document.getElementById('mobile-controls').classList.remove('d-none');
         document.getElementById('penguin-animated').classList.remove('penguin-animation-jump');
     }, 1000);
