@@ -152,9 +152,7 @@ export class MovableObject extends DrawableObject {
     isJumpedOnTop(object) {
         return this.y + this.collisionOffset.top + this.collisionOffset.height >= this.groundY - object.height &&
             this.x + this.collisionOffset.left + this.collisionOffset.width > object.x &&
-            this.x + this.collisionOffset.left < object.x + object.width &&
-            this.y < 280 + object.height &&
-            this.speedY < 0;
+            this.x + this.collisionOffset.left < object.x + object.width;
     }
 
     /**
@@ -206,5 +204,14 @@ export class MovableObject extends DrawableObject {
      */
     isDead() {
         return this.life == 0;
+    }
+
+    /**
+     * Checks whether this object (the character) is falling.
+     * 
+     * @returns {Boolean} -  true if the speedY is lesser than 0, otherwise false
+     */
+    isFalling() {
+        return this.speedY < 0;
     }
 }

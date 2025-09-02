@@ -130,8 +130,8 @@ export class Character extends MovableObject {
      * Checks for enemy collisions (character being hit or character jumping on an enemy).
      */
     checkEnemysCollision() {
-        this.checkEnemyisHitting();
         this.checkEnemyisHit();
+        this.checkEnemyisHitting();
     }
 
     /**
@@ -139,7 +139,7 @@ export class Character extends MovableObject {
      */
     checkEnemyisHitting() {
         this.world.level.enemies.forEach(enemy => {
-            if (this.isColliding(enemy) && this.canBeHit() && !this.isJumpedOnTop(enemy) && !this.isDead()) {
+            if (this.isColliding(enemy) && this.canBeHit() /* && !this.isJumpedOnTop(enemy) */ && !this.isDead()) {
                 this.hit();
                 this.world.playSound('hurt');
                 this.world.statusbar.setPercentage(this.life);
@@ -152,7 +152,7 @@ export class Character extends MovableObject {
      */
     checkEnemyisHit() {
         this.world.level.enemies = this.world.level.enemies.filter(enemy => {
-            if (this.isJumpedOnTop(enemy)) {
+            if (this.isFalling() && this.isJumpedOnTop(enemy)) {
                 this.world.playSound('jump_ontop');
                 return false;
             };
