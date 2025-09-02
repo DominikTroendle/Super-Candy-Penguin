@@ -15,6 +15,7 @@ let startScreenButtons = document.querySelectorAll('.start-screen-button');
  */
 playButton.addEventListener('click', () => {
     clickSound.play();
+    gameEnded = false;
     showGame();
     init();
 });
@@ -53,6 +54,7 @@ imprintPageButton.addEventListener('click', () => {
 replayButtons.forEach(e => e.addEventListener('click', () => {
     let media = window.matchMedia("(pointer: coarse)");
     clickSound.play();
+    // if (gameEnded) return;
     gameEnded = false;
     resetOverlays();
     if (media.matches) document.getElementById('mobile-controls').classList.remove('d-none');
@@ -61,11 +63,13 @@ replayButtons.forEach(e => e.addEventListener('click', () => {
 }));
 
 /**
- * Handles clicking any start screen button: plays a click sound and reloads the page after a short delay.
+ * Handles clicking any start screen button: plays a click sound, resets overlays and shows the start screen overlay.
  */
 startScreenButtons.forEach(e => e.addEventListener('click', () => {
     clickSound.play();
-    setTimeout(() => window.location.reload(), 170);
+    stopAllMusic();
+    resetOverlays();
+    showOverlay('start-screen');
 }));
 
 /**
