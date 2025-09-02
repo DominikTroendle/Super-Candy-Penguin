@@ -109,8 +109,8 @@ export class Character extends MovableObject {
     checkCollisions() {
         this.checkBossCollision();
         this.checkEnemysCollision();
-        this.checkCandyCollisions();
-        this.checkCoinCollisions();
+        this.checkItemCollisions('candys', this.world.coinCounter, 'pickup_candy');
+        this.checkItemCollisions('coins', this.world.candyCounter, 'pickup_coin');
         this.checkHeartCollisions();
     }
 
@@ -139,7 +139,7 @@ export class Character extends MovableObject {
      */
     checkEnemyisHitting() {
         this.world.level.enemies.forEach(enemy => {
-            if (this.isColliding(enemy) && this.canBeHit() /* && !this.isJumpedOnTop(enemy) */ && !this.isDead()) {
+            if (this.isColliding(enemy) && this.canBeHit() && !this.isDead()) {
                 this.hit();
                 this.world.playSound('hurt');
                 this.world.statusbar.setPercentage(this.life);
@@ -161,27 +161,18 @@ export class Character extends MovableObject {
     }
 
     /**
-     * Handles collisions with candies. Increases the candy counter, plays pickup sound, and removes the collected candy.
+     * Handles collision with collectible items. If the character collides with an item,
+     * the corresponding counter is increased, a sound effect is played, and the collected item is removed from the level.
+     * 
+     * @param {String} key - the name of the array inside `this.world.level` ("candys", "coins")
+     * @param {Counter} counter - the counter instance that tracks the number of collected items
+     * @param {String} sound -  the name of the sound to be played
      */
-    checkCandyCollisions() {
-        this.world.level.candys = this.world.level.candys.filter(candy => {
-            if (this.isColliding(candy)) {
-                this.world.candyCounter.increaseCount(this.world.candyCounter);
-                this.world.playSound('pickup_candy');
-                return false;
-            };
-            return true;
-        });
-    }
-
-    /**
-     * Handles collisions with coins. Increases the coin counter, plays pickup sound, and removes the collected coin.
-     */
-    checkCoinCollisions() {
-        this.world.level.coins = this.world.level.coins.filter(coin => {
-            if (this.isColliding(coin)) {
-                this.world.coinCounter.increaseCount(this.world.coinCounter);
-                this.world.playSound('pickup_coin');
+    checkItemCollisions(key, counter, sound) {
+        this.world.level[key] = this.world.level[key].filter(item => {
+            if (this.isColliding(item)) {
+                counter.increaseCount(counter);
+                this.world.playSound(sound);
                 return false;
             };
             return true;
