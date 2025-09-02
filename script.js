@@ -49,8 +49,8 @@ function endGame(condition, coins) {
     if (gameEnded) return;
     gameEnded = true;
     condition === "W" ? overlay = "win-screen" : overlay = "game-over-screen";
-    resetOverlays();
     setTimeout(() => {
+        resetOverlays();
         initializeGameEndingOverlay(overlay, collectedCoinsDisplay, coins);
         clearIntervals();
     }, 1200);

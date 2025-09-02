@@ -7,6 +7,8 @@ import { Level1 } from '../levels/level1.class.js';
 import { Endboss } from '../classes/endboss.class.js';
 import { Counter } from './counter.class.js';
 import { BossHealthbar } from './boss-healthbar.class.js';
+import { MusicMuteButton } from './music-mute-button.class.js';
+import { SoundMuteButton } from './sound-mute-button.class.js';
 
 export class World {
     ctx;
@@ -20,6 +22,10 @@ export class World {
     coinCounter = new CoinCounter();
     candyCounter = new CandyCounter();
     candyManager = new CandyManager(this);
+    settingsBtns = [
+        new MusicMuteButton(),
+        new SoundMuteButton()
+    ];
     endboss = new Endboss();
     boss_healthbar = new BossHealthbar();
     level = new Level1();
@@ -104,6 +110,7 @@ export class World {
         this.addToCanvas(this.statusbar);
         this.addToCanvas(this.coinCounter);
         this.addToCanvas(this.candyCounter);
+        this.addObjectsToCanvas(this.settingsBtns);
         if (this.character.isBossfight) this.addToCanvas(this.boss_healthbar);
     }
 
