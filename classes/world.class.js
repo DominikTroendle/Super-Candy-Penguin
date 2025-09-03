@@ -102,7 +102,7 @@ export class World {
                 this.backgroundMusic.bgMusic.pause();
                 this.backgroundMusic.bossMusic.play();
             };
-        }, 100);
+        }, 50);
     }
 
     /**

@@ -152,7 +152,7 @@ export class Character extends MovableObject {
      */
     checkEnemyisHit() {
         this.world.level.enemies = this.world.level.enemies.filter(enemy => {
-            if (this.isFalling() && this.isJumpedOnTop(enemy)) {
+            if (this.isFalling() && this.isColliding(enemy)) {
                 this.world.playSound('jump_ontop');
                 return false;
             };

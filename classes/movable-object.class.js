@@ -144,18 +144,6 @@ export class MovableObject extends DrawableObject {
     }
 
     /**
-     * Checks if this object (the character) jumped on top of the given object by using a specified collision offset.
-     *
-     * @param {Object} object - the object to check against
-     * @returns {Boolean} - true if a jump-on-top collision occurred, otherwise false
-     */
-    isJumpedOnTop(object) {
-        return this.y + this.collisionOffset.top + this.collisionOffset.height >= this.groundY - object.height &&
-            this.x + this.collisionOffset.left + this.collisionOffset.width > object.x &&
-            this.x + this.collisionOffset.left < object.x + object.width;
-    }
-
-    /**
      * Applies damage to this object (the character), updates its life value and plays a sound if the life reaches zero.
      */
     hit() {
