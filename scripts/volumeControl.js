@@ -1,4 +1,5 @@
 let soundControls = Array.from(document.querySelectorAll('.sound-control'));
+let mobileSoundControls = Array.from(document.querySelectorAll('.mobile-control-button-sm'));
 let musicVolume = 0.5;
 let soundVolume = 0.5;
 let musicMuted = false;
@@ -85,7 +86,9 @@ function updateMuteButtons(type) {
     document.getElementById(`${type}-down`).disabled = (type === "sound" ? soundMuted : musicMuted);
     document.getElementById(`${type}-up`).disabled = (type === "sound" ? soundMuted : musicMuted);
     document.getElementById('sound-mute').style.backgroundImage = soundMuted ? `url('./img/menu-screens/buttons/sound-off.png')` : `url('./img/menu-screens/buttons/sound-on.png')`;
+    document.getElementById('sound-mute-mobile').style.backgroundImage = soundMuted ? `url('./img/menu-screens/buttons/sound-off.png')` : `url('./img/menu-screens/buttons/sound-on.png')`;
     document.getElementById('music-mute').style.backgroundImage = musicMuted ? `url('./img/menu-screens/buttons/music-off.png')` : `url('./img/menu-screens/buttons/music-on.png')`;
+    document.getElementById('music-mute-mobile').style.backgroundImage = musicMuted ? `url('./img/menu-screens/buttons/music-off.png')` : `url('./img/menu-screens/buttons/music-on.png')`;
 }
 
 /**
@@ -129,4 +132,26 @@ function stopAllMusic() {
     winMusic.currentTime = 0;
     gameOverMusic.pause();
     gameOverMusic.currentTime = 0;
+}
+
+mobileSoundControls.forEach(e => e.addEventListener('touchstart', () => {
+    if (e.id === "sound-mute-mobile") {
+        handleMobileSoundControls("sound");
+    } else if (e.id === "music-mute-mobile") {
+        handleMobileSoundControls("music");
+    };
+}));
+
+function handleMobileSoundControls(type) {
+    if (type === "sound") {
+        soundMuted = !soundMuted;
+        clickSound.volume = soundMuted ? 0 : soundVolume;
+        updateMuteButtons("sound");
+    } else if (type === "music") {
+        musicMuted = !musicMuted;
+        window.currentWorld.backgroundMusic.bgMusic.volume = musicMuted ? 0 : musicVolume;
+        window.currentWorld.backgroundMusic.bossMusic.volume = musicMuted ? 0 : musicVolume;
+        updateMuteButtons("music");
+    }
+    setLocalStorage();
 }

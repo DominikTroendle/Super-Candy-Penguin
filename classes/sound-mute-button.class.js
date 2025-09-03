@@ -5,7 +5,8 @@ export class SoundMuteButton extends Settings {
     world;
 
     constructor() {
-        super().loadImage('./img/menu-screens/buttons/sound-on.png');
+        super();
+        this.loadImage(soundMuted ? 'img/menu-screens/buttons/sound-off.png' : 'img/menu-screens/buttons/sound-on.png');
     }
 
     isClicked(mouseX, mouseY) {

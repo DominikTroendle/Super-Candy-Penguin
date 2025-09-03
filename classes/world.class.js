@@ -73,6 +73,7 @@ export class World {
      * Initializes world references by connecting the character, the endboss, and all enemies to this world instance.
      */
     setWorld() {
+        window.currentWorld = this;
         this.character.world = this;
         this.endboss.world = this;
         this.endboss.character = this.character;
@@ -219,6 +220,7 @@ export class World {
      */
     playSound(key) {
         let sound = new Audio(`./audio/sounds/${key}.mp3`);
+        if (window.matchMedia('(pointer: coarse)').matches) this.soundVol = soundMuted ? 0 : soundVolume;
         sound.volume = this.soundVol;
         sound.play();
     }

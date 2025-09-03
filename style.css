@@ -82,8 +82,7 @@ h1 {
 }
 
 #mobile-controls-walking,
-#mobile-controls-actions,
-#mobile-controls-settings {
+#mobile-controls-actions {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -131,14 +130,29 @@ h1 {
     background-repeat: no-repeat;
 }
 
-#mobile-sound-mute {
+#mobile-controls-settings {
+    margin: 0 0 220px 40px;
+    display: flex;
+    flex-direction: column;
+    width: 70px;
+    height: 160px;
+    gap: 20px;
+}
+
+.mobile-control-button-sm {
+    width: 70px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+}
+
+#sound-mute-mobile {
     background: url(./img/menu-screens/buttons/sound-off.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-#mobile-music-mute {
+#music-mute-mobile {
     background: url(./img/menu-screens/buttons/music-off.png);
     background-size: contain;
     background-position: center;
