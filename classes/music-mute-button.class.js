@@ -9,15 +9,10 @@ export class MusicMuteButton extends Settings {
         this.loadImage(musicMuted ? 'img/menu-screens/buttons/music-off.png' : 'img/menu-screens/buttons/music-on.png');
     }
 
-    isClicked(mouseX, mouseY) {
-        return (
-            mouseX >= this.x &&
-            mouseX <= this.x + this.width &&
-            mouseY >= this.y &&
-            mouseY <= this.y + this.height
-        );
-    }
-
+    /**
+     * Handles the click event on the music button by toggling the global 'musicMuted' flag,
+     * updating the buttons image and adjusting the background music's volume based on the mute state.
+     */
     onClick() {
         musicMuted = !musicMuted;
         if (musicMuted) {

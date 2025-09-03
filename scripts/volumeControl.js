@@ -134,6 +134,10 @@ function stopAllMusic() {
     gameOverMusic.currentTime = 0;
 }
 
+/**
+ * Registers touch event listeners for all mobile sound control buttons
+ * and toggles the corresponding mute via 'handleMobileSoundControls()'.
+ */
 mobileSoundControls.forEach(e => e.addEventListener('touchstart', () => {
     if (e.id === "sound-mute-mobile") {
         handleMobileSoundControls("sound");
@@ -142,6 +146,13 @@ mobileSoundControls.forEach(e => e.addEventListener('touchstart', () => {
     };
 }));
 
+/**
+ * Handles mute/unmute actions for mobile sound controls with the given type by.
+ * toggling the corresponding mute flag and updating the sounds or musics volume.
+ * Saves the updated mute states to localStorage.
+ *
+ * @param {String} type - the control type to toggle ("sound", "music")
+ */
 function handleMobileSoundControls(type) {
     if (type === "sound") {
         soundMuted = !soundMuted;

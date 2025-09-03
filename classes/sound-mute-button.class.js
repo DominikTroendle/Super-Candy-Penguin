@@ -9,15 +9,10 @@ export class SoundMuteButton extends Settings {
         this.loadImage(soundMuted ? 'img/menu-screens/buttons/sound-off.png' : 'img/menu-screens/buttons/sound-on.png');
     }
 
-    isClicked(mouseX, mouseY) {
-        return (
-            mouseX >= this.x &&
-            mouseX <= this.x + this.width &&
-            mouseY >= this.y &&
-            mouseY <= this.y + this.height
-        );
-    }
-
+    /**
+     * Handles the click event on the sound button by toggling the global 'soundMuted' flag,
+     * updating the buttons image and adjusting the global sound volume based on the mute state.
+     */
     onClick() {
         soundMuted = !soundMuted;
         if (soundMuted) {

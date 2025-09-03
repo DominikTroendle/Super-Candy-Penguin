@@ -8,4 +8,20 @@ export class Settings extends DrawableObject {
     constructor() {
         super();
     }
+
+    /**
+     * Checks if the given mouse coordinates are within this element's boundaries.
+     *
+     * @param {Number} mouseX - the X position of the mouse click
+     * @param {Number} mouseY - the Y position of the mouse click
+     * @returns {Boolean} - true if the mouse click is inside the element, otherwise false
+     */
+    isClicked(mouseX, mouseY) {
+        return (
+            mouseX >= this.x &&
+            mouseX <= this.x + this.width &&
+            mouseY >= this.y &&
+            mouseY <= this.y + this.height
+        );
+    }
 }
