@@ -146,14 +146,14 @@ h1 {
 }
 
 #sound-mute-mobile {
-    background: url(./img/menu-screens/buttons/sound-off.png);
+    background: url(./img/menu-screens/buttons/sound-on.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 #music-mute-mobile {
-    background: url(./img/menu-screens/buttons/music-off.png);
+    background: url(./img/menu-screens/buttons/music-on.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;

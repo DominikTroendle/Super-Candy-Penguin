@@ -1,7 +1,7 @@
 import { Settings } from "./settings.class.js";
 
 export class SoundMuteButton extends Settings {
-    y = 285;
+    y = 210;
     world;
 
     constructor() {
