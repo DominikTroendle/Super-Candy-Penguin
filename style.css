@@ -760,6 +760,19 @@ canvas {
         gap: 9.1%;
     }
 
+    #mobile-controls-settings {
+        margin: 0 0 60% 12%;
+        width: 20.3%;
+        height: 22.3%;
+        gap: 12.5%;
+    }
+
+    .mobile-control-button-sm {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
     #mobile-controls-walking {
         margin: 0 0 9.1% 9.1%;
     }
