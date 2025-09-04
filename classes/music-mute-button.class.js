@@ -4,8 +4,9 @@ export class MusicMuteButton extends Settings {
     y = 285;
     world;
 
-    constructor() {
+    constructor(world) {
         super();
+        this.world = world;
         this.loadImage(musicMuted ? 'img/menu-screens/buttons/music-off.png' : 'img/menu-screens/buttons/music-on.png');
     }
 

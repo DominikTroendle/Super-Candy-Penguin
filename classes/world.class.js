@@ -23,8 +23,8 @@ export class World {
     candyCounter = new CandyCounter();
     candyManager = new CandyManager(this);
     settingsBtns = [
-        new MusicMuteButton(),
-        new SoundMuteButton()
+        new MusicMuteButton(this),
+        new SoundMuteButton(this)
     ];
     endboss = new Endboss();
     boss_healthbar = new BossHealthbar();
@@ -49,30 +49,10 @@ export class World {
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.game = game;
-        this.registerClickEvents();
         this.setWorld();
         this.loop();
         this.run();
         setTimeout(() => this.backgroundMusic.bgMusic.play(), 1000);
-    }
-
-    /**
-     * Registers click event listeners on the canvas to handle button interactions by translating the mouse click position into canvas coordinates.
-     * If a button detects a click, its `onClick()` method is triggered.
-     */
-    registerClickEvents() {
-        this.canvas.addEventListener("click", (e) => {
-            const rect = canvas.getBoundingClientRect();
-            const scaleX = this.canvas.width / rect.width;
-            const scaleY = this.canvas.height / rect.height;
-            const mouseX = (e.clientX - rect.left) * scaleX;
-            const mouseY = (e.clientY - rect.top) * scaleY;
-            this.settingsBtns.forEach(btn => {
-                if (btn.isClicked(mouseX, mouseY)) {
-                    btn.onClick();
-                };
-            });
-        });
     }
 
     /**

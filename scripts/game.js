@@ -74,9 +74,37 @@ startScreenButtons.forEach(e => e.addEventListener('click', () => {
 }));
 
 /**
- * Initializes the game worldby getting the canvas element and creates a new {@link World} instance with the canvas and keyboard.
+ * Initializes the game world by getting the canvas element and creates a new {@link World} instance with the canvas and keyboard.
+ * Ensures that click event listeners are only registered once for the canvas element.
  */
 function init() {
     canvas = document.getElementById('canvas');
+    if (!canvas.dataset.listenerSet) {
+        registerClickEvents(canvas);
+        canvas.dataset.listenerSet = "true";
+    };
     window.world = new World(canvas, keyboard, this);
+}
+
+/**
+ * Registers a click event listener on the given canvas element, translates mouse click coordinates into canvas coordinates, checks if any settings button
+ * was clicked and triggers the corresponding buttons 'onClick' method.
+ *
+ * @param {HTMLCanvasElement} canvas - the canvas element on which to register the click events
+ */
+function registerClickEvents(canvas) {
+    canvas.addEventListener("click", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const mouseX = (e.clientX - rect.left) * scaleX;
+        const mouseY = (e.clientY - rect.top) * scaleY;
+
+        window.world.settingsBtns.forEach(btn => {
+            if (btn.isClicked(mouseX, mouseY)) {
+                btn.world = window.world;
+                btn.onClick();
+            }
+        });
+    });
 }
