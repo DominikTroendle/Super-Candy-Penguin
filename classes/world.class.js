@@ -63,8 +63,10 @@ export class World {
     registerClickEvents() {
         this.canvas.addEventListener("click", (e) => {
             const rect = canvas.getBoundingClientRect();
-            const mouseX = e.clientX - rect.left;
-            const mouseY = e.clientY - rect.top;
+            const scaleX = this.canvas.width / rect.width;
+            const scaleY = this.canvas.height / rect.height;
+            const mouseX = (e.clientX - rect.left) * scaleX;
+            const mouseY = (e.clientY - rect.top) * scaleY;
             this.settingsBtns.forEach(btn => {
                 if (btn.isClicked(mouseX, mouseY)) {
                     btn.onClick();
