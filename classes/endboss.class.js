@@ -3,7 +3,7 @@ import { Enemy } from "./enemy.class.js";
 import { Snowball } from "./snowball.class.js";
 
 export class Endboss extends Enemy {
-    x = 3840 + 1280 - 320;
+    x = 4800;
     y = 275;
     width = 300;
     height = 300;
@@ -25,6 +25,7 @@ export class Endboss extends Enemy {
         this.loadImages(this.IMAGES_ATTACKING);
         this.loadImages(this.IMAGES_DEATH);
         this.generateTargetLocation();
+        this.throwingLoop();
         this.animate();
     }
 
@@ -90,8 +91,7 @@ export class Endboss extends Enemy {
     moveRandom() {
         if (this.x === this.targetLocation) {
             this.generateTargetLocation();
-            this.throwingAttack();
-            this.world.playSound('boss_throw');
+            // this.throwingAttack();
         };
         if (this.targetLocation === this.lastLocation || this.x === this.targetLocation) return;
         this.otherDirection = this.x < this.targetLocation;
@@ -112,12 +112,24 @@ export class Endboss extends Enemy {
         this.otherDirection = this.character.x + this.characterOffset.left > this.x + this.bossCollisionOffset.left;
     }
 
+    throwingLoop() {
+        const throwLoop = () => {
+            if (this.world && this.world.character && this.health > 0 && this.world.character.isBossfight && !this.character.isDead()) {
+                this.throwingAttack();
+            };
+            const nextDelay = Math.random() * (2000 - 500) + 500;
+            setTimeout(throwLoop, nextDelay);
+        };
+        throwLoop();
+    }
+
     /**
      * Creates a new snowball and adds it to the snowballs array.
      */
     throwingAttack() {
         let snowball = new Snowball(this.x, this.y);
         this.snowballs.push(snowball);
+        this.world.playSound('boss_throw');
     }
 
     /**

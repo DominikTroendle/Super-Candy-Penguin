@@ -18,10 +18,10 @@ export class Snowball extends MovableObject {
      * and moving the object horizontally to the left at a constant speed.
      */
     fly() {
-        this.speedY = 40;
+        this.speedY = Math.floor(Math.random() * (40 - 20 + 1)) + 20;
         this.applyGravity();
         setStoppableInterval(() => {
-            this.x -= 1.7;
+            this.x -= Math.floor(Math.random() * (2 - 1.2 + 1)) + 1.2;
         }, 1);
     }
 }
