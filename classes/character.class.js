@@ -10,7 +10,6 @@ export class Character extends MovableObject {
     IMAGES_IDLE = CHARACTER_IMAGES.idle;
     IMAGES_WALKING = CHARACTER_IMAGES.walking;
     IMAGES_JUMPING = CHARACTER_IMAGES.jumping;
-    IMAGES_SLAP = CHARACTER_IMAGES.slap;
     IMAGES_HURT = CHARACTER_IMAGES.hurt;
     IMAGES_DEAD = CHARACTER_IMAGES.dead;
     world;

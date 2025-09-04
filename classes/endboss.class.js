@@ -16,7 +16,7 @@ export class Endboss extends Enemy {
     IMAGES_IDLE = ENDBOSS_IMAGES.idle;
     IMAGES_WALKING = ENDBOSS_IMAGES.walking;
     IMAGES_ATTACKING = ENDBOSS_IMAGES.attacking;
-    IMAGES_DEATH = ENDBOSS_IMAGES.death;
+    IMAGES_DEATH = ENDBOSS_IMAGES.dead;
 
     constructor() {
         super().loadImage('img/enemys/Boss/Idle/skeleton-Idle_0.png');
