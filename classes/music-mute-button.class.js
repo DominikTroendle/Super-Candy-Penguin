@@ -12,6 +12,7 @@ export class MusicMuteButton extends Settings {
     /**
      * Handles the click event on the music button by toggling the global 'musicMuted' flag,
      * updating the buttons image and adjusting the background music's volume based on the mute state.
+     * Saves the mute state to the local storage.
      */
     onClick() {
         musicMuted = !musicMuted;

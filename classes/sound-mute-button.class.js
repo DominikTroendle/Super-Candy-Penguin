@@ -12,6 +12,7 @@ export class SoundMuteButton extends Settings {
     /**
      * Handles the click event on the sound button by toggling the global 'soundMuted' flag,
      * updating the buttons image and adjusting the global sound volume based on the mute state.
+     * Saves the mute state to the local storage.
      */
     onClick() {
         soundMuted = !soundMuted;
