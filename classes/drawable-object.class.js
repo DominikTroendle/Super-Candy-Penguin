@@ -47,7 +47,7 @@ export class DrawableObject {
      */
     loadImages(arr) {
         arr.forEach((path) => {
-            let img = new Image();
+            const img = new Image();
             img.src = path;
             this.imageCache[path] = img;
         });
@@ -65,8 +65,8 @@ export class DrawableObject {
     playAnimation(name, images, fps) {
         this.resetAnimation(name);
         if (name === 'dead' && this.animationFinished) return;
-        let now = Date.now();
-        let frameDuration = 1000 / fps;
+        const now = Date.now();
+        const frameDuration = 1000 / fps;
         if (!this.currentAnimation || (now - this.lastAnimationFrameTime) >= frameDuration) {
             this.animateImages(images, name);
             this.lastAnimationFrameTime = now;
@@ -96,8 +96,8 @@ export class DrawableObject {
      * @param {String} name - the name of the animation
      */
     animateImages(imagesArr, name) {
-        let i = this.currentImage % imagesArr.length;
-        let path = imagesArr[i];
+        const i = this.currentImage % imagesArr.length;
+        const path = imagesArr[i];
         this.img = this.imageCache[path];
         this.currentImage++;
         if (i >= imagesArr.length - 1 && name === 'dead') this.animationFinished = true;

@@ -2,13 +2,13 @@ import { World } from '../classes/world.class.js';
 import { Keyboard } from '../classes/keyboard.class.js';
 
 let canvas;
-let keyboard = new Keyboard();
-let playButton = document.getElementById('button-play');
-let settingsButton = document.getElementById('button-settings');
-let controlsButton = document.getElementById('button-controls');
-let imprintPageButton = document.getElementById('button-imprint');
-let replayButtons = document.querySelectorAll('.replay-button');
-let startScreenButtons = document.querySelectorAll('.start-screen-button');
+const keyboard = new Keyboard();
+const playButton = document.getElementById('button-play');
+const settingsButton = document.getElementById('button-settings');
+const controlsButton = document.getElementById('button-controls');
+const imprintPageButton = document.getElementById('button-imprint');
+const replayButtons = document.querySelectorAll('.replay-button');
+const startScreenButtons = document.querySelectorAll('.start-screen-button');
 
 /**
  * Handles clicking the play button: plays a click sound, shows the game screen and initializes the world.
@@ -52,7 +52,7 @@ imprintPageButton.addEventListener('click', () => {
  * shows the mobile controls if the device is a touch device, stops all music and restarts the game world.
  */
 replayButtons.forEach(e => e.addEventListener('click', () => {
-    let media = window.matchMedia("(pointer: coarse)");
+    const media = window.matchMedia("(pointer: coarse)");
     clickSound.play();
     gameEnded = false;
     resetOverlays();

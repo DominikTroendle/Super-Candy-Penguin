@@ -64,7 +64,7 @@ export class Keyboard {
      */
     bindButtonPressEvents() {
         Object.entries(this.controls).forEach(([id, key]) => {
-            let element = document.getElementById(id);
+            const element = document.getElementById(id);
             this.addTouchstartListener(element, key);
             this.addTouchendListener(element, key);
         });

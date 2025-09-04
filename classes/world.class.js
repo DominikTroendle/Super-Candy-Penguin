@@ -157,7 +157,7 @@ export class World {
      * @param {Object} object - the object to draw on the canvas
      */
     addToCanvas(object) {
-        let flip = object.otherDirection;
+        const flip = object.otherDirection;
         if (flip) this.mirrorCtx(object);
         object.drawObject(this.ctx);
         if (object instanceof Counter) object.drawCounter(this.ctx, object);
@@ -173,12 +173,12 @@ export class World {
      */
     addLoopingObjectsToCanvas(objects) {
         objects.forEach(o => {
-            let scrollFactor = o.scrollFactor;
-            let relCamera_x = this.camera_x * scrollFactor;
-            let startX = Math.floor(-relCamera_x / o.width) * o.width;
-            let endX = -relCamera_x + this.canvas.width;
+            const scrollFactor = o.scrollFactor;
+            const relCamera_x = this.camera_x * scrollFactor;
+            const startX = Math.floor(-relCamera_x / o.width) * o.width;
+            const endX = -relCamera_x + this.canvas.width;
             for (let x = startX; x < endX + o.width; x += o.width) {
-                let drawX = x + relCamera_x;
+                const drawX = x + relCamera_x;
                 this.ctx.drawImage(o.img, drawX, o.y, o.width + 0.5, o.height);
             };
         });
@@ -212,7 +212,7 @@ export class World {
      * @param {String} key - the identifier for the sound file to play
      */
     playSound(key) {
-        let sound = new Audio(`./audio/sounds/${key}.mp3`);
+        const sound = new Audio(`./audio/sounds/${key}.mp3`);
         if (window.matchMedia('(pointer: coarse)').matches) this.soundVol = soundMuted ? 0 : soundVolume;
         sound.volume = this.soundVol;
         sound.play();

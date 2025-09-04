@@ -22,7 +22,7 @@ export class Level {
      * @param {Object} enemy - the enemy instance to remove
      */
     removeEnemy(enemy) {
-        let index = this.enemies.indexOf(enemy);
+        const index = this.enemies.indexOf(enemy);
         if (index > -1) {
             this.enemies.splice(index, 1);
         };

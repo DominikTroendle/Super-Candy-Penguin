@@ -48,8 +48,8 @@ export class BossHealthbar extends DrawableObject {
      * @param {Number} percentage - the percentage value used to determine which image to display
      */
     setPercentage(percentage) {
-        let index = percentage / 10;
-        let path = this.IMAGES[index];
+        const index = percentage / 10;
+        const path = this.IMAGES[index];
         this.img = this.imageCache[path];
     }
 }

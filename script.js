@@ -8,7 +8,7 @@ let intervalIds = [];
  * @param {Number} time - the interval delay in ms
  */
 function setStoppableInterval(fn, time) {
-    let id = setInterval(fn, time);
+    const id = setInterval(fn, time);
     intervalIds.push(id);
 }
 
@@ -16,7 +16,7 @@ function setStoppableInterval(fn, time) {
  * Displays the game screen, triggers the start animation and shows mobile controls if the device uses a coarse pointer (touch).
  */
 function showGame() {
-    let media = window.matchMedia("(pointer: coarse)");
+    const media = window.matchMedia("(pointer: coarse)");
     handleStartAnimation('change');
     setTimeout(() => {
         resetOverlays();
@@ -52,7 +52,7 @@ function handleStartAnimation(key) {
  */
 function endGame(condition, coins) {
     let overlay;
-    let collectedCoinsDisplay = Array.from(document.querySelectorAll('.collected-coins'));
+    const collectedCoinsDisplay = Array.from(document.querySelectorAll('.collected-coins'));
     if (gameEnded) return;
     gameEnded = true;
     condition === "W" ? overlay = "win-screen" : overlay = "game-over-screen";
@@ -89,7 +89,7 @@ function clearIntervals() {
  * Hides all overlay screens (start, win, game over, controls, settings, imprint, mobile controls).
  */
 function resetOverlays() {
-    let overlays = ['start-screen', 'win-screen', 'game-over-screen', 'controls', 'settings', 'imprint', 'mobile-controls'];
+    const overlays = ['start-screen', 'win-screen', 'game-over-screen', 'controls', 'settings', 'imprint', 'mobile-controls'];
     overlays.forEach((str) => {
         document.getElementById(str).classList.add('d-none');
     });

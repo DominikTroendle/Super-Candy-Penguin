@@ -127,7 +127,7 @@ export class Endboss extends Enemy {
      * Creates a new snowball and adds it to the snowballs array.
      */
     throwingAttack() {
-        let snowball = new Snowball(this.x, this.y);
+        const snowball = new Snowball(this.x, this.y);
         this.snowballs.push(snowball);
         this.world.playSound('boss_throw');
     }

@@ -1,10 +1,10 @@
-let soundControls = Array.from(document.querySelectorAll('.sound-control'));
-let mobileSoundControls = Array.from(document.querySelectorAll('.mobile-control-button-sm'));
+const soundControls = Array.from(document.querySelectorAll('.sound-control'));
+const mobileSoundControls = Array.from(document.querySelectorAll('.mobile-control-button-sm'));
 let musicVolume = 0.5;
 let soundVolume = 0.5;
 let musicMuted = false;
 let soundMuted = false;
-let volumeMap = {
+const volumeMap = {
     "sound-down": () => clickSound.volume = soundVolume = Math.max(0, soundVolume - 0.1),
     "sound-up": () => clickSound.volume = soundVolume = Math.min(0.5, soundVolume + 0.1),
     "sound-mute": () => {
@@ -15,9 +15,9 @@ let volumeMap = {
     "music-up": () => musicVolume = Math.min(0.5, musicVolume + 0.1),
     "music-mute": () => musicMuted = !musicMuted
 };
-let clickSound = new Audio('./audio/sounds/click.mp3');
-let winMusic = new Audio('./audio/music/win-music.mp3')
-let gameOverMusic = new Audio('./audio/music/game-over-music.mp3');
+const clickSound = new Audio('./audio/sounds/click.mp3');
+const winMusic = new Audio('./audio/music/win-music.mp3')
+const gameOverMusic = new Audio('./audio/music/game-over-music.mp3');
 
 /**
  * Handles clicking any sound control button: plays a click sound and changes volume based on the clicked button's ID.
@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
  */
 function changeVolumeDisplay(id) {
     let percent;
-    let [type, action] = id.split("-");
+    const [type, action] = id.split("-");
     if (type === "sound") {
         percent = (soundVolume * 100) * 2;
     } else {
@@ -105,8 +105,8 @@ function setLocalStorage() {
  * Loads sound and music volume/mute settings from localStorage. If no settings are stored, default values are used.
  */
 function getLocalStorage() {
-    let storedSoundVolume = localStorage.getItem('soundVolume');
-    let storedMusicVolume = localStorage.getItem('musicVolume');
+    const storedSoundVolume = localStorage.getItem('soundVolume');
+    const storedMusicVolume = localStorage.getItem('musicVolume');
     clickSound.volume = soundVolume = storedSoundVolume !== null ? parseFloat(storedSoundVolume) : 0.5;
     musicVolume = storedMusicVolume !== null ? parseFloat(storedMusicVolume) : 0.5;
     soundMuted = localStorage.getItem('soundMuted') === "true";
