@@ -96,6 +96,7 @@ export class World {
         this.ctx.translate(this.camera_x, 0);
         this.drawForeground();
         this.ctx.translate(-this.camera_x, 0);
+        this.drawUI();
     }
 
     /**
@@ -107,11 +108,17 @@ export class World {
     }
 
     /**
-     * Draws all background and UI elements such as static and moving backgrounds, status bars, and counters.
+     * Draws all background elements such as static and moving backgrounds.
      */
     drawBackground() {
         this.addObjectsToCanvas(this.level.staticBackground);
         this.addLoopingObjectsToCanvas(this.level.movingBackground);
+    }
+
+    /**
+     * Draws all UI elements such as status bars, counters and settings buttons.
+     */
+    drawUI() {
         this.addToCanvas(this.statusbar);
         this.addToCanvas(this.coinCounter);
         this.addToCanvas(this.candyCounter);
