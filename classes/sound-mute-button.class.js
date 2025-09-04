@@ -24,5 +24,6 @@ export class SoundMuteButton extends Settings {
             this.world.soundVol = soundVolume;
             this.world.soundVol = soundVolume;
         };
+        setLocalStorage();
     }
 }

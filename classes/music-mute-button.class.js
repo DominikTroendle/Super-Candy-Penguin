@@ -24,5 +24,6 @@ export class MusicMuteButton extends Settings {
             this.world.backgroundMusic.bgMusic.volume = musicVolume;
             this.world.backgroundMusic.bossMusic.volume = musicVolume;
         }
+        setLocalStorage();
     }
 }
