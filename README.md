@@ -1,6 +1,6 @@
 # Super Candy Penguin
 
-A browser-based 2D jump-and-run game built with JavaScript, HTML5 Canvas, and object-oriented programming principles.
+A browser-based 2D jump-and-run game built with **JavaScript**, **HTML5 Canvas** and object-oriented programming principles **(OOP)**.
 
 The project focuses on structured game logic, collision handling, and real-time rendering in a modular frontend architecture.
 
