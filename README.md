@@ -53,8 +53,8 @@ npm install
 ### Run locally
 
 **Since this project is a browser-based game without a build step**:
-# Option 1: Use Live Server (VS Code extension)
-# Option 2: Open index.html directly in your browser
+### Option 1: Use Live Server (VS Code extension)
+### Option 2: Open index.html directly in your browser
 
 ---
 
