@@ -86,7 +86,7 @@ npm install
 
 ## Author
 
-Dominik Tröndle
+Dominik Tröndle,
 Frontend Developer based in Munich
 
 ---
